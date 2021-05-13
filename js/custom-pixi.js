@@ -30,7 +30,7 @@ loader.onError.add(handleLoadError)
 loader.onProgress.add(handleLoadProgress)
 
 // fish is the alias for the path
-loader.add("fish", "assets/SVGs/Fische/GrosserFisch.svg")
+//loader.add("fish", "assets/SVGs/Fische/GrosserFisch.svg")
 loader.add("bg", "assets/background.png")
 loader.add("boat", "assets/boat.png")
 loader.add("submarine", "assets/submarine.png")
@@ -54,12 +54,12 @@ function handleLoadComplete(){
     bg_sprite.height = _h*4
     viewport.addChild(bg_sprite)
     
-    let fish_texture = loader.resources.fish.texture
+   /* let fish_texture = loader.resources.fish.texture
     const fish_sprite = new PIXI.Sprite(fish_texture)
     fish_sprite.position.set(viewport.worldWidth / 2, viewport.worldHeight  / 2)
     fish_sprite.height = 500
     fish_sprite.width = 1000
-    viewport.addChild(fish_sprite)
+    viewport.addChild(fish_sprite) */
 
     let boat_texture = loader.resources.boat.texture
     const boat_sprite = new PIXI.Sprite(boat_texture)
