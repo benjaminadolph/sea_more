@@ -7,9 +7,9 @@ http.listen(3000, function() {
   console.log('Server gestartet');
 });
 
-app.use(express.static('assets'));
-app.use(express.static('css'));
-app.use(express.static('js'));
+app.use("/assets", express.static('assets'));
+app.use("/css", express.static('css'));
+app.use("/dist", express.static('dist'));
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
