@@ -19,4 +19,56 @@ canvas {
   display: none;
 }
 
+.controller-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.controller {
+  width: 210px;
+  height: 210px;
+  background: linear-gradient(180deg, #444444 0%, rgba(30, 30, 30, 0.920297) 71.87%, rgba(8, 8, 8, 0.9) 99.98%, #050505 99.99%, #2E2E2E 100%), #C4C4C4;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.controller .controller-inner {
+  position: absolute;
+  width: 183px;
+  height: 183px;
+  background: #000000;
+  border-radius: 50%;
+}
+
+.controller-inner-click {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+}
+
+.controller-inner-click.top {
+  top: 0;
+  left: 50px;
+}
+
+.controller-inner-click.bottom {
+  bottom: 0;
+  left: 50px;
+}
+
+.controller-inner-click.right {
+  right: 0;
+  top: 50px;
+}
+
+.controller-inner-click.left {
+  top: 50px;
+  left: 0;
+}
+
 /*# sourceMappingURL=main.css.map */
