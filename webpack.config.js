@@ -9,8 +9,9 @@ module.exports = {
     // on the final bundle. For now, we don't need production's JavaScript 
     // minifying and other things, so let's set mode to development
     mode: 'development',
+    devtool: 'source-map',
     // Path to your entry point. From this file Webpack will begin its work
-    entry: './js/index.js',
+    entry: ['./js/custom-pixi.js'],
 
     // Path and filename of your result bundle.
     // Webpack will bundle all JavaScript into this file

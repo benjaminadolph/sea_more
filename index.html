@@ -1,16 +1,71 @@
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css">
-    <title>Pixi Test</title>
+    <title>Index</title>
 </head>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    $(function() {
+        var socket = io();
+
+        socket.on('controllerAdded', function(event){
+            socket.emit('controllerPosition', { x: event.pageX, y: event.pageY });
+        });
+
+        socket.on('allControllerActivity', function(data) {
+            if ($('.pointer[session_id="' + data.session_id + '"]').length <= 0) {
+                $('body').append('<div class="pointer" session_id="' + data.session_id + '"></div>');
+            }
+
+            var $pointer = $('.pointer[session_id="' + data.session_id + '"]');
+
+            $pointer.css('left', data.coordinations.x);
+            $pointer.css('top', data.coordinations.y);
+        });
+
+        var currentMousePos = { x: -1, y: -1 };
+        $(document).mousemove(function(event) {
+            currentMousePos.x = event.pageX;
+            currentMousePos.y = event.pageY;
+        });
+
+        socket.on('goTop', function(data) {
+            console.log('gottop');
+            currentMousePos.x += 100;
+            console.log(currentMousePos.x);
+        });
+
+        socket.on('goBottom', function(data) {
+            console.log('gottop');
+        });
+
+        socket.on('goLeft', function(data) {
+            console.log('gottop');
+        });
+
+        socket.on('goRight', function(data) {
+            console.log('gottop');
+        });
+    });
+    
+</script>
+
+<style>
+    .pointer {
+        position: absolute;
+        background-image: url('/unicorn.png');
+        background-repeat: no-repeat; 
+        width: 240px;
+        height: 215px;
+    }
+</style>
+
 <body>
-    <nav class="topnav">
-        <a href="index.html" >Home</a>
-        <a href="canvas.html">Canvas</a>
-    </nav>
+    <h1>Hier steht Content</h1>
+    <ul id="messages"></ul>
 </body>
 </html>
