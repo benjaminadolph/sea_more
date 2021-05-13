@@ -1,7 +1,8 @@
 {
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "serve": "nodemon index.js"
+    "serve": "nodemon index.js",
+    "sass": "sass --watch scss/main.scss:public/css/main.css"
   },
   "author": "Benjamin Adolph",
   "repository": "",
