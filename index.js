@@ -7,14 +7,20 @@ http.listen(3000, function() {
   console.log('Server gestartet');
 });
 
-app.use(express.static('public'));
+app.use(express.static('assets'));
+app.use(express.static('css'));
+app.use(express.static('js'));
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + './../index.html');
+  res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/canvas', function(req, res) {
+  res.sendFile(__dirname + '/canvas.html');
 });
 
 app.get('/controller', function(req, res) {
-  res.sendFile(__dirname + './../controller.html');
+  res.sendFile(__dirname + '/controller.html');
 });
 
 io.on('connection', function(socket, name) {
