@@ -1,22 +1,20 @@
-var express = require('express');
-var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+const express = require('express');
 
-http.listen(3000, function() {
-  console.log('Server gestartet');
-});
+// Creating an express server
+const app = express();
 
-app.use("/assets", express.static('assets'));
-app.use("/css", express.static('css'));
-app.use("/dist", express.static('dist'));
+// This is needed if the app is run on heroku and other cloud providers:
+const port = process.env.PORT || 3000;
+
+// Initialize a new socket.io object. It is bound to 
+// the express app, which allows them to coexist.
+const io = require('socket.io')(app.listen(port));
+
+// Make the files in the public folder available to the world
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/canvas', function(req, res) {
-  res.sendFile(__dirname + '/canvas.html');
 });
 
 app.get('/controller', function(req, res) {
@@ -24,6 +22,13 @@ app.get('/controller', function(req, res) {
 });
 
 io.on('connection', function(socket, name) {
+  // A new client has come online. Check the secret key and 
+  // emit a "granted" or "denied" message.
+  socket.on('load', function(data){
+    socket.emit('access', {
+        access: (data.key === secret ? "granted" : "denied")
+    });
+  });
   // was passiert, wenn sich jemand connected
   socket.on('controllerActivity', function(data){
     io.emit('allControllerActivity', {session_id: socket.id, coordinations: data });
@@ -46,3 +51,4 @@ io.on('connection', function(socket, name) {
   });
 });
 
+console.log('Your Server is running on http://localhost:' + port);
