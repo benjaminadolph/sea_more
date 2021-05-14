@@ -4,6 +4,8 @@ $HIGHLIGHT_COLOR: #00FED0;
 $BACKGROUND_DARK_COLOR: #413543;
 $BACKGROUND_CENTER_COLOR: #1C224F;
 $GREY_COLOR: #949494;
+$BASE_TEXT_COLOR: #fff;
+$WHITE: #fff;
 
 @mixin radialBackground {
     background: $BACKGROUND_DARK_COLOR; /* Old browsers */
@@ -87,3 +89,64 @@ $FONT: 'Meera Inimai', sans-serif;
 .plain-s {
     @include plain-s();
 }
+
+
+@mixin content-container {
+    width: 95%;
+    margin: 150px auto;
+}
+
+@mixin arrow($color, $direction) {
+    border: solid $color;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+
+    @if $direction == up {
+        transform: rotate(-135deg);
+        -webkit-transform: rotate(-135deg);
+    } @else if $direction == right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+    } @else if $direction == down {
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+    } @else if $direction == left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+    } @else {
+        @error "Unknown direction #{$direction}.";
+    }
+}
+
+@mixin button {
+    @include plain-m;
+    background: $PRIMARY_COLOR;
+    border-radius: 30px;
+    padding: 7px 20px 7px 20px;
+    text-decoration: none;
+    transition: background-color 0.5s ease-in;
+
+    &::after {
+        content: '';
+        @include arrow($WHITE, 'right');
+        margin-left: 10px;
+        margin-right: 0px;
+        top: -2px;
+        position: relative;
+        transition: margin 0.5s ease-in;
+    }
+
+    &:hover {
+        background-color: $BACKGROUND_CENTER_COLOR;
+
+        &::after {
+            margin-left: 15px;
+            margin-right: 10px;
+        }
+    }
+}
+.button {
+    @include button;
+}
+

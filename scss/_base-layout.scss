@@ -9,21 +9,33 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #2F2F2F;
-    background: radial-gradient(90.67% 90.67% at 50% 50%, #1A2252 0%, #261729 100%);
+    @include radialBackground;
+    color: $BASE_TEXT_COLOR;
+}
+
+h1 {
+    @include plain-l;
+}
+
+a {
+    color: $BASE_TEXT_COLOR;
+}
+
+.content {
+    @include content-container;
 }
 
 .logo {
     position: fixed;
     left: 25px;
     top: 22px;
-    z-index: 100;
+    z-index: 200;
 }
 
 .menu-icon {
     position: fixed;
-    right: 25px;
-    top: 22px;
+    right: 29px;
+    top: 27px;
     background-image: url(../assets/menu-icon.png);
     height: 40px;
     width: 50px;
@@ -50,4 +62,22 @@ body {
     top: 0;
     left: 0;
     z-index: 0;
+}
+
+.help-button {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 100;
+    
+}
+
+section {
+    position: absolute;
+    right: 0;
+    top: 0;
+    @include radialBackground;
+    min-height: 100vh;
+    z-index: 100;
+    display: none;
 }

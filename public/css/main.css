@@ -44,6 +44,39 @@
   line-height: 140%;
 }
 
+.button {
+  font-family: "Meera Inimai", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 140%;
+  background: #2168B6;
+  border-radius: 30px;
+  padding: 7px 20px 7px 20px;
+  text-decoration: none;
+  transition: background-color 0.5s ease-in;
+}
+.button::after {
+  content: "";
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  margin-left: 10px;
+  margin-right: 0px;
+  top: -2px;
+  position: relative;
+  transition: margin 0.5s ease-in;
+}
+.button:hover {
+  background-color: #1C224F;
+}
+.button:hover::after {
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -55,21 +88,46 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #2F2F2F;
-  background: radial-gradient(90.67% 90.67% at 50% 50%, #1A2252 0%, #261729 100%);
+  background: #413543;
+  /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #1C224F 0%, #413543 100%);
+  /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #1C224F 0%, #413543 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #1C224F 0%, #413543 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#1c224f", endColorstr="#413543",GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+  color: #fff;
+}
+
+h1 {
+  font-family: "Meera Inimai", sans-serif;
+  font-weight: 400;
+  font-size: 39px;
+  line-height: 130%;
+}
+
+a {
+  color: #fff;
+}
+
+.content {
+  width: 95%;
+  margin: 150px auto;
 }
 
 .logo {
   position: fixed;
   left: 25px;
   top: 22px;
-  z-index: 100;
+  z-index: 200;
 }
 
 .menu-icon {
   position: fixed;
-  right: 25px;
-  top: 22px;
+  right: 29px;
+  top: 27px;
   background-image: url(../assets/menu-icon.png);
   height: 40px;
   width: 50px;
@@ -101,6 +159,32 @@ body {
   top: 0;
   left: 0;
   z-index: 0;
+}
+
+.help-button {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 100;
+}
+
+section {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #413543;
+  /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #1C224F 0%, #413543 100%);
+  /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #1C224F 0%, #413543 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #1C224F 0%, #413543 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#1c224f", endColorstr="#413543",GradientType=1 );
+  /* IE6-9 fallback on horizontal gradient */
+  min-height: 100vh;
+  z-index: 100;
+  display: none;
 }
 
 canvas {
@@ -164,6 +248,13 @@ canvas {
 .controller-inner-click.left {
   top: 50px;
   left: 0;
+}
+
+#help {
+  width: 100vw;
+}
+#help h1 {
+  text-align: center;
 }
 
 /*# sourceMappingURL=main.css.map */
