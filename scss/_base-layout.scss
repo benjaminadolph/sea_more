@@ -17,4 +17,37 @@ body {
     position: fixed;
     left: 25px;
     top: 22px;
+    z-index: 100;
+}
+
+.menu-icon {
+    position: fixed;
+    right: 25px;
+    top: 22px;
+    background-image: url(../assets/menu-icon.png);
+    height: 40px;
+    width: 50px;
+    background-repeat: no-repeat;
+    z-index: 100;
+}
+
+.close-icon {
+    position: fixed;
+    right: 25px;
+    top: 22px;
+    background-image: url(../assets/close-icon.png);
+    height: 43px;
+    width: 43px;
+    background-repeat: no-repeat;
+    z-index: 200;
+}
+
+.vignette {
+    @include vignette;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
