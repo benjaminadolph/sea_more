@@ -21,20 +21,21 @@ app.get('/controller', function(req, res) {
   res.sendFile(__dirname + '/controller.html');
 });
 
-io.on('connection', function(socket, name) {
-  // A new client has come online. Check the secret key and 
-  // emit a "granted" or "denied" message.
+let secret = "test123"
+
+io.on('connection', function(socket) {
   socket.on('load', function(data){
     socket.emit('access', {
         access: (data.key === secret ? "granted" : "denied")
     });
+    console.log(data.key)
   });
-  // was passiert, wenn sich jemand connected
+
   socket.on('controllerActivity', function(data){
     io.emit('allControllerActivity', {session_id: socket.id, coordinations: data });
   });
 
-  socket.on('buttonActivityTop', function() {
+  /* socket.on('buttonActivityTop', function() {
     io.emit('goTop', {session_id: socket.id });
   });
 
@@ -48,7 +49,7 @@ io.on('connection', function(socket, name) {
 
   socket.on('buttonActivityLeft', function() {
     io.emit('goLeft', {session_id: socket.id });
-  });
+  }); */
 });
 
 console.log('Your Server is running on http://localhost:' + port);

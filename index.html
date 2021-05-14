@@ -11,21 +11,19 @@
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
     $(function() {
-        var socket = io();
-
-        socket.on('controllerAdded', function(event){
-            socket.emit('controllerPosition', { x: event.pageX, y: event.pageY });
-        });
+        const socket = io();
 
         socket.on('allControllerActivity', function(data) {
-            if ($('.pointer[session_id="' + data.session_id + '"]').length <= 0) {
-                $('body').append('<div class="pointer" session_id="' + data.session_id + '"></div>');
+            if(data) {
+                if ($('.pointer[session_id="' + data.session_id + '"]').length <= 0) {
+                    $('body').append('<div class="pointer" session_id="' + data.session_id + '"></div>');
+                }
+                var $pointer = $('.pointer[session_id="' + data.session_id + '"]');
+
+                $pointer.css('left', data.coordinations.x);
+                $pointer.css('top', data.coordinations.y);
             }
-
-            var $pointer = $('.pointer[session_id="' + data.session_id + '"]');
-
-            $pointer.css('left', data.coordinations.x);
-            $pointer.css('top', data.coordinations.y);
+            
         });
 
         var currentMousePos = { x: -1, y: -1 };
@@ -34,23 +32,23 @@
             currentMousePos.y = event.pageY;
         });
 
-        socket.on('goTop', function(data) {
-            console.log('gottop');
+        /* socket.on('goTop', function(data) {
+            console.log('goTop');
             currentMousePos.x += 100;
             console.log(currentMousePos.x);
         });
 
         socket.on('goBottom', function(data) {
-            console.log('gottop');
+            console.log('goBottom');
         });
 
         socket.on('goLeft', function(data) {
-            console.log('gottop');
+            console.log('goLeft');
         });
 
         socket.on('goRight', function(data) {
-            console.log('gottop');
-        });
+            console.log('goRight');
+        }); */
     });
     
 </script>

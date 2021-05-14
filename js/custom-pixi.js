@@ -32,9 +32,9 @@ loader.onProgress.add(handleLoadProgress)
 // fish is the alias for the path
 //loader.add("fish", "assets/SVGs/Fische/GrosserFisch.svg")
 loader.add("bg", "assets/background.png")
-loader.add("boat", "assets/boat.png")
+/* loader.add("boat", "assets/boat.png")
 loader.add("submarine", "assets/submarine.png")
-loader.add("whale", "assets/whale.png")
+loader.add("whale", "assets/whale.png") */
 loader.load()
 
 function handleLoadComplete(){
@@ -61,7 +61,7 @@ function handleLoadComplete(){
     fish_sprite.width = 1000
     viewport.addChild(fish_sprite) */
 
-    let boat_texture = loader.resources.boat.texture
+    /* let boat_texture = loader.resources.boat.texture
     const boat_sprite = new PIXI.Sprite(boat_texture)
     boat_sprite.position.set(viewport.worldWidth / 3, viewport.worldHeight  / 10)
     boat_sprite.height = 300
@@ -93,7 +93,7 @@ function handleLoadComplete(){
     submarine_sprite.position.set(viewport.worldWidth / 3, viewport.worldHeight  / 1.2)
     submarine_sprite.height = 200
     submarine_sprite.width = 200
-    viewport.addChild(submarine_sprite)
+    viewport.addChild(submarine_sprite) */
 
     app.ticker.add(animate)
 }

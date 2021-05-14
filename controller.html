@@ -73,18 +73,30 @@
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
     $(function() {
-        var socket = io();
-        socket.emit('controllerAdded');
+        const socket = io();
+        const key = "test123"
+        console.log("Controller.html, Socketid"+ key)
 
-        $(document).on('mousemove', function(event) {
-            socket.emit('controllerActivity', { x: event.pageX, y: event.pageY });
+        if(key.length) {
+            socket.emit('load', {
+                key: key
+            });
+        }
+
+        socket.on('access', function(data){
+            console.log(data.access)
+            if(data.access === "granted") {
+                $(document).on('mousemove', function(event) {
+                    socket.emit('controllerActivity', { x: event.pageX, y: event.pageY });
+                });
+            }
         });
 
-        $(document).on('touchmove', function(event) {
+        /* $(document).on('touchmove', function(event) {
             socket.emit('controllerActivity', { x: event.pageX, y: event.pageY });
-        });
+        }); */
 
-        var $controller = $('.controller-inner-click');
+        /* var $controller = $('.controller-inner-click');
         $controller.on('touchstart click', function(event){
             var $el = $(this);
             if ($el.hasClass('top')){
@@ -96,7 +108,7 @@
             } else if ($el.hasClass('bottom')){
                 socket.emit('buttonActivityBottom', {});
             }
-        });
+        }); */
     });
     
 </script>
