@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -8,5 +10,11 @@ body {
     padding: 0;
     overflow: hidden;
     background-color: #2F2F2F;
+    background: radial-gradient(90.67% 90.67% at 50% 50%, #1A2252 0%, #261729 100%);
 }
 
+.logo {
+    position: fixed;
+    left: 25px;
+    top: 22px;
+}
