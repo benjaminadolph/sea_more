@@ -1,5 +1,8 @@
 import * as PIXI from 'pixi.js'
 import { Viewport } from 'pixi-viewport'
+//Nur für Devtools in Chrome notwendig
+window.PIXI = PIXI
+
 
 const canvas = document.getElementById('mycanvas')
 let _w = window.innerWidth
@@ -11,30 +14,50 @@ const app = new PIXI.Application({
     autoDensity: true,
     resizeTo: window,
     autoResize: true,
-    backgroundColor: 0xffffff
+    // backgroundColor: 0xffffff
 })
 
 const viewport = app.stage.addChild(new Viewport({ 
     width: _w,
     height: _h,
-    worldWidth: _w*2,
-    worldHeight: _h*4,
+    worldWidth: 8090,
+    worldHeight: 8191,
     interaction: app.renderer.plugins.interaction,
 }))
- 
+
+let objects = [
+    {name: "backgroundcrater", url: "assets/svgs/background-crater.svg", x: 3339, y: 5057}, 
+    {name: "sewageisland", url: "assets/svgs/sewage-island.svg", x:5815, y:1482}, 
+    {name: "sewage", url: "assets/svgs/sewage.svg", x:5665, y:1932}, 
+    {name: "submarine", url: "assets/svgs/submarine.svg", x:4917, y:6020}, 
+    {name: "submarinerocks", url: "assets/svgs/submarine-rocks.svg", x:4148, y:6790}, 
+    {name: "island1", url: "assets/svgs/island1.svg", x:7137, y:1631}, 
+    {name: "garbagecarpet", url: "assets/svgs/garbage-carpet.svg", x:3568, y:1672}, 
+    {name: "boat", url: "assets/svgs/boat.svg", x:1339, y:1209}, 
+    {name: "fishnet", url: "assets/svgs/fish-net.svg", x:1837, y:2356}, 
+    {name: "deepseamining", url: "assets/svgs/deep-sea-mining.svg", x:1298, y:5053}, 
+    {name: "microplastic", url: "assets/svgs/microplastic.svg", x:5116, y:3934}
+]
+
 let loader = PIXI.Loader.shared
+
+loader.add("bg", "assets/background.png")
+
+for(let i = 0; i < objects.length; i++) {
+    loader.add(objects[i].name, objects[i].url, { 
+        metadata: {
+            resourceOptions: {
+                scale: 4
+            }
+        }
+    });
+}
 
 loader.onComplete.add(handleLoadComplete)
 loader.onLoad.add(handleLoadAsset)
 loader.onError.add(handleLoadError)
 loader.onProgress.add(handleLoadProgress)
 
-// fish is the alias for the path
-//loader.add("fish", "assets/SVGs/Fische/GrosserFisch.svg")
-loader.add("bg", "assets/background.png")
-/* loader.add("boat", "assets/boat.png")
-loader.add("submarine", "assets/submarine.png")
-loader.add("whale", "assets/whale.png") */
 loader.load()
 
 function handleLoadComplete(){
@@ -45,55 +68,26 @@ function handleLoadComplete(){
         .decelerate()
         /* .bounce({sides:'top-bottom-right-left'}) */
         .clamp({ direction: 'all' })
-        .mouseEdges({radius: 250, speed: 15})
-       
+        .mouseEdges({radius: 350, speed: 30})
 
-    let bg_texture = loader.resources.bg.texture
+
+    const bg_texture = loader.resources.bg.texture
     const bg_sprite = new PIXI.Sprite(bg_texture)
-    bg_sprite.width = _w*2
-    bg_sprite.height = _h*4
+    bg_sprite.width = viewport.screenWorldWidth
+    bg_sprite.height = viewport.screenWorldHeight
     viewport.addChild(bg_sprite)
-    
-   /* let fish_texture = loader.resources.fish.texture
-    const fish_sprite = new PIXI.Sprite(fish_texture)
-    fish_sprite.position.set(viewport.worldWidth / 2, viewport.worldHeight  / 2)
-    fish_sprite.height = 500
-    fish_sprite.width = 1000
-    viewport.addChild(fish_sprite) */
 
-    /* let boat_texture = loader.resources.boat.texture
-    const boat_sprite = new PIXI.Sprite(boat_texture)
-    boat_sprite.position.set(viewport.worldWidth / 3, viewport.worldHeight  / 10)
-    boat_sprite.height = 300
-    boat_sprite.width = 300
-    viewport.addChild(boat_sprite)
-    // Sprite klickbar machen
-    boat_sprite.interactive = true
-    boat_sprite.buttonMode = true
+    for(let i = 0; i < objects.length; i++) {
+        const resourcename = eval("loader.resources." + objects[i].name + ".texture")
+        const spritename = objects[i].name + "_sprite"
 
-    // Pointers normalize touch and mouse
-    boat_sprite.on('pointerdown', (event) => onClick(boat_sprite));
-
-    let whale_texture = loader.resources.whale.texture
-    const whale_sprite = new PIXI.Sprite(whale_texture)
-    whale_sprite.position.set(viewport.worldWidth / 1.5, viewport.worldHeight  / 1.6)
-    whale_sprite.height = 300
-    whale_sprite.width = 300
-    // Sprite klickbar machen
-    whale_sprite.interactive = true
-    whale_sprite.buttonMode = true
-
-    // Pointers normalize touch and mouse
-    whale_sprite.on('pointerdown', (event) => onClick(whale_sprite));
-
-    viewport.addChild(whale_sprite)
-
-    let submarine_texture = loader.resources.submarine.texture
-    const submarine_sprite = new PIXI.Sprite(submarine_texture)
-    submarine_sprite.position.set(viewport.worldWidth / 3, viewport.worldHeight  / 1.2)
-    submarine_sprite.height = 200
-    submarine_sprite.width = 200
-    viewport.addChild(submarine_sprite) */
+        spritename = PIXI.Sprite.from(resourcename)
+        spritename.position.set(objects[i].x, objects[i].y)
+        spritename.anchor.set(0.5); 
+        viewport.addChild(spritename);
+        spritename.interactive = true
+        spritename.buttonMode = true
+    }
 
     app.ticker.add(animate)
 }
@@ -114,10 +108,10 @@ function onClick(object) {
     console.log(object)
     if(object.tint === 0xff0000) {
         object.tint = 0xffffff
-        document.getElementById("mySidebar").style.display = "none";
+        // HIER KANN DAS MENU GEÖFFNET WERDEN
     } 
     else{
-        document.getElementById("mySidebar").style.display = "block";
+        // HIER KANN DAS MENU GESCHLOSSEN WERDEN
         object.tint = 0xff0000
     } 
 }
@@ -132,9 +126,9 @@ function animate() {
 
     submarine_sprite.y = submarine_sprite.position.y + Math.sin(delta) *0.2
 
-    boat_sprite.y = boat_sprite.position.y + Math.cos(delta) *0.3
+    boat_sprite.y = boat_sprite.position.y + Math.cos(delta) *0.3 */
 
-    fish_sprite.y = fish_sprite.position.y + Math.sin(delta) *0.2
+   /*  fish_sprite.y = fish_sprite.position.y + Math.sin(delta) *0.2
     fish_sprite.x = fish_sprite.position.x + Math.cos(delta) *1 */
     
 }

@@ -52,3 +52,12 @@ If you need to update `npm`, you can make it using `npm`! Cool right? After runn
 ## Compile sass
 
     $ npm run sass
+
+# Webpack
+## Build Pixi.js-Files
+
+    $ npm run build
+
+## Watch Pixi.js-Files for Development with Hot-Reload
+
+    $ npm run watch
