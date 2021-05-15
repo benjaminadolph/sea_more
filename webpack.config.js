@@ -1,6 +1,5 @@
 // Webpack uses this to work with directories
 const path = require('path');
-
 // This is the main configuration object.
 // Here, you write different options and tell Webpack what to do
 module.exports = {
@@ -12,7 +11,6 @@ module.exports = {
     devtool: 'source-map',
     // Path to your entry point. From this file Webpack will begin its work
     entry: ['./js/custom-pixi.js'],
-
     // Path and filename of your result bundle.
     // Webpack will bundle all JavaScript into this file
     output: {
@@ -21,14 +19,14 @@ module.exports = {
         filename: 'bundle.js',
     },
     module: {
-        rules: [{
-            test: /\.(js)$/,
-            exclude: /node_modules/,
-            enforce: "pre",
-            use: [
-                { loader: 'source-map-loader' },
-                { loader: 'babel-loader' },
-            ],
-        }]
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                },
+            },
+        ]
     },
 };
