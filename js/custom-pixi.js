@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { Viewport } from 'pixi-viewport'
+
 //Nur für Devtools in Chrome notwendig
 window.PIXI = PIXI
 
