@@ -13,6 +13,7 @@
     "@babel/preset-env": "^7.14.1",
     "babel-loader": "^8.2.2",
     "nodemon": "^2.0.7",
+    "qrcode": "^1.4.4",
     "sass": "^1.32.13",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.7.0",
@@ -24,7 +25,6 @@
     "pixi-particles": "^4.3.0",
     "pixi-viewport": "^4.31.0",
     "pixi.js": "^6.0.2",
-    "qrcode": "^1.4.4",
     "socket.io": "^4.0.1",
     "uuid4": "^2.0.2"
   }

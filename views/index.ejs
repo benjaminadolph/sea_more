@@ -14,6 +14,13 @@
         width: 240px;
         height: 215px;
     }
+
+    #qrcode {
+        position: absolute;
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+    }
 </style>
 
 <body>
@@ -22,6 +29,8 @@
         <div class="menu-icon"></div>
         <a href="#help" class="button help-button">Unternimm etwas <i class="arrow-white right"></i></a>
     </div>
+
+    <div id="qrcode"></div>
 
     <section id="help" class="more-info">
         <div class="close-icon"></div>
