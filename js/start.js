@@ -1,9 +1,9 @@
 function randomString(length_) {
-    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz'.split('');
+    let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz'.split('');
     if (typeof length_ !== "number") {
         length_ = Math.floor(Math.random() * chars.length_);
     }
-    const str = '';
+    let str = '';
     for (var i = 0; i < length_; i++) {
         str += chars[Math.floor(Math.random() * chars.length)];
     }
@@ -12,12 +12,12 @@ function randomString(length_) {
 
 $(function() {
     const socket = io();
-    //const roomid = randomString(9);
-    const roomid = 'test';
+    const roomid = randomString(21);
+    // const roomid = 'test';
     socket.emit('join-room', roomid);
 
     const QRCode = require('qrcode');
-    const stringdata = `http://192.168.10.102:3000/controller/${roomid}`;
+    const stringdata = `http://localhost:3000/controller/${roomid}`;
    
     QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, function (err, canvas) {
         if (err) throw err
