@@ -15,6 +15,7 @@ $(function() {
     const roomid = randomString(21);
     // const roomid = 'test';
     socket.emit('join-room', roomid);
+    console.log(roomid);
 
     const QRCode = require('qrcode');
     const stringdata = `http://localhost:3000/controller/${roomid}`;
