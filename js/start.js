@@ -1,6 +1,20 @@
+function randomString(length_) {
+    const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz'.split('');
+    if (typeof length_ !== "number") {
+        length_ = Math.floor(Math.random() * chars.length_);
+    }
+    const str = '';
+    for (var i = 0; i < length_; i++) {
+        str += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return str;
+}
 
 $(function() {
     const socket = io();
+    //const roomid = randomString(9);
+    const roomid = 'test';
+    socket.emit('join-room', roomid);
 
     socket.on('allControllerActivity', function(data) {
         if(data) {
@@ -20,37 +34,4 @@ $(function() {
         currentMousePos.x = event.pageX;
         currentMousePos.y = event.pageY;
     });
-
-    // Join a channel
-    const room = 'test';
-    console.log(room);
-    socket.emit("join", room);
-
-    // Generate a new UUID
-    // const id = uuid4();
-
-    // Validate a UUID as proper V4 format (case-insensitive)
-    // uuid4.valid(id); // true
-
-    socket.on("image", function (image) {
-        console.log('index.html on image');
-    });
-
-    /* socket.on('goTop', function(data) {
-        console.log('goTop');
-        currentMousePos.x += 100;
-        console.log(currentMousePos.x);
-    });
-
-    socket.on('goBottom', function(data) {
-        console.log('goBottom');
-    });
-
-    socket.on('goLeft', function(data) {
-        console.log('goLeft');
-    });
-
-    socket.on('goRight', function(data) {
-        console.log('goRight');
-    }); */
 });
