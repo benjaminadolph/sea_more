@@ -3,7 +3,6 @@ import { Viewport } from 'pixi-viewport'
 //Nur für Devtools in Chrome notwendig
 window.PIXI = PIXI
 
-
 const canvas = document.getElementById('mycanvas')
 let _w = window.innerWidth
 let _h = window.innerHeight
@@ -14,7 +13,6 @@ const app = new PIXI.Application({
     autoDensity: true,
     resizeTo: window,
     autoResize: true,
-    // backgroundColor: 0xffffff
 })
 
 const viewport = app.stage.addChild(new Viewport({ 
@@ -66,10 +64,10 @@ function handleLoadComplete(){
         .drag()
         .pinch()
         .decelerate()
-        /* .bounce({sides:'top-bottom-right-left'}) */
         .clamp({ direction: 'all' })
-        .mouseEdges({radius: 350, speed: 30})
 
+    viewport.position.x = -viewport.worldWidth/2
+    viewport.position.y = -viewport.worldHeight/2
 
     const bg_texture = loader.resources.bg.texture
     const bg_sprite = new PIXI.Sprite(bg_texture)
@@ -90,6 +88,7 @@ function handleLoadComplete(){
     }
 
     app.ticker.add(animate)
+
 }
 
 function handleLoadError(){
@@ -130,5 +129,8 @@ function animate() {
 
    /*  fish_sprite.y = fish_sprite.position.y + Math.sin(delta) *0.2
     fish_sprite.x = fish_sprite.position.x + Math.cos(delta) *1 */
-    
+}
+
+window.goLeft = function(){
+    viewport.position.x = viewport.position.x + 300
 }
