@@ -17,10 +17,9 @@ io.on('connection', function(socket) {
     socket.join(roomid)
 
     socket.on('controllerActivity', function(data){
-      socket.broadcast.to(roomid).emit('allControllerActivity', {session_id: socket.id, coordinations: data });
+      socket.broadcast.to(roomid).emit('allControllerActivity', {session_id: socket.id, direction: data });
     });
   });
-
   
 });
 

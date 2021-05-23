@@ -133,5 +133,17 @@ function animate() {
 }
 
 window.goLeft = function(){
-    viewport.position.x = viewport.position.x + 300
+    viewport.position.x = viewport.position.x + 10
+}
+
+window.goRight = function(){
+    viewport.position.x = viewport.position.x - 10
+}
+
+window.goTop = function(){
+    viewport.position.y = viewport.position.y - 10
+}
+
+window.goBottom = function(){
+    viewport.position.y = viewport.position.y + 10
 }

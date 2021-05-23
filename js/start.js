@@ -12,8 +12,8 @@ function randomString(length_) {
 
 $(function() {
     const socket = io();
-    const roomid = randomString(21);
-    // const roomid = 'test';
+    // const roomid = randomString(21);
+    const roomid = 'test';
     socket.emit('join-room', roomid);
     console.log(roomid);
 
@@ -28,14 +28,25 @@ $(function() {
       })
 
     socket.on('allControllerActivity', function(data) {
+        // console.log(data.coordinations);
+        if (data.direction == 'left') {
+            goLeft();
+        } else if (data.direction == 'right') {
+            goRight();
+        } else if (data.direction == 'top') {
+            goTop();
+        } else if (data.direction == 'bottom') {
+            goBottom();
+        } 
+        
         if(data) {
-            if ($('.pointer[session_id="' + data.session_id + '"]').length <= 0) {
+            /* if ($('.pointer[session_id="' + data.session_id + '"]').length <= 0) {
                 $('body').append('<div class="pointer" session_id="' + data.session_id + '"></div>');
-            }
-            var $pointer = $('.pointer[session_id="' + data.session_id + '"]');
+            } */
+            /* var $pointer = $('.pointer[session_id="' + data.session_id + '"]');
 
             $pointer.css('left', data.coordinations.x);
-            $pointer.css('top', data.coordinations.y);
+            $pointer.css('top', data.coordinations.y); */
         }
         
     });
