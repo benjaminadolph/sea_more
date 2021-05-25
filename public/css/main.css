@@ -321,12 +321,24 @@ canvas {
   height: 100vh;
   width: 100vw;
 }
+#intro .overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  left: 0;
+  top: 0;
+}
 #intro .intro-container {
   background-image: url("../assets/intro-background.svg");
   background-repeat: no-repeat;
   width: 1076px;
   height: 744px;
   padding: 170px;
+  color: black;
+  z-index: 100;
+}
+#intro .intro-container h1 {
   color: #2168B6;
 }
 #intro .screen {
