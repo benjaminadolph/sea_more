@@ -19,7 +19,7 @@ $(function() {
 
     const QRCode = require('qrcode');
     // Sarah's IP: http://192.168.10.102:3000 sonst: http://localhost:3000
-    const stringdata = `http://192.168.0.171:3000/controller/${roomid}`;
+    const stringdata = `http://192.168.10.102:3000/controller/${roomid}`;
    
     QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, function (err, canvas) {
         if (err) throw err
@@ -29,7 +29,7 @@ $(function() {
       })
 
     socket.on('controllerAdded', function(data){
-        $('#qrcode').fadeOut();
+        $('#intro').fadeOut();
     });
 
     socket.on('allControllerActivity', function(data) {
@@ -56,9 +56,10 @@ $(function() {
         
     });
 
-    const currentMousePos = { x: -1, y: -1 };
-    $(document).mousemove(function(event) {
-        currentMousePos.x = event.pageX;
-        currentMousePos.y = event.pageY;
+    var $screenButton = $('.button-intro--screen-one');
+    $screenButton.on('click', function(e){
+        e.preventDefault();
+        $('.screen-one').hide();
+        $('.screen-two').fadeIn();
     });
 });

@@ -1,8 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
 }
 
 body {
@@ -11,10 +10,11 @@ body {
     overflow: hidden;
     @include radialBackground;
     color: $BASE_TEXT_COLOR;
+    font-family: $BASE_FONT;
 }
 
 h1 {
-    @include plain-l;
+    @include headline-l;
 }
 
 a {
