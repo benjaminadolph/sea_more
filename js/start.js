@@ -18,7 +18,8 @@ $(function() {
     console.log(roomid);
 
     const QRCode = require('qrcode');
-    const stringdata = `http://localhost:3000/controller/${roomid}`;
+    // Sarah's IP: http://192.168.10.102:3000 sonst: http://localhost:3000
+    const stringdata = `http://192.168.0.171:3000/controller/${roomid}`;
    
     QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, function (err, canvas) {
         if (err) throw err
@@ -26,6 +27,10 @@ $(function() {
         var container = document.getElementById('qrcode')
         container.appendChild(canvas)
       })
+
+    socket.on('controllerAdded', function(data){
+        $('#qrcode').fadeOut();
+    });
 
     socket.on('allControllerActivity', function(data) {
         // console.log(data.coordinations);
@@ -38,7 +43,7 @@ $(function() {
         } else if (data.direction == 'bottom') {
             goBottom();
         } 
-        
+
         if(data) {
             /* if ($('.pointer[session_id="' + data.session_id + '"]').length <= 0) {
                 $('body').append('<div class="pointer" session_id="' + data.session_id + '"></div>');
