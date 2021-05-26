@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <title>Index</title>
+    <title>sea more</title>
 </head>
 
 <script src="/socket.io/socket.io.js"></script>
@@ -50,41 +50,185 @@
             console.log('goRight');
         }); */
     });
+
+    function pagination() {
+        var offset = $(document).scrollTop();
+        var windowHeight = $(window).height();
+        var $body = $('body');
+        var padding = .75;
+        var chapters = Object.keys($('.chapter')).filter((section) => Number(section) + 1).map(section => Number(section) + 1)
+
+        chapters.map((chapter) => {
+            if (offset > (windowHeight * (chapter - 2 + padding))) {
+            $body.removeClass().addClass("chapter-" + chapter);
+            }
+        });
+    };
+
+    pagination();
+
+    $(document).on('scroll', pagination);
+
+    $(document).on('click', 'a[href^="#"]', function(e) {
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 500);
+    });
+
+    function openNav() {
+        document.getElementById("nav").style.display = "block";
+        document.getElementById("menu-icon").style.display = "none";
+
+    }
+
+    function closeNav() {
+        document.getElementById("nav").style.display = "none";
+        document.getElementById("menu-icon").style.display = "block";
+    }
+
+    function closeInfo() {
+        document.getElementById("information").style.display = "none";
+        document.getElementById("menu-icon").style.display = "block";
+    }
     
 </script>
 
-<style>
-    .pointer {
-        position: absolute;
-        background-image: url('assets/unicorn.png');
-        background-repeat: no-repeat; 
-        width: 240px;
-        height: 215px;
-    }
-</style>
-
 <body>
+    <canvas id="mycanvas"></canvas>
     <div class="base">
-        <div class="logo"><img src="/assets/logo.svg" /></div>
-        <div class="menu-icon"></div>
+        <div id="logo"><img src="/assets/logo.svg" /></div>
+        <div id="menu-icon" onclick="openNav()"></div>
         
-        <a href="#help" onclick="goLeft()" class="button help-button">Unternimm etwas <i class="arrow-white right"></i></a>
+        <a href="#help" id="help-button" class="button">Unternimm etwas <i class="arrow-white right"></i></a>
     </div>
 
-    <section id="help" class="more-info">
+    <nav id="nav" class="overlay">
+        <div class="close-icon" onclick="closeNav()"></div>
+        <ul class="overlay-content">
+            <li><a href="#">Müll (Plastik, Fischernetze)</a></li>
+            <li><a href="#">Überfischung</a></li>
+            <li><a href="#">Abwasser und Überdüngung</a></li>
+            <li><a href="#">Mikroplastik</a></li>
+            <li><a href="#">Bergbau in der Tiefsee</a></li>
+            <li><a href="#">Erdöl (Schiffswracks, Ölplattformen)</a></li>
+          </ul>
+    </nav>
+
+    <!-- <section id="help" class="more-info">
         <div class="close-icon"></div>
         <div class="content">
             <h1>Spende jetzt, um unsere Meere zu schützen!</h1>
         </div>
-    </section>
-    
-    
-    <div id="mySidebar" class="w3-sidebar w3-bar-block" style="width:25%">
-        <h1>Hier steht Content</h1>
-    </div>
+    </section> -->
 
- <!--    <div class="vignette"></div> -->
-    <canvas id="mycanvas"></canvas>
-    <script src="dist/bundle.js"></script>
+    <div id="information">
+        <div class="close-icon" onclick="closeInfo()"></div>
+        <section id="intro" class="chapter">
+            <h1 id="introtitle">Tiefseebergbau</h1>
+            
+        </section>
+    
+        <section id="facts" class="chapter">
+            <h1 id="factstitle">Facts</h1>
+            <div class="factslist">
+
+                <div class="factcontainer">
+                    <div class="picture">
+                        <img src="assets/logo.svg" alt="">
+                    </div>
+                    <h4>Fact</h4>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut </p>
+                </div>
+
+                <div class="factcontainer">
+                    <div class="picture">
+                        <img src="assets/logo.svg" alt="">
+                    </div>
+                    <h4>Fact</h4>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut </p>
+                </div> 
+
+                <div class="factcontainer">
+                    <div class="picture">
+                        <img src="assets/logo.svg" alt="">
+                    </div>
+                    <h4>Fact</h4>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut </p>
+                </div>
+
+                <div class="factcontainer">
+                    <div class="picture">
+                        <img src="assets/logo.svg" alt="">
+                    </div>
+                    <h4>Fact</h4>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut </p>
+                </div>
+
+            </div>
+        </section>
+    
+        <section id="video" class="chapter">
+            <div>
+                <div class="yt_box">
+                    <iframe src="https://www.youtube.com/embed/rA82_3O2lD8?autoplay=0&showinfo=0&controls=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="info1" class="chapter">
+            <h1 id="info1title">Infos</h1>
+            <div class="infocontainer">
+                <div class="picture">
+                    <img src="assets/tiefseebergbau.jpg" alt="tiefseebergbau">
+                </div>
+                <div class="text">
+                    <h4>Tiefsee Info 1</h4>
+                    <p>Für die Herstellung von Batterien oder Computern sind Metalle wie Nickel, Kupfer oder Cobalt sehr wichtig. Die Kosten für die Förderung an Land steigen jedoch kontinuierlich. Deshalb wird die Tiefsee immer interessanter. Dort gibt es Manganknollen, Massivsulfide und cobaltreiche Eisenmangankrusten. </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="info2" class="chapter">
+            <h1 id="info2title">Infos</h1>
+            <div class="infocontainer">
+                <div class="text">
+                    <h4>Tiefsee Info 2</h4>
+                    <p>Doch der Abbau dieser Rohstoffe zerstört ein ganzes Ökosystem in der Tiefsee, dass bisher kaum erforscht ist. Erste Tests haben ergeben, dass die Schäden durch den Bergbau lange sichtbar sind. So fanden Forscher heraus, dass sich das Ökosystem auch nach 26 Jahren nicht vollständig erholt hat. </p>
+                </div>
+                <div class="picture">
+                    <img src="assets/tiefseebergbau.jpg" alt="tiefseebergbau">
+                </div>
+            </div>
+        </section>
+
+        <section id="action" class="chapter">
+            <h1 id="actiontitle">Action</h1>
+            <div class="actioncontainer">
+                <div class="text">
+                    <h4>Was kann ich dagegen unternehmen?</h4>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
+                </div>
+                <div id="buttoncontainer">
+                    <a href="" class="button">Weitere Infos<i class="arrow-white right"></i></a>
+                    <a href="" class="button">Jetzt aktiv werden<i class="arrow-white right"></i></a>
+                </div>
+                
+            </div>
+        </section>
+
+        <ul id="pagination">
+            <li><a href="#intro"></a></li>
+            <li><a href="#facts"></a></li>
+            <li><a href="#video"></a></li>
+            <li><a href="#info1"></a></li>
+            <li><a href="#info2"></a></li>
+            <li><a href="#action"></a></li>
+          </ul>
+        
+    </div>
+    <script src="js/bundle.js"></script>
 </body>
 </html>

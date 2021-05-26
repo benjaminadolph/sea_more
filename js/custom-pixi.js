@@ -7,10 +7,17 @@ const canvas = document.getElementById('mycanvas')
 let _w = window.innerWidth
 let _h = window.innerHeight
 
+/* let _w = window.screen.width
+let _h = window.screen.height */
+
+console.log(window.innerWidth)
+
 const app = new PIXI.Application({
     view: canvas,
     resolution: window.devicePixelRatio,
     autoDensity: true,
+    width: _w,
+    height: _h,
     resizeTo: window,
     autoResize: true,
 })
@@ -39,7 +46,7 @@ let objects = [
 
 let loader = PIXI.Loader.shared
 
-loader.add("bg", "assets/background.png")
+console.log(loader.add("bg", "assets/background.png"))
 
 for(let i = 0; i < objects.length; i++) {
     loader.add(objects[i].name, objects[i].url, { 
@@ -70,22 +77,23 @@ function handleLoadComplete(){
     viewport.position.y = -viewport.worldHeight/2
 
     const bg_texture = loader.resources.bg.texture
-    const bg_sprite = new PIXI.Sprite(bg_texture)
+    const bg_sprite = PIXI.Sprite.from(bg_texture)
     bg_sprite.width = viewport.screenWorldWidth
     bg_sprite.height = viewport.screenWorldHeight
     viewport.addChild(bg_sprite)
 
     for(let i = 0; i < objects.length; i++) {
-        const resourcename = eval("loader.resources." + objects[i].name + ".texture")
-        const spritename = objects[i].name + "_sprite"
+        let resourcename = eval("loader.resources." + objects[i].name + ".texture")
 
-        spritename = PIXI.Sprite.from(resourcename)
-        spritename.position.set(objects[i].x, objects[i].y)
-        spritename.anchor.set(0.5); 
-        viewport.addChild(spritename);
-        spritename.interactive = true
-        spritename.buttonMode = true
+        objects[i].spriteRef = PIXI.Sprite.from(resourcename)
+        objects[i].spriteRef.position.set(objects[i].x, objects[i].y)
+        objects[i].spriteRef.anchor.set(0.5); 
+        viewport.addChild(objects[i].spriteRef);
+        objects[i].spriteRef.interactive = true
+        objects[i].spriteRef.buttonMode = true
     }
+    objects[7].spriteRef.on('pointerdown', onClick)
+    objects[8].spriteRef.on('pointerdown', onClick)
 
     app.ticker.add(animate)
 
@@ -103,16 +111,10 @@ function handleLoadProgress(loader, resource){
     console.log(loader.progress + "% loaded", resource.name)
 }
 
-function onClick(object) {
-    console.log(object)
-    if(object.tint === 0xff0000) {
-        object.tint = 0xffffff
-        // HIER KANN DAS MENU GEÖFFNET WERDEN
-    } 
-    else{
-        // HIER KANN DAS MENU GESCHLOSSEN WERDEN
-        object.tint = 0xff0000
-    } 
+function onClick() {
+    console.log("test")
+    document.getElementById("information").style.display = "flex";
+    document.getElementById("menu-icon").style.display = "none";
 }
 
 let delta = 0
@@ -120,9 +122,11 @@ function animate() {
     
     delta += 0.1
     // legt bewegungen fest
-    /* whale_sprite.y = whale_sprite.position.y + Math.sin(delta) *0.2
-    whale_sprite.x = whale_sprite.position.x + Math.sin(delta) *1
-
+    objects[7].spriteRef.y = objects[7].spriteRef.position.y + Math.sin(delta) *0.1
+    objects[7].spriteRef.x = objects[7].spriteRef.position.x + Math.sin(delta) *0.6
+    objects[8].spriteRef.y = objects[8].spriteRef.position.y + Math.sin(delta) *0.1
+    objects[8].spriteRef.x = objects[8].spriteRef.position.x + Math.sin(delta) *0.6
+/* 
     submarine_sprite.y = submarine_sprite.position.y + Math.sin(delta) *0.2
 
     boat_sprite.y = boat_sprite.position.y + Math.cos(delta) *0.3 */

@@ -10,13 +10,13 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     // Path to your entry point. From this file Webpack will begin its work
-    entry: ['./js/custom-pixi.js'],
+    entry: ['./js/custom-pixi.js','./scss/main.scss'],
     // Path and filename of your result bundle.
     // Webpack will bundle all JavaScript into this file
     output: {
-        path: path.resolve(__dirname, 'public/dist'),
+        path: path.resolve(__dirname, 'public'),
         publicPath: '',
-        filename: 'bundle.js',
+        filename: 'js/bundle.js',
     },
     module: {
         rules: [
@@ -27,6 +27,17 @@ module.exports = {
                     loader: "babel-loader"
                 },
             },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: { outputPath: 'css', name: '[name].css'}
+                    },
+                    'sass-loader'
+                ]
+            }
         ]
     },
 };

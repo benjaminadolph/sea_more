@@ -8,12 +8,16 @@
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
     @include radialBackground;
     color: $BASE_TEXT_COLOR;
+    overflow-x: hidden;
 }
 
 h1 {
+    @include plain-xxl;
+}
+
+h4 {
     @include plain-l;
 }
 
@@ -25,59 +29,42 @@ a {
     @include content-container;
 }
 
-.logo {
+#logo {
     position: fixed;
     left: 25px;
     top: 22px;
     z-index: 200;
 }
 
-.menu-icon {
+#menu-icon {
     position: fixed;
     right: 29px;
     top: 27px;
-    background-image: url(../assets/menu-icon.png);
+    background-image: url(../assets/menu.svg);
     height: 40px;
     width: 50px;
-    background-repeat: no-repeat;
-    z-index: 100;
-}
-
-.close-icon {
-    position: fixed;
-    right: 25px;
-    top: 22px;
-    background-image: url(../assets/close-icon.png);
-    height: 43px;
-    width: 43px;
     background-repeat: no-repeat;
     z-index: 200;
 }
 
-.vignette {
-    @include vignette;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
-}
+.close-icon {
+    position: absolute;
+    right: 29px;
+    top: 27px;
+    font-size: 60px;
+    background-image: url(../assets/close.svg);
+    height: 43px;
+    width: 43px;
+    background-repeat: no-repeat;
+  }
 
-.help-button {
+#help-button {
     position: fixed;
     bottom: 25px;
     right: 25px;
     z-index: 100;
-    
 }
 
 section {
-    position: absolute;
-    right: 0;
-    top: 0;
     @include radialBackground;
-    min-height: 100vh;
-    z-index: 100;
-    display: none;
 }

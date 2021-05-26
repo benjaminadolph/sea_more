@@ -2,8 +2,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --watch",
-    "serve": "nodemon index.js",
-    "sass": "sass --watch scss/main.scss:public/css/main.css"
+    "serve": "nodemon index.js"
   },
   "author": "Benjamin Adolph",
   "repository": "",
@@ -12,11 +11,13 @@
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.1",
     "babel-loader": "^8.2.2",
+    "file-loader": "^6.2.0",
+    "node-sass": "^6.0.0",
     "nodemon": "^2.0.7",
     "sass": "^1.32.13",
+    "sass-loader": "^11.1.1",
     "webpack": "^5.36.2",
-    "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-cli": "^4.7.0"
   },
   "dependencies": {
     "express": "^4.17.1",
