@@ -19,7 +19,7 @@ $(function() {
 
     const QRCode = require('qrcode');
     // Sarah's IP: http://192.168.0.171:3000 sonst: http://localhost:3000
-    const stringdata = `http://192.168.0.171:3000/controller/${roomid}`;
+    const stringdata = `http://localhost:3000/controller/${roomid}`;
    
     QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, function (err, canvas) {
         if (err) throw err
@@ -81,17 +81,17 @@ $(function() {
 
     $(document).on('scroll', pagination);
 
-    $(document).on('click', 'a[href^="#"]', function(e) {
+    // Das funktioniert nicht, weil das dann auf alle Links mit href="#" geht! 
+    /* $(document).on('click', 'a[href^="#"]', function(e) {
         e.preventDefault();
         $('html, body').animate({
             scrollTop: $($.attr(this, 'href')).offset().top
         }, 500);
-    });
+    }); */
 
     function openNav() {
         document.getElementById("nav").style.display = "block";
         document.getElementById("menu-icon").style.display = "none";
-
     }
 
     function closeNav() {
