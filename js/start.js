@@ -29,7 +29,7 @@ $(function() {
       })
 
     socket.on('controllerAdded', function(data){
-        $('#intro').fadeOut();
+        $('#start-intro').fadeOut();
     });
 
     socket.on('allControllerActivity', function(data) {
@@ -62,4 +62,46 @@ $(function() {
         $('.screen-one').hide();
         $('.screen-two').fadeIn();
     });
+
+    function pagination() {
+        var offset = $(document).scrollTop();
+        var windowHeight = $(window).height();
+        var $body = $('body');
+        var padding = .75;
+        var chapters = Object.keys($('.chapter')).filter((section) => Number(section) + 1).map(section => Number(section) + 1)
+
+        chapters.map((chapter) => {
+            if (offset > (windowHeight * (chapter - 2 + padding))) {
+            $body.removeClass().addClass("chapter-" + chapter);
+            }
+        });
+    };
+
+    pagination();
+
+    $(document).on('scroll', pagination);
+
+    $(document).on('click', 'a[href^="#"]', function(e) {
+        e.preventDefault();
+        $('html, body').animate({
+            scrollTop: $($.attr(this, 'href')).offset().top
+        }, 500);
+    });
+
+    function openNav() {
+        document.getElementById("nav").style.display = "block";
+        document.getElementById("menu-icon").style.display = "none";
+
+    }
+
+    function closeNav() {
+        document.getElementById("nav").style.display = "none";
+        document.getElementById("menu-icon").style.display = "block";
+    }
+
+    function closeInfo() {
+        document.getElementById("information").style.display = "none";
+        document.getElementById("menu-icon").style.display = "block";
+    }
+    
 });

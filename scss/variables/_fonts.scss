@@ -60,6 +60,13 @@
 $HEADLINE_FONT: 'Meera Inimai', sans-serif;
 $BASE_FONT: 'Lato', sans-serif;
 
+@mixin plain-xxl {
+    font-family: $FONT;
+    font-weight: 900;
+    font-size: 160px;
+    line-height: 100%;
+}
+
 @mixin headline-xl {
     font-family: $HEADLINE_FONT;
     font-weight: 400;
