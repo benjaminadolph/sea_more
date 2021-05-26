@@ -153,21 +153,17 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#1c224f", endColorstr="#413543",GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
   color: #fff;
-<<<<<<< HEAD
   overflow-x: hidden;
-=======
-  font-family: "Lato", sans-serif;
->>>>>>> master
-}
-
-h1 {
-  font-family: "Meera Inimai", sans-serif;
-  font-weight: 900;
-  font-size: 160px;
-  line-height: 100%;
 }
 
 h4 {
+  font-family: "Meera Inimai", sans-serif;
+  font-weight: 400;
+  font-size: 39px;
+  line-height: 130%;
+}
+
+h1 {
   font-family: "Meera Inimai", sans-serif;
   font-weight: 400;
   font-size: 39px;
@@ -233,16 +229,7 @@ section {
 }
 
 canvas {
-<<<<<<< HEAD
   position: absolute;
-=======
-  /*display: block;*/
-  background: blue;
-}
-
-#mySidebar {
-  display: none;
->>>>>>> master
 }
 
 .controller-content {
@@ -306,7 +293,88 @@ canvas {
   text-align: center;
 }
 
-<<<<<<< HEAD
+#start-intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+#start-intro .overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  left: 0;
+  top: 0;
+}
+#start-intro .intro-container {
+  background-image: url("../assets/intro-background.svg");
+  background-repeat: no-repeat;
+  width: 1076px;
+  height: 744px;
+  padding: 170px;
+  color: black;
+  z-index: 100;
+}
+#start-intro .intro-container h1 {
+  color: #2168B6;
+}
+#start-intro .screen {
+  display: none;
+}
+#start-intro .screen.screen-one {
+  display: block;
+}
+#start-intro .instructions {
+  display: flex;
+  justify-content: space-between;
+}
+#start-intro .instructions #qrcode {
+  z-index: 1000;
+  flex-shrink: 0;
+}
+#start-intro .instructions .instruction-element {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0px;
+}
+#start-intro .instructions .instruction-element span {
+  text-transform: uppercase;
+}
+#start-intro .instructions .instruction-element span.move {
+  color: #2168B6;
+}
+#start-intro .instructions .instruction-element span.circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #2168B6;
+}
+#start-intro .instructions .instruction-element span.dbl-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: #2168B6;
+  position: relative;
+}
+#start-intro .instructions .instruction-element span.dbl-circle::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: solid 2px #2168B6;
+  border-radius: 50%;
+  left: -9px;
+  top: -9px;
+}
+#start-intro .instructions .instruction-element span.interaction {
+  color: #75B0B7;
+}
+
 #information {
   width: 100vw;
   height: auto;
@@ -575,88 +643,5 @@ body.chapter-1 #pagination li:nth-of-type(1), body.chapter-2 #pagination li:nth-
     right: 35px;
   }
 }
-=======
-#intro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-}
-#intro .overlay {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.6);
-  left: 0;
-  top: 0;
-}
-#intro .intro-container {
-  background-image: url("../assets/intro-background.svg");
-  background-repeat: no-repeat;
-  width: 1076px;
-  height: 744px;
-  padding: 170px;
-  color: black;
-  z-index: 100;
-}
-#intro .intro-container h1 {
-  color: #2168B6;
-}
-#intro .screen {
-  display: none;
-}
-#intro .screen.screen-one {
-  display: block;
-}
-#intro .instructions {
-  display: flex;
-  justify-content: space-between;
-}
-#intro .instructions #qrcode {
-  z-index: 1000;
-  flex-shrink: 0;
-}
-#intro .instructions .instruction-element {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  flex: 1 1 0px;
-}
-#intro .instructions .instruction-element span {
-  text-transform: uppercase;
-}
-#intro .instructions .instruction-element span.move {
-  color: #2168B6;
-}
-#intro .instructions .instruction-element span.circle {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: #2168B6;
-}
-#intro .instructions .instruction-element span.dbl-circle {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: #2168B6;
-  position: relative;
-}
-#intro .instructions .instruction-element span.dbl-circle::before {
-  content: "";
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border: solid 2px #2168B6;
-  border-radius: 50%;
-  left: -9px;
-  top: -9px;
-}
-#intro .instructions .instruction-element span.interaction {
-  color: #75B0B7;
-}
 
 /*# sourceMappingURL=main.css.map */
->>>>>>> master
