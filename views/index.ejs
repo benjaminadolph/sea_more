@@ -14,13 +14,6 @@
         width: 240px;
         height: 215px;
     }
-
-    #qrcode {
-        position: absolute;
-        z-index: 1000;
-        left: 50%;
-        top: 50%;
-    }
 </style>
 
 <body>
@@ -31,7 +24,39 @@
         <a href="#help" onclick="goLeft()" class="button help-button">Unternimm etwas <i class="arrow-white right"></i></a>
     </div>
 
-    <div id="qrcode"></div>
+    <div id="intro">
+        <div class="intro-container">
+            <div class="screen screen-one">
+                <h1>What impact do we have on the destruction of our oceans?</h1>
+                <p class="text-s">The oceans are the source of life. They also play a major role in the fight against the climate crisis: they keep our planet cool. Due to a variety of human interventions, the health of our oceans is in danger. Overfishing, acidification, and garbage whirlpools under the water's surface are just some of the consequences of global overconsumption.</p>
+                <p class="text-m bold">Go on an interactive journey through the man-made destruction of our oceans and learn what you can do about it!</p>
+                <a href="#" class="button button-intro--screen-one">Find out how</a>
+            </div>
+            <div class="screen screen-two">
+                <h1>Scan the code with your phone camera for a better experience!</h1>
+                <div class="instructions">
+                    <div id="qrcode"></div>
+                    <div class="instruction-element">
+                        <span class="move">Tab</span>
+                        <span class="circle"></span>
+                        <span class="interaction">interaction</span>
+                    </div>
+                    <div class="instruction-element">
+                        <span class="move">Double tab</span>
+                        <span class="dbl-circle"></span>
+                        <span class="interaction">close</span>
+                    </div>
+                    <div class="instruction-element">
+                        <span class="move">Drag</span>
+                        <span class="dbl-circle"></span>
+                        <span class="interaction">move</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+    
 
     <section id="help" class="more-info">
         <div class="close-icon"></div>

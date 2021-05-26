@@ -14,13 +14,13 @@ app.use('/', indexRoute);
 
 io.on('connection', function(socket) {
   socket.on('join-room', function (roomid) {
-    socket.join(roomid)
+    socket.join(roomid);
+    socket.broadcast.to(roomid).emit('controllerAdded');
 
     socket.on('controllerActivity', function(data){
-      socket.broadcast.to(roomid).emit('allControllerActivity', {session_id: socket.id, coordinations: data });
+      socket.broadcast.to(roomid).emit('allControllerActivity', {session_id: socket.id, direction: data });
     });
   });
-
   
 });
 
