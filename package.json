@@ -2,7 +2,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --watch",
-    "serve": "nodemon index.js"
+    "serve": "nodemon server.js",
+    "sass": "sass --watch scss/main.scss:public/css/main.css"
   },
   "author": "Benjamin Adolph",
   "repository": "",
@@ -14,16 +15,19 @@
     "file-loader": "^6.2.0",
     "node-sass": "^6.0.0",
     "nodemon": "^2.0.7",
+    "qrcode": "^1.4.4",
     "sass": "^1.32.13",
     "sass-loader": "^11.1.1",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.7.0"
   },
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "pixi-particles": "^4.3.0",
     "pixi-viewport": "^4.31.0",
     "pixi.js": "^6.0.2",
-    "socket.io": "^4.0.1"
+    "socket.io": "^4.0.1",
+    "uuid4": "^2.0.2"
   }
 }

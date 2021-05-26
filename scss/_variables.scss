@@ -1,5 +1,6 @@
 // COLORS
 $PRIMARY_COLOR: #2168B6;
+$SECONDARY_COLOR: #75B0B7;
 $HIGHLIGHT_COLOR: #00FED0;
 $BACKGROUND_DARK_COLOR: #413543;
 $BACKGROUND_CENTER_COLOR: #1C224F;
@@ -21,80 +22,6 @@ $WHITE: #fff;
     background: -webkit-radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 52%, $BACKGROUND_DARK_COLOR 100%);
     background: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 52%, $BACKGROUND_DARK_COLOR 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="transparent",endColorstr="#413543",GradientType=1);
-}
-
-// FONT
-
-/* tamil */
-@font-face {
-    font-family: 'Meera Inimai';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(../fonts/meera-inimai-tamil.woff2) format('woff2');
-    unicode-range: U+0964-0965, U+0B82-0BFA, U+200C-200D, U+20B9, U+25CC;
-}
-/* latin */
-@font-face {
-    font-family: 'Meera Inimai';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(../fonts/meera-inimai-latin.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-$FONT: 'Meera Inimai', sans-serif;
-
-@mixin plain-xxl {
-    font-family: $FONT;
-    font-weight: 900;
-    font-size: 160px;
-    line-height: 100%;
-}
-
-@mixin plain-xl {
-    font-family: $FONT;
-    font-weight: 400;
-    font-size: 61px;
-    line-height: 100%;
-}
-
-@mixin plain-l {
-    font-family: $FONT;
-    font-weight: 400;
-    font-size: 39px;
-    line-height: 130%;
-}
-
-@mixin plain-m {
-    font-family: $FONT;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 140%;
-}
-
-@mixin plain-s {
-    font-family: $FONT;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 140%;
-}
-
-.plain-xl {
-    @include plain-xl();
-}
-
-.plain-l {
-    @include plain-l();
-}
-
-.plain-m {
-    @include plain-m();
-}
-
-.plain-s {
-    @include plain-s();
 }
 
 
@@ -127,7 +54,7 @@ $FONT: 'Meera Inimai', sans-serif;
 }
 
 @mixin button {
-    @include plain-m;
+    @include headline-m;
     background: $PRIMARY_COLOR;
     border-radius: 30px;
     padding: 7px 20px 7px 20px;
