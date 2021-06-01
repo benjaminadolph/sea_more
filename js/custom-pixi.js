@@ -1,6 +1,12 @@
 import * as PIXI from 'pixi.js'
 import { Viewport } from 'pixi-viewport'
+import { gsap } from "gsap";
+import { PixiPlugin } from "gsap/PixiPlugin.js";
 
+// register the plugin
+gsap.registerPlugin(PixiPlugin);
+// give the plugin a reference to the PIXI object
+PixiPlugin.registerPIXI(PIXI);
 //Nur für Devtools in Chrome notwendig
 window.PIXI = PIXI
 
@@ -32,17 +38,23 @@ const viewport = app.stage.addChild(new Viewport({
 }))
 
 let objects = [
-    {name: "backgroundcrater", url: "assets/svgs/background-crater.svg", x: 3339, y: 5057}, 
-    {name: "sewageisland", url: "assets/svgs/sewage-island.svg", x:5815, y:1482}, 
-    {name: "sewage", url: "assets/svgs/sewage.svg", x:5665, y:1932}, 
-    {name: "submarine", url: "assets/svgs/submarine.svg", x:4917, y:6020}, 
-    {name: "submarinerocks", url: "assets/svgs/submarine-rocks.svg", x:4148, y:6790}, 
-    {name: "island1", url: "assets/svgs/island1.svg", x:7137, y:1631}, 
-    {name: "garbagecarpet", url: "assets/svgs/garbage-carpet.svg", x:3568, y:1672}, 
-    {name: "boat", url: "assets/svgs/boat.svg", x:1339, y:1209}, 
-    {name: "fishnet", url: "assets/svgs/fish-net.svg", x:1837, y:2356}, 
-    {name: "deepseamining", url: "assets/svgs/deep-sea-mining.svg", x:1298, y:5053}, 
-    {name: "microplastic", url: "assets/svgs/microplastic.svg", x:5116, y:3934}
+    {name: "backgroundcrater", url: "assets/svgs/background-crater.svg", x: 3339, y: 5057, scale: 4}, 
+    {name: "sewageisland", url: "assets/svgs/sewage-island.svg", x:5815, y:1482, scale: 4}, 
+    {name: "sewage", url: "assets/svgs/sewage.svg", x:5665, y:1932, scale: 4}, 
+    {name: "buttonsewage", url: "assets/svgs/marker.svg", x:5815, y:1482, scale: 1, button: true, content: "sewage"},
+    {name: "submarine", url: "assets/svgs/submarine.svg", x:4917, y:6020, scale: 4}, 
+    {name: "submarinerocks", url: "assets/svgs/submarine-rocks.svg", x:4148, y:6790, scale: 4}, 
+    {name: "buttonsubmarine", url: "assets/svgs/marker.svg", x:4917, y:6020, scale: 1, button: true, content: "submarine"},
+    {name: "island1", url: "assets/svgs/island1.svg", x:7137, y:1631, scale: 4}, 
+    {name: "garbagecarpet", url: "assets/svgs/garbage-carpet.svg", x:3568, y:1672, scale: 4}, 
+    {name: "buttongarbagecarpet", url: "assets/svgs/marker.svg", x:3568, y:1672,  scale: 1, button: true, content: "garbagecarpet"},
+    {name: "boat", url: "assets/svgs/boat.svg", x:1339, y:1209, scale: 4}, 
+    {name: "fishnet", url: "assets/svgs/fish-net.svg", x:1837, y:2356, scale: 4}, 
+    {name: "buttonboat", url: "assets/svgs/marker.svg", x:1339, y:1209, scale: 1, button: true, content: "boat"},
+    {name: "deepseamining", url: "assets/svgs/deep-sea-mining.svg", x:1298, y:5053, scale: 4}, 
+    {name: "buttondeepseamining", url: "assets/svgs/marker.svg", x:1298, y:5053, scale: 1, button: true, content: "deepseamining"},
+    {name: "microplastic", url: "assets/svgs/microplastic.svg", x:5116, y:3934, scale: 4},
+    {name: "buttonmicroplastic", url: "assets/svgs/marker.svg", x:5116, y:3934, scale: 1, button: true, content: "microplastic"},
 ]
 
 let loader = PIXI.Loader.shared
@@ -53,7 +65,7 @@ for(let i = 0; i < objects.length; i++) {
     loader.add(objects[i].name, objects[i].url, { 
         metadata: {
             resourceOptions: {
-                scale: 4
+                scale: objects[i].scale
             }
         }
     });
@@ -90,13 +102,34 @@ function handleLoadComplete(){
         objects[i].spriteRef.position.set(objects[i].x, objects[i].y)
         objects[i].spriteRef.anchor.set(0.5); 
         viewport.addChild(objects[i].spriteRef);
-        objects[i].spriteRef.interactive = true
-        objects[i].spriteRef.buttonMode = true
+
+        if(objects[i].button == true){
+            objects[i].spriteRef.interactive = true
+            objects[i].spriteRef.buttonMode = true
+            objects[i].spriteRef.on('pointerdown', onClick)
+        }
     }
-    objects[7].spriteRef.on('pointerdown', onClick)
-    objects[8].spriteRef.on('pointerdown', onClick)
 
     app.ticker.add(animate)
+
+    /*********
+     * PIXIJS WITH GSAP TEST
+     ********/
+
+    var gr = new PIXI.Graphics();  
+        gr.beginFill(0xFFFFFF);
+        gr.lineStyle(0);
+        gr.drawCircle(30, 30, 30);
+        gr.endFill();
+
+    var texture = app.renderer.generateTexture(gr);
+    var circle = new PIXI.Sprite(texture);
+
+    viewport.addChild(circle);
+    // Animating using GSAP
+    gsap.to(circle, {
+        x: 500, duration: 2, repeat: -1, yoyo: true,
+    });
 
 }
 
@@ -112,8 +145,8 @@ function handleLoadProgress(loader, resource){
     console.log(loader.progress + "% loaded", resource.name)
 }
 
-function onClick() {
-    console.log("test")
+function onClick(event) {
+    console.log(event)
     document.getElementById("information").style.display = "flex";
     document.getElementById("menu-icon").style.display = "none";
 }
@@ -123,31 +156,16 @@ function animate() {
     
     delta += 0.1
     // legt bewegungen fest
-    objects[7].spriteRef.y = objects[7].spriteRef.position.y + Math.sin(delta) *0.1
-    objects[7].spriteRef.x = objects[7].spriteRef.position.x + Math.sin(delta) *0.6
     objects[8].spriteRef.y = objects[8].spriteRef.position.y + Math.sin(delta) *0.1
     objects[8].spriteRef.x = objects[8].spriteRef.position.x + Math.sin(delta) *0.6
-/* 
-    submarine_sprite.y = submarine_sprite.position.y + Math.sin(delta) *0.2
-
-    boat_sprite.y = boat_sprite.position.y + Math.cos(delta) *0.3 */
-
-   /*  fish_sprite.y = fish_sprite.position.y + Math.sin(delta) *0.2
-    fish_sprite.x = fish_sprite.position.x + Math.cos(delta) *1 */
+    objects[10].spriteRef.y = objects[10].spriteRef.position.y + Math.sin(delta) *0.1
+    objects[10].spriteRef.x = objects[10].spriteRef.position.x + Math.sin(delta) *0.6
+    objects[11].spriteRef.y = objects[11].spriteRef.position.y + Math.sin(delta) *0.1
+    objects[11].spriteRef.x = objects[11].spriteRef.position.x + Math.sin(delta) *0.6
 }
 
-window.goLeft = function(){
-    viewport.position.x = viewport.position.x + 10
-}
 
-window.goRight = function(){
-    viewport.position.x = viewport.position.x - 10
-}
-
-window.goTop = function(){
-    viewport.position.y = viewport.position.y - 10
-}
-
-window.goBottom = function(){
-    viewport.position.y = viewport.position.y + 10
+window.moveViewport = function(directions){
+    viewport.position.x = viewport.position.x - (directions.x/10)
+    viewport.position.y = viewport.position.y - (directions.y/10)
 }
