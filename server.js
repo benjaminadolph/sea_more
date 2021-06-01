@@ -24,4 +24,8 @@ io.on('connection', function(socket) {
   
 });
 
-console.log('Your Server is running on http://localhost:' + port);
+console.log('The Sea More App is running at: ');
+console.log('- Local: http://localhost:' + port)
+require('dns').lookup(require('os').hostname(), function (err, add, fam) {
+  console.log('- Network: http://' + add + ':' + port);
+})

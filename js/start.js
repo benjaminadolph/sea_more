@@ -19,7 +19,7 @@ $(function() {
 
     const QRCode = require('qrcode');
     // Sarah's IP: http://192.168.0.171:3000 sonst: http://localhost:3000
-    const stringdata = `http://localhost:3000/controller/${roomid}`;
+    const stringdata = `http://192.168.188.44:3000/controller/${roomid}`;
    
     QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, function (err, canvas) {
         if (err) throw err
@@ -33,27 +33,8 @@ $(function() {
     });
 
     socket.on('allControllerActivity', function(data) {
-        // console.log(data.coordinations);
-        if (data.direction == 'left') {
-            goLeft();
-        } else if (data.direction == 'right') {
-            goRight();
-        } else if (data.direction == 'top') {
-            goTop();
-        } else if (data.direction == 'bottom') {
-            goBottom();
-        } 
-
-        if(data) {
-            /* if ($('.pointer[session_id="' + data.session_id + '"]').length <= 0) {
-                $('body').append('<div class="pointer" session_id="' + data.session_id + '"></div>');
-            } */
-            /* var $pointer = $('.pointer[session_id="' + data.session_id + '"]');
-
-            $pointer.css('left', data.coordinations.x);
-            $pointer.css('top', data.coordinations.y); */
-        }
-        
+        console.log(data.direction);
+        moveViewport(data.direction)
     });
 
     var $screenButton = $('.button-intro--screen-one');

@@ -3,25 +3,17 @@
     <title>Controller</title>
     <%- include ('partials/head') %>
 </head>
-
-<%- include ('partials/scripts') %>
-
-<script src="../js/controller.js"></script>
-
 <body>
-    <div class="logo">
-        <img src="/assets/logo.svg" alt="" />    
-    </div>
     <div class="controller-content">
-        <div class="controller">
-            <div class="controller-inner">
-                <div class="controller-inner-click top"></div>
-                <div class="controller-inner-click right"></div>
-                <div class="controller-inner-click bottom"></div>
-                <div class="controller-inner-click left"></div>
-            </div>
+        <div class="logo">
+            <img src="/assets/logo.svg" alt="" />    
+        </div>
+        
+        <div id="controller">
         </div>
     </div>
+    <%- include ('partials/scripts') %>
+    <script src="../js/controller.js"></script>
 </body>
 
 </html>
