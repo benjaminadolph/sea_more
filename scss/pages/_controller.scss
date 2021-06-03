@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 .controller-content {
     display: flex;
     justify-content: center;
@@ -5,7 +9,13 @@
     height: 100vh;
 }
 
-.controller {
+.logo{
+    top: 20px;
+    left: 20px;
+    position: absolute;
+}
+
+#controller {
     position: absolute;
     width: 183px;
     height: 183px;
@@ -25,30 +35,4 @@
         position: absolute;
         border-radius: 50%;
     }
-}
-
-.controller-inner-click {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-}
-
-.controller-inner-click.top {
-    top: 0;
-    left: 50px;
-}
-
-.controller-inner-click.bottom {
-    bottom: 0;
-    left: 50px;
-}
-
-.controller-inner-click.right {
-    right: 0;
-    top: 50px;
-}
-
-.controller-inner-click.left {
-    top: 50px;
-    left: 0;
 }

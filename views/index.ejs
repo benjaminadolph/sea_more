@@ -15,12 +15,17 @@
         height: 215px;
     }
 </style>
+<script>
+    function closeIntro(){
+        $('#start-intro').fadeOut();
+    }
+</script>
 
 <body>
     <canvas id="mycanvas"></canvas>
     <div class="base">
         <div id="logo"><img src="/assets/logo.svg" /></div>
-        <div id="menu-icon" onclick="openNav()"></div>
+        <div id="menu-icon" onclick="closeIntro()"></div>
         
         <a href="#help" id="help-button" class="button">Unternimm etwas <i class="arrow-white right"></i></a>
     </div>
@@ -39,6 +44,7 @@
 
     <div id="start-intro">
         <div class="intro-container">
+            <div class="close-icon" onclick="closeInfo()"></div>
             <div class="screen screen-one">
                 <h1>What impact do we have on the destruction of our oceans?</h1>
                 <p class="text-s">The oceans are the source of life. They also play a major role in the fight against the climate crisis: they keep our planet cool. Due to a variety of human interventions, the health of our oceans is in danger. Overfishing, acidification, and garbage whirlpools under the water's surface are just some of the consequences of global overconsumption.</p>
