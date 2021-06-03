@@ -1,0 +1,100 @@
+.infopage {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: $PRIMARY_COLOR;
+    z-index: 100;
+    // padding-top: 160px 0; 
+
+    .section {
+        min-height: 100vh;
+    }
+
+    .video-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .video {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            width: 100%;
+    
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .facts { 
+        display: flex;
+        align-items: center;
+
+        .text {
+            width: 70%;
+        }
+
+        &.text-right {
+            .text {
+                float: right;
+            }
+        }
+    }
+}
+
+#deep-sea-mining {
+    background: linear-gradient(180deg, #2168B6 -39.89%, #27182A 100%);
+}
+
+
+/* layout */
+.base-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+  }
+
+  
+.background-elements {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+
+    .background-element {
+        position: absolute;
+
+        &.top {
+            top: 0;
+            left: 0;
+        }
+
+        &.middle {
+            top: 50vh;
+            right: 0;
+        }
+
+        &.bottom {
+            bottom: 0;
+            left: 0;
+
+            img {
+                width: 100%;
+            }
+        }
+
+    }
+}
+  

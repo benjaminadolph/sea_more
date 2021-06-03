@@ -37,13 +37,6 @@ $(function() {
         moveViewport(data.direction)
     });
 
-    var $screenButton = $('.button-intro--screen-one');
-    $screenButton.on('click', function(e){
-        e.preventDefault();
-        $('.screen-one').hide();
-        $('.screen-two').fadeIn();
-    });
-
     function pagination() {
         var offset = $(document).scrollTop();
         var windowHeight = $(window).height();

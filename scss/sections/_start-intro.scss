@@ -20,7 +20,7 @@
         background-repeat: no-repeat;
         width: 1076px;
         height: 744px;
-        padding: 170px;
+        padding: 150px 170px;
         color: black;
         z-index: 100;
 
@@ -35,15 +35,79 @@
         &.screen-one {
             display: block;
         }
+
+        &.screen-two {
+            .screen-two--button {
+                transform: skew(-10deg);
+
+                span {
+                    transform: skew(10deg);
+                }
+            }
+        }
+    }
+
+    .button-center {
+        margin-top: 40px;
+
+        .button {
+            margin: 0 10px;
+        }
+
+        .intro-buttons {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+    
+            .intro-button {
+                width: 8px;
+                height: 8px;
+                transform: skew(10deg);
+                background-color: $SECONDARY_COLOR;
+                margin: 0 5px;
+    
+                &.active {
+                    background-color: $PRIMARY_COLOR;
+                }
+            }
+        }
     }
 
     .instructions {
         display: flex;
         justify-content: space-between;
+        margin-top: 45px;
 
         #qrcode {
             z-index: 1000;
             flex-shrink: 0;
+
+            &.pulsation {
+                background: $PRIMARY_COLOR;
+                box-shadow: 0 0 0 0 rgba(33, 104, 182, 1);
+                transform: scale(1);
+                animation: pulse-black 2s infinite;
+            }
+
+            @keyframes pulse-black {
+                0% {
+                  transform: scale(0.95);
+                  box-shadow: 0 0 0 0 rgba(33, 104, 182, 0.7);
+                }
+                
+                70% {
+                  transform: scale(1);
+                  box-shadow: 0 0 0 10px rgba(33, 104, 182, 0);
+                }
+                
+                100% {
+                  transform: scale(0.95);
+                  box-shadow: 0 0 0 0 rgba(33, 104, 182, 0);
+                }
+            }
         }
 
         .instruction-element {

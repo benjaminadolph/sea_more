@@ -1,5 +1,6 @@
+@import 'variables/colors';
 @import 'variables/fonts';
-@import '_variables';
+@import 'variables/mixins';
 @import 'base-layout';
 
 @import 'pages/index';
@@ -7,7 +8,7 @@
 
 @import 'sections/help';
 @import 'sections/start-intro';
-@import 'sections/information';
+@import 'sections/infopage';
 
 @import 'modules/pagination';
 @import 'modules/menu';

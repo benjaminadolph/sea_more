@@ -4,12 +4,20 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     padding: 0;
     @include radialBackground;
     color: $BASE_TEXT_COLOR;
     overflow-x: hidden;
+}
+
+p {
+    @include text-s;
 }
 
 
@@ -44,7 +52,7 @@ a {
     height: 40px;
     width: 50px;
     background-repeat: no-repeat;
-    z-index: 200;
+    z-index: 99;
 }
 
 .close-icon {
@@ -67,4 +75,30 @@ a {
 
 section {
     @include radialBackground;
+}
+
+.button {
+    @include button;
+}
+
+.button-center {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+#nav {
+    display: none;
+}
+
+.grid-container {
+    width: 90%;
+    max-width: 1060px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+img {
+    max-width: 100%;
 }
