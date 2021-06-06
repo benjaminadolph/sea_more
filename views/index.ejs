@@ -20,26 +20,28 @@
     <canvas id="mycanvas"></canvas>
     <div class="base">
         <div id="logo"><img src="/assets/logo.svg" /></div>
-        <div id="menu-icon"></div>
+        <div class="menu-button menu-icon"></div>
         
         <a href="#help" id="help-button" class="button">Unternimm etwas <i class="arrow-white right"></i></a>
     </div>
 
     <nav id="nav" class="menu-overlay">
-        <div class="close-icon" onclick="closeNav()"></div>
+        <div class="menu-button close-icon"></div>
         <ul class="overlay-content">
             <li><a href="#">Müll (Plastik, Fischernetze)</a></li>
             <li><a href="#">Überfischung</a></li>
             <li><a href="#">Abwasser und Überdüngung</a></li>
             <li><a href="#">Mikroplastik</a></li>
-            <li><a href="#">Bergbau in der Tiefsee</a></li>
+            <li><a href="#" class="deep-sea-mining">Bergbau in der Tiefsee</a></li>
             <li><a href="#">Erdöl (Schiffswracks, Ölplattformen)</a></li>
           </ul>
     </nav>
 
     <%- include ('partials/start-intro') %>
 
-    <%- include ('infopages/infopage-wrapper') %>
+    <div id="infopages">
+        <!-- Content will be rendered on click -->
+    </div>
 
     <script src="dist/bundle.js"></script>
 </body>
