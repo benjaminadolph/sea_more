@@ -1,6 +1,6 @@
 <html lang="de">
 <head>
-    <title>Index</title>
+    <title>sea more | Rette unseren Ozean</title>
     <%- include ('partials/head') %>
 </head>
 
@@ -15,180 +15,34 @@
         height: 215px;
     }
 </style>
-<script>
-    function closeIntro(){
-        $('#start-intro').fadeOut();
-    }
-</script>
 
 <body>
     <canvas id="mycanvas"></canvas>
     <div class="base">
         <div id="logo"><img src="/assets/logo.svg" /></div>
-        <div id="menu-icon" onclick="closeIntro()"></div>
+        <div class="menu-button menu-icon"></div>
         
         <a href="#help" id="help-button" class="button">Unternimm etwas <i class="arrow-white right"></i></a>
     </div>
 
-    <nav id="nav" class="overlay">
-        <div class="close-icon" onclick="closeNav()"></div>
-        <ul class="overlay-content">
-            <li><a href="#">Müll (Plastik, Fischernetze)</a></li>
-            <li><a href="#">Überfischung</a></li>
-            <li><a href="#">Abwasser und Überdüngung</a></li>
-            <li><a href="#">Mikroplastik</a></li>
-            <li><a href="#">Bergbau in der Tiefsee</a></li>
-            <li><a href="#">Erdöl (Schiffswracks, Ölplattformen)</a></li>
-          </ul>
+    <nav id="nav">
+        <div class="menu-button close-icon"></div>
+        <div class="nav-content">
+            <ul>
+                <li><a href="#" class="fishernets">Müll (Plastik, Fischernetze)</a></li>
+                <li><a href="#" class="overfishing">Überfischung</a></li>
+                <li><a href="#" class="sewage">Abwasser und Überdüngung</a></li>
+                <li><a href="#" class="microplastic">Mikroplastik</a></li>
+                <li><a href="#" class="deep-sea-mining">Bergbau in der Tiefsee</a></li>
+                <li><a href="#" class="shipwrecks">Erdöl (Schiffswracks, Ölplattformen)</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div id="start-intro">
-        <div class="intro-container">
-            <div class="close-icon" onclick="closeInfo()"></div>
-            <div class="screen screen-one">
-                <h1>What impact do we have on the destruction of our oceans?</h1>
-                <p class="text-s">The oceans are the source of life. They also play a major role in the fight against the climate crisis: they keep our planet cool. Due to a variety of human interventions, the health of our oceans is in danger. Overfishing, acidification, and garbage whirlpools under the water's surface are just some of the consequences of global overconsumption.</p>
-                <p class="text-m bold">Go on an interactive journey through the man-made destruction of our oceans and learn what you can do about it!</p>
-                <a href="#" class="button button-intro--screen-one">Find out how</a>
-            </div>
-            <div class="screen screen-two">
-                <h1>Scan the code with your phone camera for a better experience!</h1>
-                <div class="instructions">
-                    <div id="qrcode"></div>
-                    <div class="instruction-element">
-                        <span class="move">Tab</span>
-                        <span class="circle"></span>
-                        <span class="interaction">interaction</span>
-                    </div>
-                    <div class="instruction-element">
-                        <span class="move">Double tab</span>
-                        <span class="dbl-circle"></span>
-                        <span class="interaction">close</span>
-                    </div>
-                    <div class="instruction-element">
-                        <span class="move">Drag</span>
-                        <span class="dbl-circle"></span>
-                        <span class="interaction">move</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="overlay"></div>
-    </div>
-    
+    <%- include ('partials/start-intro') %>
 
-    <!-- <section id="help" class="more-info">
-        <div class="close-icon"></div>
-        <div class="content">
-            <h1>Spende jetzt, um unsere Meere zu schützen!</h1>
-        </div>
-    </section>-->
-    
-    <div id="information">
-        <div class="close-icon" onclick="closeInfo()"></div>
-        <section id="intro" class="chapter">
-            <h1 id="introtitle">Tiefseebergbau</h1>   
-        </section>
-    
-        <section id="facts" class="chapter">
-            <h1 id="factstitle">Facts</h1>
-            <div class="factslist">
-
-                <div class="factcontainer">
-                    <div class="picture">
-                        <img src="assets/logo.svg" alt="">
-                    </div>
-                    <h4>Fact</h4>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut </p>
-                </div>
-
-                <div class="factcontainer">
-                    <div class="picture">
-                        <img src="assets/logo.svg" alt="">
-                    </div>
-                    <h4>Fact</h4>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut </p>
-                </div> 
-
-                <div class="factcontainer">
-                    <div class="picture">
-                        <img src="assets/logo.svg" alt="">
-                    </div>
-                    <h4>Fact</h4>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut </p>
-                </div>
-
-                <div class="factcontainer">
-                    <div class="picture">
-                        <img src="assets/logo.svg" alt="">
-                    </div>
-                    <h4>Fact</h4>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut </p>
-                </div>
-
-            </div>
-        </section>
-    
-        <section id="video" class="chapter">
-            <div>
-                <div class="yt_box">
-                    <iframe src="https://www.youtube.com/embed/rA82_3O2lD8?autoplay=0&showinfo=0&controls=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-            
-        </section>
-
-        <section id="info1" class="chapter">
-            <h1 id="info1title">Infos</h1>
-            <div class="infocontainer">
-                <div class="picture">
-                    <img src="assets/tiefseebergbau.jpg" alt="tiefseebergbau">
-                </div>
-                <div class="text">
-                    <h4>Tiefsee Info 1</h4>
-                    <p>Für die Herstellung von Batterien oder Computern sind Metalle wie Nickel, Kupfer oder Cobalt sehr wichtig. Die Kosten für die Förderung an Land steigen jedoch kontinuierlich. Deshalb wird die Tiefsee immer interessanter. Dort gibt es Manganknollen, Massivsulfide und cobaltreiche Eisenmangankrusten. </p>
-                </div>
-            </div>
-        </section>
-
-        <section id="info2" class="chapter">
-            <h1 id="info2title">Infos</h1>
-            <div class="infocontainer">
-                <div class="text">
-                    <h4>Tiefsee Info 2</h4>
-                    <p>Doch der Abbau dieser Rohstoffe zerstört ein ganzes Ökosystem in der Tiefsee, dass bisher kaum erforscht ist. Erste Tests haben ergeben, dass die Schäden durch den Bergbau lange sichtbar sind. So fanden Forscher heraus, dass sich das Ökosystem auch nach 26 Jahren nicht vollständig erholt hat. </p>
-                </div>
-                <div class="picture">
-                    <img src="assets/tiefseebergbau.jpg" alt="tiefseebergbau">
-                </div>
-            </div>
-        </section>
-
-        <section id="action" class="chapter">
-            <h1 id="actiontitle">Action</h1>
-            <div class="actioncontainer">
-                <div class="text">
-                    <h4>Was kann ich dagegen unternehmen?</h4>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est.</p>
-                </div>
-                <div id="buttoncontainer">
-                    <a href="" class="button">Weitere Infos<i class="arrow-white right"></i></a>
-                    <a href="" class="button">Jetzt aktiv werden<i class="arrow-white right"></i></a>
-                </div>
-                
-            </div>
-        </section>
-
-        <ul id="pagination">
-            <li><a href="#intro"></a></li>
-            <li><a href="#facts"></a></li>
-            <li><a href="#video"></a></li>
-            <li><a href="#info1"></a></li>
-            <li><a href="#info2"></a></li>
-            <li><a href="#action"></a></li>
-          </ul>
-        
+    <div id="infopages">
+        <!-- Content will be rendered on click -->
     </div>
 
     <script src="dist/bundle.js"></script>

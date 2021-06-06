@@ -21,7 +21,6 @@ io.on('connection', function(socket) {
       socket.broadcast.to(roomid).emit('allControllerActivity', {session_id: socket.id, direction: data });
     });
   });
-  
 });
 
 console.log('The Sea More App is running at: ');
@@ -29,3 +28,18 @@ console.log('- Local: http://localhost:' + port)
 require('dns').lookup(require('os').hostname(), function (err, add, fam) {
   console.log('- Network: http://' + add + ':' + port);
 })
+
+const infopages = [
+  '/deep-sea-mining',
+  '/shipwrecks',
+  '/microplastic',
+  '/overfishing',
+  '/fishernets',
+  '/sewage'
+];
+
+infopages.forEach(function(page) {
+  app.get(page, function (req, res) { 
+    res.render(`infopages${page}`);
+  });
+});

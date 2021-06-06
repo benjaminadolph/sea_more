@@ -10,6 +10,11 @@ body {
     @include radialBackground;
     color: $BASE_TEXT_COLOR;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+p {
+    @include text-s;
 }
 
 
@@ -36,17 +41,6 @@ a {
     z-index: 200;
 }
 
-#menu-icon {
-    position: fixed;
-    right: 29px;
-    top: 27px;
-    background-image: url(../assets/menu.svg);
-    height: 40px;
-    width: 50px;
-    background-repeat: no-repeat;
-    z-index: 200;
-}
-
 .close-icon {
     position: absolute;
     right: 29px;
@@ -56,7 +50,8 @@ a {
     height: 43px;
     width: 43px;
     background-repeat: no-repeat;
-  }
+    z-index: 2;
+}
 
 #help-button {
     position: fixed;
@@ -67,4 +62,22 @@ a {
 
 section {
     @include radialBackground;
+}
+
+.button {
+    @include button;
+}
+
+.button-center {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.grid-container {
+    @include grid-container;
+}
+
+img {
+    max-width: 100%;
 }

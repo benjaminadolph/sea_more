@@ -1,3 +1,5 @@
+import { gsap } from "gsap";
+
 function randomString(length_) {
     let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz'.split('');
     if (typeof length_ !== "number") {
@@ -37,52 +39,26 @@ $(function() {
         moveViewport(data.direction)
     });
 
-    var $screenButton = $('.button-intro--screen-one');
-    $screenButton.on('click', function(e){
-        e.preventDefault();
-        $('.screen-one').hide();
-        $('.screen-two').fadeIn();
+    $('.menu-button').on('click', function() {
+        $('#nav').toggle("slide", {direction: "right" }, 1000);
     });
 
-    function pagination() {
-        var offset = $(document).scrollTop();
-        var windowHeight = $(window).height();
-        var $body = $('body');
-        var padding = .75;
-        var chapters = Object.keys($('.chapter')).filter((section) => Number(section) + 1).map(section => Number(section) + 1)
+    // rendering of infopages:
+    const $result = $('#infopages'); 
+    const infopages = [
+        'deep-sea-mining',
+        'shipwrecks',
+        'microplastic',
+        'overfishing',
+        'fishernets',
+        'sewage'
+    ];
 
-        chapters.map((chapter) => {
-            if (offset > (windowHeight * (chapter - 2 + padding))) {
-            $body.removeClass().addClass("chapter-" + chapter);
-            }
+    infopages.forEach(function(page) {
+        $(`.${page}`).on('click', function() {
+            $('#nav').toggle("slide", {direction: "right" }, 1000);
+            $result.load(`/${page}`);
         });
-    };
-
-    pagination();
-
-    $(document).on('scroll', pagination);
-
-    // Das funktioniert nicht, weil das dann auf alle Links mit href="#" geht! 
-    /* $(document).on('click', 'a[href^="#"]', function(e) {
-        e.preventDefault();
-        $('html, body').animate({
-            scrollTop: $($.attr(this, 'href')).offset().top
-        }, 500);
-    }); */
-
-    function openNav() {
-        document.getElementById("nav").style.display = "block";
-        document.getElementById("menu-icon").style.display = "none";
-    }
-
-    function closeNav() {
-        document.getElementById("nav").style.display = "none";
-        document.getElementById("menu-icon").style.display = "block";
-    }
-
-    function closeInfo() {
-        document.getElementById("information").style.display = "none";
-        document.getElementById("menu-icon").style.display = "block";
-    }
+    });
     
 });
