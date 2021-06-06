@@ -16,14 +16,6 @@ seamore.infopage = (function ($) {
     function parallaxEffect($object, multiplier) {
         multiplier = typeof multiplier !== 'undefined' ? multiplier : 0.5;
         multiplier = 1 - multiplier;
-        var $doc = $(document);
-        var scrollTop = $object.position().top;
-        /*$(window).scroll(function(){
-            var from_top = $doc.scrollTop();
-            var bg_css = scrollTop + (multiplier * from_top);
-           // $object.css({"transform" : `translateY(${bg_css})` });
-           // $object.css({"transform" : `translate3d(0, ${bg_css}, 0)`});
-        });*/
 
         $(window).on("load scroll", function() {
             var parallaxElement = $object;
@@ -33,11 +25,9 @@ seamore.infopage = (function ($) {
                 var elementHeight = parallaxElement.height();
                 var viewPortHeight = window.innerHeight * 0.5 - elementHeight * 0.5;
                 var scrolled = (windowTop - elementTop + viewPortHeight) + elementTop;
-                console.log(elementHeight);
                 parallaxElement.css({
                     transform: "translate3d(0," + scrolled * multiplier + "px, 0)"
                 });
-
             });
         });
     };
