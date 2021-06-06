@@ -10,6 +10,7 @@ body {
     @include radialBackground;
     color: $BASE_TEXT_COLOR;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 p {
