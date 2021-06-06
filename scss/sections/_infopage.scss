@@ -13,11 +13,20 @@
         min-height: 100vh;
     }
 
+    p {
+        font-weight: bold;
+    }
+
     .video-container {
         display: flex;
         justify-content: center;
         align-items: center;
         position: relative;
+        flex-direction: column;
+
+        h1 {
+            align-self: flex-start;
+        }
 
         .video {
             position: relative;
@@ -31,6 +40,7 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
+                z-index: 1;
             }
         }
     }
@@ -39,14 +49,12 @@
         display: flex;
         align-items: center;
 
-        .text {
-            width: 70%;
+        &.text-right {
+            justify-content: end;
         }
 
-        &.text-right {
-            .text {
-                float: right;
-            }
+        .text {
+            width: 70%;
         }
     }
 
@@ -57,11 +65,65 @@
     }
 }
 
-#deep-sea-mining {
-    background: linear-gradient(180deg, #2168B6 -39.89%, #27182A 100%);
+.wave-loading-animation {
+    position: absolute;
+    top: 30px;
+    left: calc((100% - 155px) / 2);
 
-    .background-elements {
-        background: linear-gradient(180deg, #2168B6 -39.89%, #27182A 100%);
+    p {
+        text-align: center;
+    }
+
+    .circle{
+        position: relative;
+        margin: 0 auto;
+        width: 75px;
+        height: 75px;
+        background: transparent;
+        border: 2px solid $PRIMARY_COLOR;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .wave{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: $PRIMARY_COLOR;
+        border-radius: 50%;
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -75%);
+        }
+
+        &::before{
+            border-radius: 45%;
+            background: rgba(255,255,255, 1);
+            animation: animate 5s linear infinite;
+        }
+
+        &::after{
+            border-radius: 40%;
+            background: rgba(255,255,255, .5);
+            animation: animate 10s linear infinite;
+        }
+    }
+
+    @keyframes animate{
+        0%{
+            transform: translate(-50%, -75%) rotate(0deg);
+        }
+        100%{
+            transform: translate(-50%, -75%) rotate(360deg);
+        }
     }
 }
 
@@ -74,7 +136,6 @@
     height: 500px;
   }
 
-  
 .background-elements {
     width: 100%;
     height: 100%;
@@ -99,15 +160,117 @@
         &.bottom {
             bottom: 0;
             left: 0;
+            width: 100%;
+            z-index: 1;
+        }
 
-            img {
-                width: 100%;
-            }
+        img {
+            width: 100%;
         }
     }
+}
 
+
+#deep-sea-mining, 
+#deep-sea-mining .background-elements {
+    background: linear-gradient(180deg, #2168B6 -39.89%, #27182A 100%);
+}
+
+#shipwrecks, 
+#shipwrecks .background-elements  {
+    background: linear-gradient(180deg, #2168B6 -39.89%, #27182A 100%);
+
+    .background-element.middle {
+        left: 0;
+        top: 100vh;
+        right: auto;
+    }
+}
+
+#microplastic, 
+#microplastic .background-elements  {
+    background: linear-gradient(180deg, #2168B6 -43.39%, #2168B6 107.58%);
+
+    .background-element {
+        &.middle {
+            left: 0;
+            top:60vh;
+            right: auto;
+        }
+        &.bottom {
+            right: 0;
+            left: auto;
+            width: auto;
+        }
+    }
+}
+
+#overfishing, 
+#overfishing .background-elements  {
+    background: linear-gradient(180deg, #F0F4F1 -43.39%, #2168B6 107.58%);
+
+    .background-element {
+        &.top {
+            top:10vh;
+            width: 100%;
+        }
+
+        &.middle {
+            top: 80vh;
+            width: 100%;
+        }
+    }
+}
+
+#fishernets, 
+#fishernets .background-elements  {
+    background: linear-gradient(180deg, #F0F4F1 -43.39%, #2168B6 107.58%);
+
+    .background-element {
+        &.top {
+            top:10vh;
+            width: 100%;
+        }
+
+        &.middle {
+            top: 80vh;
+            width: 100%;
+        }
+
+        &.bottom {
+            right: 0;
+            left: auto;
+            width: auto;
+        }
+    }
+}
+
+#sewage, 
+#sewage .background-elements  {
+    background: linear-gradient(180deg, #F0F4F1 -43.39%, #2168B6 107.58%);
+
+    .background-element {
+        &.top {
+            top:10vh;
+            width: 100%;
+        }
+
+        &.middle {
+            top: 80vh;
+            width: 100%;
+        }
+
+        &.bottom {
+            right: 0;
+            left: auto;
+            width: auto;
+        }
+    }
+}
+
+
+.background-elements {
     .wave {
-        background: url('../assets/wave.svg') repeat-x;
         position: absolute;
         bottom: 0px;
         width: 7680px;
@@ -116,10 +279,14 @@
         animation: wave 20s cubic-bezier(.36,.45,.63,.53) infinite;
         -webkit-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0);
+        z-index: 1;
     }
-
+    
     .wave-second {
         left: -30px;
+        opacity: 0.5;
+        -webkit-animation: wave 25s cubic-bezier(.36,.45,.63,.53) infinite;
+        animation: wave 25s cubic-bezier(.36,.45,.63,.53) infinite;
     }
     
     @media screen and (max-width: 600px) {
@@ -171,6 +338,45 @@
             -webkit-transform: translate3d(0,5px,0);
             transform: translate3d(0,5px,0)
         }
+    }    
+}
+
+
+#sewage, #fishernets, #microplastic, #overfishing {
+    .background-elements {
+        .wave {
+            background: url('../assets/wave-bright.svg') repeat-x;
+        }
     }
 }
-  
+
+
+#deep-sea-mining, #shipwrecks {
+    .background-elements {
+        .wave{
+            background: url('../assets/wave.svg') repeat-x;
+        }
+    }
+}
+
+
+.layer-bg {
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_bg.jpg');
+}
+.layer-1 {
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_03.png');
+	background-position: left bottom;
+}
+.layer-2 {
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_02.png');
+}
+.layer-3 {
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_man.png');
+	background-position: right bottom;
+}
+.layer-4 {
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_01.png');
+}
+.layer-overlay {
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png');
+}

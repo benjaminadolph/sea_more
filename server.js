@@ -29,6 +29,17 @@ require('dns').lookup(require('os').hostname(), function (err, add, fam) {
   console.log('- Network: http://' + add + ':' + port);
 })
 
-app.get('/deep-sea-mining', function (req, res) { 
-  res.render('infopages/deep-sea-mining');
+const infopages = [
+  '/deep-sea-mining',
+  '/shipwrecks',
+  '/microplastic',
+  '/overfishing',
+  '/fishernets',
+  '/sewage'
+];
+
+infopages.forEach(function(page) {
+  app.get(page, function (req, res) { 
+    res.render(`infopages${page}`);
+  });
 });

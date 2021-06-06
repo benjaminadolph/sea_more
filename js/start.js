@@ -1,3 +1,5 @@
+import { gsap } from "gsap";
+
 function randomString(length_) {
     let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz'.split('');
     if (typeof length_ !== "number") {
@@ -42,9 +44,36 @@ $(function() {
     });
 
     // rendering of infopages:
-    var $result = $('#infopages'); 
-    $('.deep-sea-mining').on('click', function() {
-        $('#nav').toggle("slide", {direction: "right" }, 1000);
-        $result.load('/deep-sea-mining');
+    const $result = $('#infopages'); 
+    const infopages = [
+        'deep-sea-mining',
+        'shipwrecks',
+        'microplastic',
+        'overfishing',
+        'fishernets',
+        'sewage'
+    ];
+
+    infopages.forEach(function(page) {
+        $(`.${page}`).on('click', function() {
+            $('#nav').toggle("slide", {direction: "right" }, 1000);
+            $result.load(`/${page}`);
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".background-elements",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+            
+            gsap.utils.toArray(".parallax").forEach(layer => {
+                const depth = layer.dataset.depth;
+                const movement = -(layer.offsetHeight * depth)
+                tl.to(layer, {y: movement, ease: "none"}, 0)
+            });
+        });
     });
+    
 });

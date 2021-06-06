@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -78,10 +74,7 @@ section {
 }
 
 .grid-container {
-    width: 100%;
-    padding: 0 120px;
-    position: relative;
-    z-index: 1;
+    @include grid-container;
 }
 
 img {
