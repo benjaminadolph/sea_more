@@ -58,21 +58,6 @@ $(function() {
         $(`.${page}`).on('click', function() {
             $('#nav').toggle("slide", {direction: "right" }, 1000);
             $result.load(`/${page}`);
-
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: ".background-elements",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: true
-                }
-            });
-            
-            gsap.utils.toArray(".parallax").forEach(layer => {
-                const depth = layer.dataset.depth;
-                const movement = -(layer.offsetHeight * depth)
-                tl.to(layer, {y: movement, ease: "none"}, 0)
-            });
         });
     });
     
