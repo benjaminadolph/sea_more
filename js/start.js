@@ -32,9 +32,14 @@ $(function() {
         $('#start-intro').fadeOut();
     });
 
-    socket.on('allControllerActivity', function(data) {
-        console.log(data.direction);
+    socket.on('canvasMoveViewport', function(data) {
         moveViewport(data.direction)
+    });
+
+    socket.on('canvasDblClickButton', function(data) {
+        tapButton = data.clicked;
+        console.log("canvasDblClickButton" + tapButton);
+
     });
 
     var $screenButton = $('.button-intro--screen-one');
