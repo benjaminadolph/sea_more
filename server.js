@@ -17,8 +17,12 @@ io.on('connection', function(socket) {
     socket.join(roomid);
     socket.broadcast.to(roomid).emit('controllerAdded');
 
-    socket.on('controllerActivity', function(data){
-      socket.broadcast.to(roomid).emit('allControllerActivity', {session_id: socket.id, direction: data });
+    socket.on('moveJoystick', function(data){
+      socket.broadcast.to(roomid).emit('canvasMoveViewport', {session_id: socket.id, direction: data });
+    });
+
+    socket.on('dblclickJoystick', function(data){
+      socket.broadcast.to(roomid).emit('canvasDblClickButton', {session_id: socket.id, clicked: data });
     });
   });
 });

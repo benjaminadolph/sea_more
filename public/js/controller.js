@@ -6,6 +6,8 @@ socket.emit('join-room', roomid);
 
 const joystick = createJoystick(window.document.getElementById('controller'));
 
+let tapButton;
+
 function createJoystick(parent) {
     const maxDiff = 100;
     const stick = document.createElement('div');
@@ -13,20 +15,52 @@ function createJoystick(parent) {
     stick.classList.add('controller-inner');
   
     stick.addEventListener('mousedown', handleMouseDown);
+    stick.addEventListener('dblclick', handleDoubleClick)
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
+    
     stick.addEventListener('touchstart', handleMouseDown, {passive: false});
+    stick.addEventListener('touchend', handleDoubleTouch)
     document.addEventListener('touchmove', handleMouseMove, {passive: false});
     document.addEventListener('touchend', handleMouseUp, {passive: false});
+    
   
     let dragStart = null;
     let currentPos = { x: 0, y: 0 };
     let emitTimer;
+
+    var timeout;
+    var lastTap = 0;
+
+    function handleDoubleTouch(event) {
+        console.log("handleDoubleTouch")
+        var currentTime = new Date().getTime();
+        var tapLength = currentTime - lastTap;
+        clearTimeout(timeout);
+        if (tapLength < 500 && tapLength > 0) {
+            console.log("DoubleTap")
+            tapButton = true
+            socket.emit('dblclickJoystick', tapButton);
+            tapButton = false
+            event.preventDefault();
+        } /* else {
+            timeout = setTimeout(function() {
+                console.log("SingleTap")
+                clearTimeout(timeout);
+            }, 200);
+        } */
+        lastTap = currentTime;
+    };
+
+    function handleDoubleClick(){
+        console.log("doubleclick")
+        
+    };
   
     function handleMouseDown(event) {
         stick.style.transition = '0s';
         emitTimer = setInterval(function(){
-            socket.emit('controllerActivity', currentPos);
+            socket.emit('moveJoystick', currentPos);
             console.log(currentPos)
         }, 10);
         if (event.changedTouches) {

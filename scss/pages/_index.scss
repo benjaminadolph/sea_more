@@ -1,3 +1,12 @@
 canvas#mycanvas {
     position: absolute;
 }
+
+#turtle-container{
+    position: absolute;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    left: 50%;
+}
