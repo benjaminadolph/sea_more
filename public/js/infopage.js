@@ -6,7 +6,7 @@ seamore.infopage = (function ($) {
 
 	function init() {
         parallaxEffect($(".background-elements .top"), 0.5);
-        parallaxEffect($(".background-elements .middle"), 0.75);
+        // parallaxEffect($(".background-elements .middle"), 0.75);
 
         $('.infopage .close-icon').on('click', function() {
             $('.infopage').remove();
@@ -19,7 +19,7 @@ seamore.infopage = (function ($) {
 
         $(window).on("load scroll", function() {
             var parallaxElement = $object;
-            window.requestAnimationFrame(function() {
+           /* window.requestAnimationFrame(function() {
                 var windowTop = $(document).scrollTop();
                 var elementTop = parallaxElement.position().top;
                 var elementHeight = parallaxElement.height();
@@ -28,7 +28,10 @@ seamore.infopage = (function ($) {
                 parallaxElement.css({
                     transform: "translate3d(0," + scrolled * multiplier + "px, 0)"
                 });
-            });
+            });*/
+
+            var top = $('.background-elements .top').position().top * 0.5;
+            gsap.to('.background-elements .top', {duration: 1, y: top});
         });
     };
 

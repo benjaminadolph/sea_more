@@ -32,9 +32,10 @@
     li {
       @include headline-l;
       margin: 5px 0;
-
+      
       a {
         text-decoration: none;
+        transform: translate3d(0,0,0);
       }
     }
   }
