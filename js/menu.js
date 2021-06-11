@@ -6,7 +6,7 @@ window.menu = (function ($) {
     
 	setCharsToSpan();
 
-    $('.menu-button').on('click', function () {
+    $('.menu-button.menu-icon').on('click', function () {
 		openNavigation();
     });
 
@@ -46,15 +46,22 @@ window.menu = (function ($) {
 		attr: { d: `${$('#wave-path').data('to')}` },
 		// ease: Power4.easeOut,
 	});
+
+	gsap.to('.shell-content', { x: 0, opacity: 1, delay: 1.2 });
+	gsap.to('.footer-links', { opacity: 1, delay: 1.2 });
   }
 
   function closeNavigation() {
+	// gsap.to('.shell-content', { x: 200 });
 	gsap.to('#wave-path', {
         duration: 2,
         attr: { d: `${$('#wave-path').data('from')}` },
+		delay: 0.3
         // ease: Power4.easeOut,
       });
-      gsap.to('#nav', { y: '-100vh', ease: Power4.easeInOut, duration: 3 });
+	gsap.to('#nav', { y: '-100vh', ease: Power4.easeInOut, duration: 3, delay: 0.3 });
+	gsap.to('.shell-content', { x: 200, opacity: 0 });
+	gsap.to('.footer-links', { opacity: 0 });
   }
 
   function waveTextAnimation($element) {
