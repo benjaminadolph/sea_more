@@ -30,6 +30,11 @@ $(function() {
 
     socket.on('controllerAdded', function(data){
         $('#start-intro').fadeOut();
+        addTurtle();
+    });
+
+    socket.on('controllerRemoved', function(data) {
+        removeTurtle();
     });
 
     socket.on('canvasMoveViewport', function(data) {
@@ -38,7 +43,7 @@ $(function() {
 
     socket.on('canvasDblClickButton', function(data) {
         tapButton = data.clicked;
-        console.log("canvasDblClickButton" + tapButton);
+        setTimeout(function(){ tapButton = false;}, 2000);
     });
 
     // rendering of infopages:

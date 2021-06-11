@@ -15,7 +15,7 @@ function createJoystick(parent) {
     stick.classList.add('controller-inner');
   
     stick.addEventListener('mousedown', handleMouseDown);
-    stick.addEventListener('dblclick', handleDoubleClick)
+    stick.addEventListener('dblclick', handleDoubleClick);
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
     

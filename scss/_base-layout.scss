@@ -60,6 +60,15 @@ a {
     z-index: 100;
 }
 
+#counter{
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 25px;
+    z-index: 100;
+    width: 45px;
+}
+
 section {
     @include radialBackground;
 }
