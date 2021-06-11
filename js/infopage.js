@@ -21,10 +21,10 @@ window.infopage = (function ($) {
             y: -100,
             duration:2,
             scrollTrigger: {
-              trigger: ".background-elements",
-              start:"top top",
-              end:"+=100%",
-              scrub: true
+                trigger: ".background-elements",
+                start:"top top",
+                end:"+=100%",
+                scrub: true
             }, 
         });
 
