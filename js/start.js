@@ -1,5 +1,3 @@
-import { gsap } from "gsap";
-
 function randomString(length_) {
     let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz'.split('');
     if (typeof length_ !== "number") {
@@ -46,10 +44,6 @@ $(function() {
     socket.on('canvasDblClickButton', function(data) {
         tapButton = data.clicked;
         setTimeout(function(){ tapButton = false;}, 2000);
-    });
-
-    $('.menu-button').on('click', function() {
-        $('#nav').toggle("slide", {direction: "right" }, 1000);
     });
 
     // rendering of infopages:
