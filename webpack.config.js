@@ -10,14 +10,17 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     // Path to your entry point. From this file Webpack will begin its work
-    entry: ['./js/custom-pixi.js','./scss/main.scss', './js/start.js'],
+    entry: {
+        bundle: ['./js/custom-pixi.js','./scss/main.scss', './js/start.js', './js/menu.js'],
+        infopage: './js/infopage.js',
+    },
 
     // Path and filename of your result bundle.
     // Webpack will bundle all JavaScript into this file
     output: {
         path: path.resolve(__dirname, 'public'),
         publicPath: '',
-        filename: './dist/bundle.js',
+        filename: './dist/[name].js'
     },
     module: {
         rules: [
