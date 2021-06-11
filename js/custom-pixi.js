@@ -14,7 +14,8 @@ const canvas = document.getElementById('mycanvas')
 let _w = window.innerWidth
 let _h = window.innerHeight
 
-let turtle_sprite;
+let turtle_sprite, turtle_texture;
+let cointerCounter = 0;
 
 window.tapButton = false;
 
@@ -37,7 +38,6 @@ const viewport = app.stage.addChild(new Viewport({
 }))
 
 let content = [
-    {name: "backgroundcrater", url: "assets/svgs/background-crater.svg", x: 3339, y: 5057, scale: 4}, 
     {name: "sewageisland", url: "assets/svgs/sewage-island.svg", x:5815, y:1482, scale: 4}, 
     {name: "sewage", url: "assets/svgs/sewage.svg", x:5665, y:1932, scale: 4}, 
     {name: "submarine", url: "assets/svgs/submarine.svg", x:4917, y:6020, scale: 4}, 
@@ -52,23 +52,32 @@ let content = [
 
 let buttons = [
     {name: "buttonsewage", url: "assets/svgs/marker.svg", x:5815, y:1482, scale: 1, content: "sewage"},
-    {name: "buttonsubmarine", url: "assets/svgs/marker.svg", x:4917, y:6020, scale: 1, content: "submarine"},
-    {name: "buttongarbagecarpet", url: "assets/svgs/marker.svg", x:3568, y:1672,  scale: 1, content: "garbagecarpet"},
-    {name: "buttonboat", url: "assets/svgs/marker.svg", x:1339, y:1209, scale: 1, content: "boat"},
-    {name: "buttondeepseamining", url: "assets/svgs/marker.svg", x:1298, y:5053, scale: 1, content: "deepseamining"},
+    {name: "buttonsubmarine", url: "assets/svgs/marker.svg", x:4917, y:6020, scale: 1, content: "shipwrecks"},
+    {name: "buttongarbagecarpet", url: "assets/svgs/marker.svg", x:3568, y:1672,  scale: 1, content: "fishernets"},
+    {name: "buttonboat", url: "assets/svgs/marker.svg", x:1339, y:1209, scale: 1, content: "overfishing"},
+    {name: "buttondeepseamining", url: "assets/svgs/marker.svg", x:1298, y:5053, scale: 1, content: "deep-sea-mining"},
     {name: "buttonmicroplastic", url: "assets/svgs/marker.svg", x:5116, y:3934, scale: 1, content: "microplastic"},
 ]
 
 let coins = [
-    {name: "coinsubmarine", url: "assets/svgs/coin.svg", x:5077, y:6350, scale: 2, content: "coinsubmarine"},
-    {name: "coinboat", url: "assets/svgs/coin.svg", x:1739, y:1279, scale: 2, content: "coinboat"},
-    {name: "coindeepseamining", url: "assets/svgs/coin.svg", x:1838, y:5493, scale: 2, content: "coindeepseamining"},
+    {name: "coin1", url: "assets/svgs/coin.svg", x:5077, y:6350, scale: 2, content: "submarine"},
+    {name: "coin2", url: "assets/svgs/coin.svg", x:1739, y:1279, scale: 2, content: "boat"},
+    {name: "coin3", url: "assets/svgs/coin.svg", x:1838, y:5493, scale: 2, content: "deepseamining"},
+    {name: "coin4", url: "assets/svgs/coin.svg", x:3077, y:6350, scale: 2, content: "xy"},
+    {name: "coin5", url: "assets/svgs/coin.svg", x:2739, y:1279, scale: 2, content: "xyz"},
 ]
 
 let loader = PIXI.Loader.shared
 
 loader.add("bg", "assets/background.png")
 loader.add("turtle", "assets/svgs/turtle.svg", { 
+    metadata: {
+        resourceOptions: {
+            scale: 4
+        }
+    }
+});
+loader.add("superturtle", "assets/svgs/superturtle.svg", { 
     metadata: {
         resourceOptions: {
             scale: 4
@@ -85,6 +94,7 @@ for(let i = 0; i < content.length; i++) {
         }
     });
 }
+
 for(let i = 0; i < buttons.length; i++) {
     loader.add(buttons[i].name, buttons[i].url, { 
         metadata: {
@@ -145,7 +155,7 @@ function handleLoadComplete(){
         viewport.addChild(buttons[i].spriteRef);
         buttons[i].spriteRef.interactive = true
         buttons[i].spriteRef.buttonMode = true
-        buttons[i].spriteRef.name = buttons[i].name
+        buttons[i].spriteRef.content = buttons[i].content
         buttons[i].spriteRef.on('pointerdown', clickInfoBtn)
     }
 
@@ -161,13 +171,12 @@ function handleLoadComplete(){
         coins[i].spriteRef.on('pointerdown', clickCoin)
     }
     
-    const turtle_texture = loader.resources.turtle.texture
+    turtle_texture = loader.resources.turtle.texture
     turtle_sprite = PIXI.Sprite.from(turtle_texture)
-
+    turtle_sprite.visible = false;
     turtle_sprite.anchor.set(0.5); 
     turtle_sprite.position.set(viewport.center.x, viewport.center.y)
     turtle_sprite.interactive;
-    turtle_sprite.hitArea = new PIXI.Rectangle(0, 0, 200, 200);
 
     viewport.addChild(turtle_sprite)
 
@@ -180,36 +189,103 @@ function handleLoadComplete(){
     /*  gsap.to(circle, {
         x: 500, duration: 2, repeat: -1, yoyo: true,
     }); */
-
 }
+let delta = 0
 
 function intersectInfoBtn() {
-    if(window.tapButton){
-        for(let i = 0; i < buttons.length; i++) {
-            var btn = buttons[i].spriteRef.getBounds();
-            var trtl = turtle_sprite.getBounds();
-            if(btn.x + btn.width > trtl.x && trtl.x < trtl.x + trtl.width && btn.y + btn.height > trtl.y && btn.y < trtl.y + trtl.height){
-                touchInfoBtn(buttons[i].name)
+    for(let i = 0; i < buttons.length; i++) {
+        var btn = buttons[i].spriteRef.getBounds();
+        var trtl = turtle_sprite.getBounds();
+        if(btn.x + btn.width > trtl.x && btn.x < trtl.x + trtl.width && btn.y + btn.height > trtl.y && btn.y < trtl.y + trtl.height){
+            delta += 0.1
+            buttons[i].spriteRef.width = buttons[i].spriteRef.width + Math.sin(delta) *1
+            buttons[i].spriteRef.height = buttons[i].spriteRef.height + Math.sin(delta) *1
+            console.log(buttons[i].spriteRef.width)
+            if(tapButton){
+                touchInfoBtn(buttons[i].content)
                 tapButton = false;
                 return true;
             }
-        } 
-    }
+        }
+    } 
 } 
 
 function intersectCoin() {
-    if(window.tapButton){
-        for(let i = 0; i < coins.length; i++) {
-            var coin = coins[i].spriteRef.getBounds();
-            var trtl = turtle_sprite.getBounds();
-            if(coin.x + coin.width > trtl.x && trtl.x < trtl.x + trtl.width && coin.y + coin.height > trtl.y && coin.y < trtl.y + trtl.height){
-                touchCoin(coins[i].name)
+    for(let i = 0; i < coins.length; i++) {
+        var coin = coins[i].spriteRef.getBounds();
+        var trtl = turtle_sprite.getBounds();
+        if(coin.x + coin.width > trtl.x && coin.x < trtl.x + trtl.width && coin.y + coin.height > trtl.y && coin.y < trtl.y + trtl.height){
+            if(tapButton){
+                touchCoin(coins[i])
                 tapButton = false;
                 return true;
             }
-        } 
+        }
+    } 
+}
+
+function touchInfoBtn(content) {
+    console.log(content)
+    const $result = $('#infopages'); 
+    $result.load(`/${content}`);
+}
+
+function clickInfoBtn() {
+    console.log(this.content)
+    const $result = $('#infopages'); 
+    $result.load(`/${this.content}`);
+}
+
+function touchCoin(coin) {
+    console.log(coin.spriteRef.name)
+    viewport.removeChild(coin.spriteRef)
+
+    if(cointerCounter < 4){
+        cointerCounter++;
+        document.getElementById("counter").innerHTML = cointerCounter + "/5";
+    } else {
+        cointerCounter++;
+        document.getElementById("counter").innerHTML = cointerCounter + "/5";
+        document.getElementById("all-coins-collected").style.display = "flex";
     }
+}
+
+function clickCoin() {
+    console.log(this.name)
+    viewport.removeChild(this)
+    if(cointerCounter < 4){
+        cointerCounter++;
+        document.getElementById("counter").innerHTML = cointerCounter + "/5";
+    } else {
+        cointerCounter++;
+        document.getElementById("counter").innerHTML = cointerCounter + "/5";
+        document.getElementById("all-coins-collected").style.display = "flex";
+    }
+}
+
+function animate() {
+    turtle_sprite.position.set(viewport.center.x, viewport.center.y)
+    if(viewport.position.y > -970){
+        turtle_sprite.texture = loader.resources.superturtle.texture;
+    } else {
+        turtle_sprite.texture = turtle_texture;
+    }
+    intersectInfoBtn()
+    intersectCoin()
+}
+
+window.moveViewport = function(directions){
+    viewport.position.x = viewport.position.x - (directions.x/10)
+    viewport.position.y = viewport.position.y - (directions.y/10)
 } 
+
+window.addTurtle = function() {
+    turtle_sprite.visible = true;
+}
+
+window.removeTurtle = function() {
+    turtle_sprite.visible = false;
+}
 
 function handleLoadError(){
     console.error("error loading")
@@ -222,36 +298,3 @@ function handleLoadAsset(){
 function handleLoadProgress(loader, resource){
     console.log(loader.progress + "% loaded", resource.name)
 }
-
-
-function touchInfoBtn(name) {
-    console.log(name)
-}
-
-function touchCoin(name) {
-    console.log(name)
-}
-
-function clickInfoBtn() {
-    console.log(this.name)
-}
-
-function clickCoin() {
-    console.log(this.name)
-}
-
-function animate() {
-    turtle_sprite.position.set(viewport.center.x, viewport.center.y)
-    if(viewport.position.y > -970){
-        turtle_sprite.tint = 0xFF0000;
-    } else {
-        turtle_sprite.tint = 0xFFFFFF;
-    }
-    intersectInfoBtn()
-    intersectCoin()
-}
-
-window.moveViewport = function(directions){
-    viewport.position.x = viewport.position.x - (directions.x/10)
-    viewport.position.y = viewport.position.y - (directions.y/10)
-} 
