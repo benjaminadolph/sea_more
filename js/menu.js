@@ -94,6 +94,7 @@ window.menu = (function ($) {
 
   return {
     init: init,
+	closeNavigation: closeNavigation
   };
 })(jQuery);
 

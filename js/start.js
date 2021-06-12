@@ -59,7 +59,7 @@ $(function() {
 
     infopages.forEach(function(page) {
         $(`.${page}`).on('click', function() {
-            $('#nav').toggle("slide", {direction: "right" }, 1000);
+            menu.closeNavigation();
             $result.load(`/${page}`);
         });
     });
