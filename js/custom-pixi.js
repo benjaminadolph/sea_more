@@ -69,7 +69,7 @@ let coins = [
 
 let loader = PIXI.Loader.shared
 
-loader.add("bg", "assets/background.png")
+loader.add("bg", "assets/background.jpg")
 loader.add("turtle", "assets/svgs/turtle.svg", { 
     metadata: {
         resourceOptions: {
@@ -123,6 +123,8 @@ loader.onProgress.add(handleLoadProgress)
 loader.load()
 
 function handleLoadComplete(){
+    
+    document.getElementById("loading-screen").style.display = "none";
     
     viewport
         .drag()
@@ -190,22 +192,19 @@ function handleLoadComplete(){
         x: 500, duration: 2, repeat: -1, yoyo: true,
     }); */
 }
-let delta = 0
+/* let delta = 0 */
 
 function intersectInfoBtn() {
     for(let i = 0; i < buttons.length; i++) {
         var btn = buttons[i].spriteRef.getBounds();
         var trtl = turtle_sprite.getBounds();
         if(btn.x + btn.width > trtl.x && btn.x < trtl.x + trtl.width && btn.y + btn.height > trtl.y && btn.y < trtl.y + trtl.height){
-            delta += 0.1
+            /* delta += 0.1
             buttons[i].spriteRef.width = buttons[i].spriteRef.width + Math.sin(delta) *1
-            buttons[i].spriteRef.height = buttons[i].spriteRef.height + Math.sin(delta) *1
-            console.log(buttons[i].spriteRef.width)
-            if(tapButton){
-                touchInfoBtn(buttons[i].content)
-                tapButton = false;
-                return true;
-            }
+            buttons[i].spriteRef.height = buttons[i].spriteRef.height + Math.sin(delta) *1 */
+            touchInfoBtn(buttons[i].content)
+            tapButton = false;
+            return true;
         }
     } 
 } 
@@ -215,11 +214,9 @@ function intersectCoin() {
         var coin = coins[i].spriteRef.getBounds();
         var trtl = turtle_sprite.getBounds();
         if(coin.x + coin.width > trtl.x && coin.x < trtl.x + trtl.width && coin.y + coin.height > trtl.y && coin.y < trtl.y + trtl.height){
-            if(tapButton){
-                touchCoin(coins[i])
-                tapButton = false;
-                return true;
-            }
+            touchCoin(coins[i])
+            tapButton = false;
+            return true;
         }
     } 
 }
@@ -270,8 +267,12 @@ function animate() {
     } else {
         turtle_sprite.texture = turtle_texture;
     }
-    intersectInfoBtn()
-    intersectCoin()
+
+    if(tapButton){
+        intersectInfoBtn()
+        intersectCoin()
+    }
+    
 }
 
 window.moveViewport = function(directions){
@@ -296,5 +297,6 @@ function handleLoadAsset(){
 }
 
 function handleLoadProgress(loader, resource){
-    console.log(loader.progress + "% loaded", resource.name)
+    document.getElementById("loader-percentage").innerHTML = Math.round(loader.progress) + "% loaded";
+    console.log(Math.round(loader.progress) + "% loaded", resource.name)
 }
