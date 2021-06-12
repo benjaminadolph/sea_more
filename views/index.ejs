@@ -25,30 +25,68 @@
             0/5
         </div>
         
-        <a href="#help" id="help-button" class="button">Unternimm etwas <i class="arrow-white right"></i></a>
+        <a href="#help" id="help-button" class="button"><span class="text">Unternimm etwas <i class="arrow-white right"></i></span></a>
     </div>
 
     <nav id="nav">
+        <div class="background">
+            <div class="wave">
+                <svg width="100%" height="100%" viewBox="0 0 2623 3067" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+                            <stop stop-color="#479DD3" offset="0%"></stop>
+                            <stop stop-color="#1056A4" offset="100%"></stop>
+                        </linearGradient>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="svg-wave" fill="url(#linearGradient-1)" fill-rule="nonzero">
+                            <path 
+                                data-from="M2264.98,3067 C2444.81,3067 2468.51,2868.96204 2623,2865.18269 L2623,0 L0,0 L0,2864.95364 C98.9040926,2864.95364 149.581993,2949.40494 266.468993,2949.40494 C383.354993,2949.40494 483.076994,2820.67798 601.597994,2820.67798 C729.604994,2820.67798 776.518995,3067 961.248995,3067 C1145.98,3067 1179.49,2820.67798 1320.08,2820.67798 C1460.67,2820.67798 1559.58,3067 1676.46,3067 C1793.35,3067 1854.65,2908.08405 1971.54,2908.08405 C2088.43,2908.08405 2085.16,3067 2264.98,3067 Z" 
+                                data-to="M2264.98,3067 C2444.81,3067 2468.51,3070.77935 2623,3067 L2623,0 L0.00010934714,0 L0.00010934714,3067 C98.9040926,3067 253.584435,3067 370.471436,3067 C487.357436,3067 488.285383,3067 606.806383,3067 C734.813384,3067 865.233642,3067 1049.96364,3067 C1234.69464,3067 1170.91,3067 1311.5,3067 C1452.09,3067 1457.12761,3067 1574.00761,3067 C1690.89761,3067 1868.46462,3067 1985.35462,3067 C2102.24462,3067 2085.16,3067 2264.98,3067 Z"
+                                d="M2264.98,3067 C2444.81,3067 2468.51,2868.96204 2623,2865.18269 L2623,0 L0,0 L0,2864.95364 C98.9040926,2864.95364 149.581993,2949.40494 266.468993,2949.40494 C383.354993,2949.40494 483.076994,2820.67798 601.597994,2820.67798 C729.604994,2820.67798 776.518995,3067 961.248995,3067 C1145.98,3067 1179.49,2820.67798 1320.08,2820.67798 C1460.67,2820.67798 1559.58,3067 1676.46,3067 C1793.35,3067 1854.65,2908.08405 1971.54,2908.08405 C2088.43,2908.08405 2085.16,3067 2264.98,3067 Z" 
+                                id="wave-path">
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        
         <div class="menu-button close-icon"></div>
         <div class="nav-content">
             <ul>
-                <li><a href="#" class="fishernets">Müll (Plastik, Fischernetze)</a></li>
-                <li><a href="#" class="overfishing">Überfischung</a></li>
-                <li><a href="#" class="sewage">Abwasser und Überdüngung</a></li>
-                <li><a href="#" class="microplastic">Mikroplastik</a></li>
-                <li><a href="#" class="deep-sea-mining">Bergbau in der Tiefsee</a></li>
-                <li><a href="#" class="shipwrecks">Erdöl (Schiffswracks, Ölplattformen)</a></li>
+                <li><a href="#" class="fishernets menu-item">Plastik und Fischernetze</a></li>
+                <li><a href="#" class="overfishing menu-item">Überfischung</a></li>
+                <li><a href="#" class="sewage menu-item">Schadstoffe</a></li>
+                <li><a href="#" class="microplastic menu-item">Mikroplastik</a></li>
+                <li><a href="#" class="deep-sea-mining menu-item">Bergbau in der Tiefsee</a></li>
+                <li><a href="#" class="shipwrecks menu-item">Schiffwracks</a></li>
             </ul>
+            <div class="shell-content">
+                <div class="shell-image"><img src="/assets/shell.png" /></div>
+                <div class="shell-text">
+                    <p>Wie können wir als Verbraucher die Meere schützen? Finde heraus, an welche offizielle Stellen du dich wenden kannst.</p>
+                    <a href="#help" class="button"><span class="text">Unternimm etwas</span></a>
+                </div>
+            </div>
+            
         </div>
+        <ul class="footer-links">
+            <li><a href="#impressum">Impressum</a></li>
+            <li>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+            <li><a href="#privacy">Datenschutz</a></li>
+        </ul>
     </nav>
 
     <%- include ('partials/start-intro') %>
     <%- include ('partials/all-coins-collected') %>
 
+    <script src="/dist/bundle.js"></script>
+
     <div id="infopages">
         <!-- Content will be rendered on click -->
     </div>
 
-    <script src="dist/bundle.js"></script>
+    
 </body>
 </html>

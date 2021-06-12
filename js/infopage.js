@@ -3,11 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-"use strict";
-
-var seamore = seamore || {};
-
-seamore.infopage = (function ($) {
+window.infopage = (function ($) {
 
 	function init() {
         gsap.to(".top", {
@@ -25,10 +21,10 @@ seamore.infopage = (function ($) {
             y: -100,
             duration:2,
             scrollTrigger: {
-              trigger: ".background-elements",
-              start:"top top",
-              end:"+=100%",
-              scrub: true
+                trigger: ".background-elements",
+                start:"top top",
+                end:"+=100%",
+                scrub: true
             }, 
         });
 
@@ -41,7 +37,3 @@ seamore.infopage = (function ($) {
 		init: init
 	}
 })(jQuery);
-
-jQuery(function ($) {
-    seamore.infopage.init();
-});
