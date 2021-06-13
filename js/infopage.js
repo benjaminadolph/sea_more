@@ -33,9 +33,22 @@ window.infopage = (function ($) {
         $('.infopage .close-icon').on('click', function() {
             $('.infopage').remove();
         }); 
+
+        moveBottomWave();
 	}
+
+    function moveBottomWave() {
+        var waveBottom = wavify( document.querySelector('#bottom-wave-path'), {
+            height: 60,
+            bones: 5,
+            amplitude: 40,
+            speed: .25
+        });
+    }
 
 	return {
 		init: init
 	}
 })(jQuery);
+
+

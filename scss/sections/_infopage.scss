@@ -299,84 +299,24 @@
         position: absolute;
         bottom: 0px;
         width: 7680px;
-        height: 90vh;
+        height: 100vh;
         -webkit-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0);
         z-index: 1;
 
-        @media (min-width: 850px) {
-            -webkit-animation: wave 20s cubic-bezier(.36,.45,.63,.53) infinite;
-            animation: wave 20s cubic-bezier(.36,.45,.63,.53) infinite;
+        #bottom-wave-path {
+            color: $PRIMARY_COLOR;
         }
     }
-    
-    .wave-second {
-        left: -30px;
-        opacity: 0.5;
-        
-        @media (min-width: 850px) {
-            -webkit-animation: wave 25s cubic-bezier(.36,.45,.63,.53) infinite;
-            animation: wave 25s cubic-bezier(.36,.45,.63,.53) infinite;
-        }
-    }
-    
-    @media screen and (max-width: 600px) {
-        .wave {
-            top:-75px;
-            height: 75px
-        }
-    }
-    
-    @-webkit-keyframes wave {
-        0% {
-            margin-left: 0
-        }
-    
-        100% {
-            margin-left: -1920px
-        }
-    }
-    
-    @keyframes wave {
-        0% {
-            margin-left: 0
-        }
-    
-        100% {
-            margin-left: -1920px
-        }
-    }
-    
-    @-webkit-keyframes swell {
-        0%,100% {
-            -webkit-transform: translate3d(0,-25px,0);
-            transform: translate3d(0,-25px,0)
-        }
-    
-        50% {
-            -webkit-transform: translate3d(0,5px,0);
-            transform: translate3d(0,5px,0)
-        }
-    }
-    
-    @keyframes swell {
-        0%,100% {
-            -webkit-transform: translate3d(0,-25px,0);
-            transform: translate3d(0,-25px,0)
-        }
-    
-        50% {
-            -webkit-transform: translate3d(0,5px,0);
-            transform: translate3d(0,5px,0)
-        }
-    }    
 }
 
 
 #sewage, #fishernets, #microplastic, #overfishing {
     .background-elements {
         .wave {
-            background: url('../assets/wave-bright.svg') repeat-x;
+            #bottom-wave-path {
+                color: #1056A4;
+            }
         }
     }
 }
@@ -384,8 +324,10 @@
 
 #deep-sea-mining, #shipwrecks {
     .background-elements {
-        .wave{
-            background: url('../assets/wave.svg') repeat-x;
+        .wave {
+            #bottom-wave-path {
+                color: #1F2642;
+            }
         }
     }
 }
