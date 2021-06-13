@@ -7,6 +7,7 @@
 
   <div class="grid-container">
     <div class="video-container section active">
+      <h1>Abwasser, Überdüngung und Radioaktivität</h1>
       <div class="video">
         <iframe
           src="https://www.youtube.com/embed/rA82_3O2lD8?autoplay=0&showinfo=0&controls=1"
@@ -17,7 +18,6 @@
         </iframe>
         <%- include ('../partials/video-loading-animation') %>
       </div>
-      <h1>Abwasser, Überdüngung und Radioaktivität</h1>
     </div>
 
     <div class="facts section text-left">
@@ -39,23 +39,47 @@
         </p>
       </div>
     </div>
+  </div>
 
-    <div class="action section">
-      <div class="text">
-        <h1 class="headline">Was kann ich unternehmen?</h1>
-        <p>
-          Keine Unternehmen unterstützen, die von Tiefseebergbau profitieren,
-          oder selbst betreiben
-        </p>
-        <p>
-          Unternehmen können ein Formular ausfüllen, welches einen globales
-          Moratorium für den Tiefseebergbau
-        </p>
-        <p>
-          Weniger konsumieren, nach dem Prinzip: refuse, reduce, reuse, recycle,
-          rot
-        </p>
-      </div>
+  <div class="action section">
+    <div class="text grid-container">
+      <h2 class="headline">Was kann ich unternehmen?</h2>
+    </div>
+    <div class="bottom-info">
+      <svg width="1442px" height="769px" viewBox="0 0 1442 769" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="bottom-line">
+              <%- include ('../partials/bottom-line-path'); %>
+                <g id="Button-first" transform="translate(240.000000, 328.000000)">
+                  <%- include('../partials/bottom-line-button', {cx: 152.435, cy: 22.5}); %>
+                  <text class="svg-bottom-text" fill="currentColor">
+                      <tspan x="0" y="87">Achte beim Waschen auf die richtige Menge an Waschmittel.</tspan>
+                      <tspan x="0" y="106">Beim Kauf solltest du auf phosphatfreie Waschmittel verzichten</tspan>
+                      <tspan x="0" y="125">und ökologische Alternativen wählen. </tspan>
+                      <tspan x="0" y="144">Oder du machst dir dein Waschmittel einfach selbst. </tspan>
+                  </text>
+                </g>
+                <g id="Button-second" transform="translate(721.000000, 264.000000)">
+                  <%- include('../partials/bottom-line-button', {cx: 23.087, cy: 101.5}); %>
+                  <text class="svg-bottom-text" fill="currentColor">
+                      <tspan x="0" y="16">Wenn du Lebensmittel einkaufst, wähle Bio-Produkte,</tspan>
+                      <tspan x="0" y="35">bei denen der Einsatz von nitrathaltigem </tspan>
+                      <tspan x="0" y="54">Kunstdünger verboten ist. </tspan>
+                  </text>
+                </g>
+                <g id="Button-third" transform="translate(993.000000, 449.000000)">
+                  <%- include('../partials/bottom-line-button', {cx:22.68, cy:56.5}); %>
+                  <text class="svg-bottom-text" fill="currentColor">
+                      <tspan x="67" y="16">Auch für deinen Garten gibt es </tspan>
+                      <tspan x="67" y="35">ökologische Alternativen. Verwende </tspan>
+                      <tspan x="67" y="54">statt künstlichen Dünger Bio-Dünger. </tspan>
+                      <tspan x="67" y="73">Außerdem kannst du umweltfreundlichen</tspan>
+                      <tspan x="67" y="92">Dünger für Pflanzen einfach selbst machen. </tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+      </svg>
     </div>
   </div>
 
@@ -68,7 +92,7 @@
     <div class="background-element middle">
       <img src="/assets/infopages/sewage/middle.png" />
     </div>
-    <div class="background-element bottom">
+    <div class="background-element bottom left">
       <img src="/assets/infopages/sewage/bottom.png" />
     </div>
   </div>

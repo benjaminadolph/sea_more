@@ -66,4 +66,20 @@
     position: relative;
     z-index: 1;
     max-width: 1100px;
+
+    @media (max-width: 777px){
+        width: calc(100% - 50px);
+    }
+}
+
+@mixin after-infopage-background {
+    overflow: hidden;
+    &:after {
+        content: '';
+        background-color: $PRIMARY_COLOR;
+        height: 30vh;
+        width: 100%;
+        position: relative;
+        display: block;
+    }
 }
