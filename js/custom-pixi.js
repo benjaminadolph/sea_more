@@ -39,16 +39,16 @@ const viewport = app.stage.addChild(new Viewport({
 }))
 
 let content = [
-    {name: "sewageisland", url: "../assets/svgs/sewage-island.svg", x:5815, y:1482, scale: 4}, 
-    {name: "sewage", url: "../assets/svgs/sewage.svg", x:5665, y:1932, scale: 4}, 
-    {name: "submarine", url: "../assets/svgs/submarine.svg", x:4917, y:6020, scale: 4}, 
-    {name: "submarinerocks", url: "../assets/svgs/submarine-rocks.svg", x:4148, y:6790, scale: 4}, 
-    {name: "island1", url: "../assets/svgs/island1.svg", x:7137, y:1631, scale: 4}, 
-    {name: "garbagecarpet", url: "../assets/svgs/garbage-carpet.svg", x:3568, y:1672, scale: 4}, 
-    {name: "boat", url: "../assets/svgs/boat.svg", x:1339, y:1209, scale: 4}, 
-    {name: "fishnet", url: "../assets/svgs/fish-net.svg", x:1837, y:2356, scale: 4}, 
-    {name: "deepseamining", url: "../assets/svgs/deep-sea-mining.svg", x:1298, y:5053, scale: 4}, 
-    {name: "microplastic", url: "../assets/svgs/microplastic.svg", x:5116, y:3934, scale: 4},
+    {name: "sewageisland", url: "assets/svgs/sewage-island.svg", x:5815, y:1482, scale: 4}, 
+    {name: "sewage", url: "assets/svgs/sewage.svg", x:5665, y:1932, scale: 4}, 
+    {name: "submarine", url: "assets/svgs/submarine.svg", x:4917, y:6020, scale: 4}, 
+    {name: "submarinerocks", url: "assets/svgs/submarine-rocks.svg", x:4148, y:6790, scale: 4}, 
+    {name: "island1", url: "assets/svgs/island1.svg", x:7137, y:1631, scale: 4}, 
+    {name: "garbagecarpet", url: "assets/svgs/garbage-carpet.svg", x:3568, y:1672, scale: 4}, 
+    {name: "boat", url: "assets/svgs/boat.svg", x:1339, y:1209, scale: 4}, 
+    {name: "fishnet", url: "assets/svgs/fish-net.svg", x:1837, y:2356, scale: 4}, 
+    {name: "deepseamining", url: "assets/svgs/deep-sea-mining.svg", x:1298, y:5053, scale: 4}, 
+    {name: "microplastic", url: "assets/svgs/microplastic.svg", x:5116, y:3934, scale: 4},
 ]
 
 let buttons = [
