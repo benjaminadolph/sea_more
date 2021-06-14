@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 const io = require('socket.io')(app.listen(port));
 
 app.use('/', indexRoute);
+console.log(path.dirname(require.main.filename))
 app.use(express.static(path.dirname(require.main.filename) + '/public'));
 app.set('view engine', 'ejs');
 

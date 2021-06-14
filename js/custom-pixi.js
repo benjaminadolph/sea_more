@@ -39,46 +39,46 @@ const viewport = app.stage.addChild(new Viewport({
 }))
 
 let content = [
-    {name: "sewageisland", url: "assets/svgs/sewage-island.svg", x:5815, y:1482, scale: 4}, 
-    {name: "sewage", url: "assets/svgs/sewage.svg", x:5665, y:1932, scale: 4}, 
-    {name: "submarine", url: "assets/svgs/submarine.svg", x:4917, y:6020, scale: 4}, 
-    {name: "submarinerocks", url: "assets/svgs/submarine-rocks.svg", x:4148, y:6790, scale: 4}, 
-    {name: "island1", url: "assets/svgs/island1.svg", x:7137, y:1631, scale: 4}, 
-    {name: "garbagecarpet", url: "assets/svgs/garbage-carpet.svg", x:3568, y:1672, scale: 4}, 
-    {name: "boat", url: "assets/svgs/boat.svg", x:1339, y:1209, scale: 4}, 
-    {name: "fishnet", url: "assets/svgs/fish-net.svg", x:1837, y:2356, scale: 4}, 
-    {name: "deepseamining", url: "assets/svgs/deep-sea-mining.svg", x:1298, y:5053, scale: 4}, 
-    {name: "microplastic", url: "assets/svgs/microplastic.svg", x:5116, y:3934, scale: 4},
+    {name: "sewageisland", url: "assets/SVGs/sewage-island.svg", x:5815, y:1482, scale: 4}, 
+    {name: "sewage", url: "assets/SVGs/sewage.svg", x:5665, y:1932, scale: 4}, 
+    {name: "submarine", url: "assets/SVGs/submarine.svg", x:4917, y:6020, scale: 4}, 
+    {name: "submarinerocks", url: "assets/SVGs/submarine-rocks.svg", x:4148, y:6790, scale: 4}, 
+    {name: "island1", url: "assets/SVGs/island1.svg", x:7137, y:1631, scale: 4}, 
+    {name: "garbagecarpet", url: "assets/SVGs/garbage-carpet.svg", x:3568, y:1672, scale: 4}, 
+    {name: "boat", url: "assets/SVGs/boat.svg", x:1339, y:1209, scale: 4}, 
+    {name: "fishnet", url: "assets/SVGs/fish-net.svg", x:1837, y:2356, scale: 4}, 
+    {name: "deepseamining", url: "assets/SVGs/deep-sea-mining.svg", x:1298, y:5053, scale: 4}, 
+    {name: "microplastic", url: "assets/SVGs/microplastic.svg", x:5116, y:3934, scale: 4},
 ]
 
 let buttons = [
-    {name: "buttonsewage", url: "assets/svgs/marker.svg", x:5815, y:1482, scale: 1, content: "sewage"},
-    {name: "buttonsubmarine", url: "assets/svgs/marker.svg", x:4917, y:6020, scale: 1, content: "shipwrecks"},
-    {name: "buttongarbagecarpet", url: "assets/svgs/marker.svg", x:3568, y:1672,  scale: 1, content: "fishernets"},
-    {name: "buttonboat", url: "assets/svgs/marker.svg", x:1339, y:1209, scale: 1, content: "overfishing"},
-    {name: "buttondeepseamining", url: "assets/svgs/marker.svg", x:1298, y:5053, scale: 1, content: "deep-sea-mining"},
-    {name: "buttonmicroplastic", url: "assets/svgs/marker.svg", x:5116, y:3934, scale: 1, content: "microplastic"},
+    {name: "buttonsewage", url: "assets/SVGs/marker.svg", x:5815, y:1482, scale: 1, content: "sewage"},
+    {name: "buttonsubmarine", url: "assets/SVGs/marker.svg", x:4917, y:6020, scale: 1, content: "shipwrecks"},
+    {name: "buttongarbagecarpet", url: "assets/SVGs/marker.svg", x:3568, y:1672,  scale: 1, content: "fishernets"},
+    {name: "buttonboat", url: "assets/SVGs/marker.svg", x:1339, y:1209, scale: 1, content: "overfishing"},
+    {name: "buttondeepseamining", url: "assets/SVGs/marker.svg", x:1298, y:5053, scale: 1, content: "deep-sea-mining"},
+    {name: "buttonmicroplastic", url: "assets/SVGs/marker.svg", x:5116, y:3934, scale: 1, content: "microplastic"},
 ]
 
 let coins = [
-    {name: "coin1", url: "assets/svgs/coin.svg", x:5077, y:6350, scale: 2, content: "submarine"},
-    {name: "coin2", url: "assets/svgs/coin.svg", x:1739, y:1279, scale: 2, content: "boat"},
-    {name: "coin3", url: "assets/svgs/coin.svg", x:1838, y:5493, scale: 2, content: "deepseamining"},
-    {name: "coin4", url: "assets/svgs/coin.svg", x:3077, y:6350, scale: 2, content: "xy"},
-    {name: "coin5", url: "assets/svgs/coin.svg", x:2739, y:1279, scale: 2, content: "xyz"},
+    {name: "coin1", url: "assets/SVGs/coin.svg", x:5077, y:6350, scale: 2, content: "submarine"},
+    {name: "coin2", url: "assets/SVGs/coin.svg", x:1739, y:1279, scale: 2, content: "boat"},
+    {name: "coin3", url: "assets/SVGs/coin.svg", x:1838, y:5493, scale: 2, content: "deepseamining"},
+    {name: "coin4", url: "assets/SVGs/coin.svg", x:3077, y:6350, scale: 2, content: "xy"},
+    {name: "coin5", url: "assets/SVGs/coin.svg", x:2739, y:1279, scale: 2, content: "xyz"},
 ]
 
 let loader = PIXI.Loader.shared
 
 loader.add("bg", "assets/background.jpg")
-loader.add("turtle", "assets/svgs/turtle.svg", { 
+loader.add("turtle", "assets/SVGs/turtle.svg", { 
     metadata: {
         resourceOptions: {
             scale: 4
         }
     }
 });
-loader.add("superturtle", "assets/svgs/superturtle.svg", { 
+loader.add("superturtle", "assets/SVGs/superturtle.svg", { 
     metadata: {
         resourceOptions: {
             scale: 4
