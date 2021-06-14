@@ -1,12 +1,15 @@
 {
+  "name": "seamore",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --watch",
-    "serve": "nodemon server.js"
+    "serve": "nodemon app.js"
   },
   "author": "Benjamin Adolph",
   "repository": "",
-  "license": "ISC",
+  "engines": {
+    "node": "14.16.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/preset-env": "^7.14.1",
