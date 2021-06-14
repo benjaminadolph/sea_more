@@ -39,3 +39,8 @@ If the installation was successful, you should be able to run the following comm
 
     $ npm run build
 
+# Heroku
+
+## Push Branch to heroku
+$ git push heroku yourlocalbranch:master
+
