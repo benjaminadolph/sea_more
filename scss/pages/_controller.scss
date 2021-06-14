@@ -1,12 +1,21 @@
-/* body {
+body {
     overflow: hidden;
-} */
+} 
 
 .controller-content {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
+
+    #clickBtn{
+        @include button;
+        position: absolute;
+        bottom: 10vh;
+        width: 183px;
+        height: 40px;
+    }
 }
 
 .logo {

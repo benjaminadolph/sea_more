@@ -18,6 +18,7 @@ let turtle_sprite, turtle_texture;
 let cointerCounter = 0;
 
 window.tapButton = false;
+window.showInfopage = false;
 
 const app = new PIXI.Application({
     view: canvas,
@@ -192,19 +193,23 @@ function handleLoadComplete(){
         x: 500, duration: 2, repeat: -1, yoyo: true,
     }); */
 }
-/* let delta = 0 */
+
+let delta = 0
 
 function intersectInfoBtn() {
     for(let i = 0; i < buttons.length; i++) {
         var btn = buttons[i].spriteRef.getBounds();
         var trtl = turtle_sprite.getBounds();
         if(btn.x + btn.width > trtl.x && btn.x < trtl.x + trtl.width && btn.y + btn.height > trtl.y && btn.y < trtl.y + trtl.height){
-            /* delta += 0.1
+            delta += 0.1
             buttons[i].spriteRef.width = buttons[i].spriteRef.width + Math.sin(delta) *1
-            buttons[i].spriteRef.height = buttons[i].spriteRef.height + Math.sin(delta) *1 */
-            touchInfoBtn(buttons[i].content)
-            tapButton = false;
-            return true;
+            buttons[i].spriteRef.height = buttons[i].spriteRef.height + Math.sin(delta) *1
+            if(tapButton){
+                touchInfoBtn(buttons[i].content)
+                showInfopage = true;
+                tapButton = false;
+                return true;
+            }
         }
     } 
 } 
@@ -214,9 +219,14 @@ function intersectCoin() {
         var coin = coins[i].spriteRef.getBounds();
         var trtl = turtle_sprite.getBounds();
         if(coin.x + coin.width > trtl.x && coin.x < trtl.x + trtl.width && coin.y + coin.height > trtl.y && coin.y < trtl.y + trtl.height){
-            touchCoin(coins[i])
-            tapButton = false;
-            return true;
+            delta += 0.1
+            coins[i].spriteRef.width = coins[i].spriteRef.width + Math.sin(delta) *1
+            coins[i].spriteRef.height = coins[i].spriteRef.height + Math.sin(delta) *1
+            if(tapButton){
+                touchCoin(coins[i])
+                tapButton = false;
+                return true;
+            }
         }
     } 
 }
@@ -268,16 +278,28 @@ function animate() {
         turtle_sprite.texture = turtle_texture;
     }
 
-    if(tapButton){
+    /* if(tapButton){
         intersectInfoBtn()
         intersectCoin()
-    }
+    } */
     
+    if(!showInfopage){
+        intersectInfoBtn()
+        intersectCoin()
+    }else if (tapButton && showInfopage){
+        $('.infopage').remove();
+        showInfopage = false;
+        tapButton = false;
+    }
 }
 
 window.moveViewport = function(directions){
-    viewport.position.x = viewport.position.x - (directions.x/10)
-    viewport.position.y = viewport.position.y - (directions.y/10)
+    if (document.getElementById("infopages").querySelector(".infopage")) {
+        window.scrollTo(window.scrollX, window.scrollY + directions.y/10);
+    } else {
+        viewport.position.x = viewport.position.x - (directions.x/10)
+        viewport.position.y = viewport.position.y - (directions.y/10)
+    }
 } 
 
 window.addTurtle = function() {

@@ -25,10 +25,10 @@ io.on('connection', function(socket) {
       socket.broadcast.to(roomid).emit('canvasMoveViewport', {session_id: socket.id, direction: data });
     });
 
-    socket.on('dblclickJoystick', function(data){
-      socket.broadcast.to(roomid).emit('canvasDblClickButton', {session_id: socket.id, clicked: data });
+    socket.on('clickObject', function(data){
+      socket.broadcast.to(roomid).emit('emitClick', {session_id: socket.id, clicked: data });
     });
-    
+
   });
 });
 
