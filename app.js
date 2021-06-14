@@ -7,10 +7,9 @@ app.use(express.json());
 const port = process.env.PORT || 3000;
 const io = require('socket.io')(app.listen(port));
 
-app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use('/', indexRoute);
-
+app.set('view engine', 'ejs');
 
 io.on('connection', function(socket) {
   socket.on('join-room', function (roomid) {
