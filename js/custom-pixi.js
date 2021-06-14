@@ -39,8 +39,8 @@ const viewport = app.stage.addChild(new Viewport({
 }))
 
 let content = [
-    {name: "sewageisland", url: "assets/svgs/sewage-island.svg", x:5815, y:1482, scale: 4}, 
-    {name: "sewage", url: "assets/svgs/sewage.svg", x:5665, y:1932, scale: 4}, 
+    {name: "sewageisland", url: "../assets/svgs/sewage-island.svg", x:5815, y:1482, scale: 4}, 
+    {name: "sewage", url: "../assets/svgs/sewage.svg", x:5665, y:1932, scale: 4}, 
     {name: "submarine", url: "assets/svgs/submarine.svg", x:4917, y:6020, scale: 4}, 
     {name: "submarinerocks", url: "assets/svgs/submarine-rocks.svg", x:4148, y:6790, scale: 4}, 
     {name: "island1", url: "assets/svgs/island1.svg", x:7137, y:1631, scale: 4}, 
