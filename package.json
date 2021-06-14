@@ -3,7 +3,8 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "watch": "webpack --watch",
-    "serve": "nodemon app.js"
+    "serve": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "Benjamin Adolph",
   "repository": "",
