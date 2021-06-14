@@ -5,8 +5,17 @@ const roomid = getLastItem(location.pathname);
 socket.emit('join-room', roomid);
 
 const joystick = createJoystick(window.document.getElementById('controller'));
+const clickBtn = window.document.getElementById('clickBtn');
+clickBtn.addEventListener('click', toggleBtn)
 
 let tapButton;
+
+function toggleBtn(){
+    tapButton = true
+    socket.emit('clickObject', tapButton);
+    tapButton = false
+    console.log("toggle")
+}
 
 function createJoystick(parent) {
     const maxDiff = 100;
@@ -15,12 +24,11 @@ function createJoystick(parent) {
     stick.classList.add('controller-inner');
   
     stick.addEventListener('mousedown', handleMouseDown);
-    stick.addEventListener('dblclick', handleDoubleClick);
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
     
     stick.addEventListener('touchstart', handleMouseDown, {passive: false});
-    stick.addEventListener('touchend', handleDoubleTouch)
+  /*   document.addEventListener('touchstart', handleDoubleTouch, {passive: false}) */
     document.addEventListener('touchmove', handleMouseMove, {passive: false});
     document.addEventListener('touchend', handleMouseUp, {passive: false});
     
@@ -29,33 +37,23 @@ function createJoystick(parent) {
     let currentPos = { x: 0, y: 0 };
     let emitTimer;
 
-    var timeout;
-    var lastTap = 0;
+   /*  let timeout;
+    let lastTap = 0;
 
     function handleDoubleTouch(event) {
-        console.log("handleDoubleTouch")
-        var currentTime = new Date().getTime();
-        var tapLength = currentTime - lastTap;
+        console.log("event")
+        let currentTime = new Date().getTime();
+        let tapLength = currentTime - lastTap;
         clearTimeout(timeout);
         if (tapLength < 500 && tapLength > 0) {
-            console.log("DoubleTap")
+            console.log("doubletouch")
             tapButton = true
-            socket.emit('dblclickJoystick', tapButton);
+            socket.emit('clickObject', tapButton);
             tapButton = false
             event.preventDefault();
-        } /* else {
-            timeout = setTimeout(function() {
-                console.log("SingleTap")
-                clearTimeout(timeout);
-            }, 200);
-        } */
+        }
         lastTap = currentTime;
-    };
-
-    function handleDoubleClick(){
-        console.log("doubleclick")
-        
-    };
+    }; */
   
     function handleMouseDown(event) {
         stick.style.transition = '0s';
@@ -77,7 +75,9 @@ function createJoystick(parent) {
     }
 
     function handleMouseMove(event) {
-        if (dragStart === null) return;
+        if (dragStart === null) {
+            return;
+        } 
         event.preventDefault();
         if (event.changedTouches) {
             event.clientX = event.changedTouches[0].clientX;
@@ -94,7 +94,10 @@ function createJoystick(parent) {
     }
   
     function handleMouseUp(event) {
-      if (dragStart === null) return;
+      if (dragStart === null) {
+          
+        return;
+      } 
       stick.style.transition = '.2s';
       stick.style.transform = `translate3d(0px, 0px, 0px)`;
       dragStart = null;
