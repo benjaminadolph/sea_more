@@ -8,40 +8,42 @@ gsap.registerPlugin(ScrollTrigger);
 window.infopage = (function ($) {
 
 	function init() {
-        if ($(window).width() > 850){
-            parallax();
-        }
         
         $('.infopage .close-icon').on('click', function() {
             $('.infopage').remove();
         }); 
 
+        if ($(window).width() > 850){
+            parallax();
+        }
+
         moveBottomWave();
     
         resizeBottomLineSvg();
+        setMiddleAfter();
+
         $( window ).resize(function() {
             resizeBottomLineSvg();
-        });
 
-        gsap.from(".bottom-info-line", {
-            duration:2,
-            scrollTrigger: {
-                trigger: ".wave",
-            }, 
-            motionPath: {
-                path: "#bottom-line-path",
-                align: "#bottom-line-path",
-                alignOrigin: [0.5, 0.5],
-                autoRotate: false,
-                start: 0.25,
+            if ($('.middle').height() < $(window).height() + 30 && $('.after-element').length) {
+                $('.middle .after-element').height(($(window).height() - $('.middle').height()) + ($(window).height() * 0.5));
             }
         });
 	}
 
+    function setMiddleAfter() {
+        setTimeout(function() {
+            if ($('.middle').height() < $(window).height() + 30 && $('.after-element').length) {
+                $('.middle .after-element').height(($(window).height() - $('.middle').height()) + ($(window).height() * 0.5));
+            }
+        }, 1000);
+    }
+
     function resizeBottomLineSvg() {
-        var $svg = $('.bottom-info-line');
+        var $svg = $('#bottom-info-line');
         $svg.attr({
-            width: $(window).width()
+            width: $(window).width(),
+            height: (769 / 1442) * $(window).width()
         });
     }
 

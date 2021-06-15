@@ -43,7 +43,6 @@ window.menu = (function ($) {
     gsap.to('#wave-path', {
       duration: 3,
       attr: { d: `${$('#wave-path').data('to')}` },
-      // ease: Power4.easeOut,
     });
 
     gsap.to('.shell-content', { x: 0, opacity: 1, delay: 1.2 });
@@ -56,7 +55,6 @@ window.menu = (function ($) {
       duration: 2,
       attr: { d: `${$('#wave-path').data('from')}` },
       delay: 0.3,
-      // ease: Power4.easeOut,
     });
     gsap.to('#nav', {
       y: '-100vh',
