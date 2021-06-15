@@ -10,12 +10,12 @@
       <h1>Überfischung</h1>
       <div class="video">
         <iframe
-          src="https://www.youtube.com/embed/rA82_3O2lD8?autoplay=0&showinfo=0&controls=1"
+          src="https://www.youtube-nocookie.com/embed/rFLBv9XrmG4?controls=0"
+          title="YouTube video player"
           frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        >
-        </iframe>
+        ></iframe>
         <%- include ('../partials/video-loading-animation') %>
       </div>
     </div>
@@ -45,41 +45,82 @@
       <h2 class="headline">Was kann ich unternehmen?</h2>
     </div>
     <div class="bottom-info">
-      <svg width="1442px" height="769px" id="bottom-info-line" viewBox="0 0 1442 769" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg
+        width="1442px"
+        height="769px"
+        id="bottom-info-line"
+        viewBox="0 0 1442 769"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="bottom-line">
-              <%- include ('../partials/bottom-line-path'); %>
-              <g id="Button-first" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 22, cy: 22.5}); %>
-                  <text class="svg-bottom-text" fill="currentColor">
-                    <tspan x="60" y="16">Konsumiere keine Meerestiere </tspan>
-                    <tspan x="60" y="36">oder versuche deinen </tspan>
-                    <tspan x="60" y="56">Konsum zu verringern.</tspan>
-                  </text>
-                </g>
-                <g id="Button-second" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 330, cy: 38.5}); %>
-                  <text class="svg-bottom-text" fill="currentColor">
-                      <tspan x="10" y="45">Wenn du Meeresfrüchte kaufst, </tspan>
-                      <tspan x="10" y="65">achte darauf, dass sie <a href="https://www.lebensmittelklarheit.de/informationen/msc-siegel-fuer-nachhaltige-fischerei" target="_blank" >zertifiziert sind</a>.</tspan>
-                  </text>
-                </g>
-                <g id="Button-third" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx:22, cy:79.5}); %>
-                  <text class="svg-bottom-text" fill="currentColor">
-                      <tspan x="67" y="16">Mittlerweile gibt es schon viele </tspan>
-                      <tspan x="67" y="35">Alternativen: Konsumiere lieber Omega-3</tspan>
-                      <tspan x="67" y="54">aus <a href="https://www.smarticular.net/omega-3-fettsaeuren-vegan-versorgt-alpha-linolensaeure-leinoel-algen/" target="_blank">pflanzlichen Quellen</a>, z.B. aus Algen.</tspan>
-                  </text>
-                </g>
-                <g id="Button-fourth" class="bottom-info-button" >
-                  <%- include('../partials/bottom-line-button', {cx:319, cy:32.5}); %>
-                  <text class="svg-bottom-text" fill="currentColor">
-                      <tspan x="0" y="16">Vermeide es, Fischarten zu essen, </tspan>
-                      <tspan x="0" y="36">die <a href="https://www.bussgeldkatalog.org/tierschutz-fische/" target="_blank" >vom Aussterben bedroht sind</a>.</tspan>
-                  </text>
-              </g>
+          <g id="bottom-line">
+            <%- include ('../partials/bottom-line-path'); %>
+            <g id="Button-first" class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx: 22, cy: 22.5});
+              %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="60" y="16">Konsumiere keine Meerestiere</tspan>
+                <tspan x="60" y="36">oder versuche deinen</tspan>
+                <tspan x="60" y="56">Konsum zu verringern.</tspan>
+              </text>
             </g>
+            <g id="Button-second" class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx: 330, cy:
+              38.5}); %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="10" y="45">Wenn du Meeresfrüchte kaufst,</tspan>
+                <tspan x="10" y="65">
+                  achte darauf, dass sie
+                  <a
+                    href="https://www.lebensmittelklarheit.de/informationen/msc-siegel-fuer-nachhaltige-fischerei"
+                    target="_blank"
+                  >
+                    zertifiziert sind
+                  </a>
+                  .
+                </tspan>
+              </text>
+            </g>
+            <g id="Button-third" class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx:22, cy:79.5});
+              %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="67" y="16">Mittlerweile gibt es schon viele</tspan>
+                <tspan x="67" y="35">
+                  Alternativen: Konsumiere lieber Omega-3
+                </tspan>
+                <tspan x="67" y="54">
+                  aus
+                  <a
+                    href="https://www.smarticular.net/omega-3-fettsaeuren-vegan-versorgt-alpha-linolensaeure-leinoel-algen/"
+                    target="_blank"
+                  >
+                    pflanzlichen Quellen
+                  </a>
+                  , z.B. aus Algen.
+                </tspan>
+              </text>
+            </g>
+            <g id="Button-fourth" class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx:319, cy:32.5});
+              %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="0" y="16">Vermeide es, Fischarten zu essen,</tspan>
+                <tspan x="0" y="36">
+                  die
+                  <a
+                    href="https://www.bussgeldkatalog.org/tierschutz-fische/"
+                    target="_blank"
+                  >
+                    vom Aussterben bedroht sind
+                  </a>
+                  .
+                </tspan>
+              </text>
+            </g>
+          </g>
         </g>
       </svg>
     </div>
@@ -87,7 +128,15 @@
 
   <div class="background-elements">
     <div class="wave wave-first">
-      <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs></defs><path fill="currentColor" id="bottom-wave-path" d=""/></svg>
+      <svg
+        width="100%"
+        height="100%"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs></defs>
+        <path fill="currentColor" id="bottom-wave-path" d="" />
+      </svg>
     </div>
     <div class="background-element top">
       <img src="/assets/infopages/overfishing/top.png" />
