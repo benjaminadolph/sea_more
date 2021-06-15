@@ -1,14 +1,12 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
-gsap.registerPlugin(MotionPathPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 window.infopage = (function ($) {
 
 	function init() {
-        
+        // init clicks
         $('.infopage .close-icon').on('click', function() {
             $('.infopage').remove();
         }); 
@@ -19,32 +17,76 @@ window.infopage = (function ($) {
 
         moveBottomWave();
     
-        resizeBottomLineSvg();
-        setMiddleAfter();
+        setBottomInfoSvg();
+        // set timeout, so image is loaded
+        setTimeout(setMiddleAfter, 1000);
 
         $( window ).resize(function() {
-            resizeBottomLineSvg();
-
-            if ($('.middle').height() < $(window).height() + 30 && $('.after-element').length) {
-                $('.middle .after-element').height(($(window).height() - $('.middle').height()) + ($(window).height() * 0.5));
-            }
+            setBottomInfoSvg();
+            setMiddleAfter();
         });
 	}
 
     function setMiddleAfter() {
-        setTimeout(function() {
-            if ($('.middle').height() < $(window).height() + 30 && $('.after-element').length) {
-                $('.middle .after-element').height(($(window).height() - $('.middle').height()) + ($(window).height() * 0.5));
-            }
-        }, 1000);
+        if ($('.middle').height() < $(window).height() + 30 && $('.after-element').length) {
+            $('.middle .after-element').height(($(window).height() - $('.middle').height()) + ($(window).height() * 0.5));
+        }
     }
 
-    function resizeBottomLineSvg() {
+    function setBottomInfoSvg() {
         var $svg = $('#bottom-info-line');
-        $svg.attr({
-            width: $(window).width(),
-            height: (769 / 1442) * $(window).width()
-        });
+
+        if ($(window).width() > 860) {
+            $svg.removeAttr('viewBox');
+            $svg.each(function () { $(this)[0].setAttribute('viewBox', '0 0 1442 769') });
+            $svg.attr({
+                width: $(window).width(),
+                height: (769 / 1442) * $(window).width()
+            });
+
+            $('#Button-first').attr({
+                transform: "translate(280.000000, 181.000000)"
+            });
+
+            $('#Button-second').attr({
+                transform: "translate(515.000000, 340.000000)"
+            });
+
+            $('#Button-third').attr({
+                transform: "translate(988.000000, 426.000000)"
+            });
+
+            $('#Button-fourth').attr({
+                transform: "translate(868.000000, 663.000000)"
+            });
+
+        } else {
+            $svg.removeAttr('viewBox');
+            $svg.each(function () { $(this)[0].setAttribute('viewBox', '0 0 855 1219') });
+            $svg.attr({
+                width: $(window).width(),
+                height: (1219 / 855) * $(window).width(),
+            });
+
+            $('#Button-first').attr({
+                transform: "translate(260.000000, 498.000000)"
+            });
+
+            $('#Button-second').attr({
+                transform: "translate(30.000000, 631.000000)"
+            });
+
+            $('#Button-third').attr({
+                transform: "translate(440.000000, 779.000000)"
+            });
+
+            $('#Button-fourth').attr({
+                transform: "translate(110.000000, 934.000000)"
+            });
+
+
+        }
+        
     }
 
     function parallax() {
