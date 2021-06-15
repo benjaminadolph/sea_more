@@ -65,8 +65,6 @@ $(function() {
     });
     
     // set wave width and height (to work in chrome)
-    
-
     function resizeMenuWave() {
         var $wave = $('.svg-wave');
         var $waveHeight = (3067/2623)* $(window).width();

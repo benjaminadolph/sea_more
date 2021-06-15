@@ -45,7 +45,8 @@
     </div>
     <div class="bottom-info">
       <svg
-        width="1442px"
+        width="100%"
+        id="bottom-info-line"
         height="769px"
         viewBox="0 0 1442 769"
         version="1.1"
@@ -61,7 +62,7 @@
         >
           <g id="bottom-line">
             <%- include ('../partials/bottom-line-path'); %>
-            <g id="Button-first" transform="translate(240.000000, 328.000000)">
+            <g class="bottom-line-info" transform="translate(240.000000, 328.000000)">
               <%- include('../partials/bottom-line-button', {cx: 152.435, cy: 22.5}); %>
               <text class="svg-bottom-text" fill="currentColor">
                 <tspan x="0" y="87">Starte eine Petition, z.B. für eine</tspan>
@@ -70,7 +71,7 @@
                 <tspan x="0" y="144">um auf die Regierung Druck auszuüben.</tspan>
               </text>
             </g>
-            <g id="Button-second" transform="translate(721.000000, 264.000000)">
+            <g class="bottom-line-info" transform="translate(721.000000, 264.000000)">
               <%- include('../partials/bottom-line-button', {cx: 23.087, cy: 101.5}); %>
               <text class="svg-bottom-text" fill="currentColor">
                 <tspan x="0" y="16">Wähle Parteien, die sich für</tspan>
