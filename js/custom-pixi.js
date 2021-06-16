@@ -49,6 +49,16 @@ let content = [
     {name: "fishnet", url: "assets/SVGs/fish-net.svg", x:1837, y:2356, scale: 4}, 
     {name: "deepseamining", url: "assets/SVGs/deep-sea-mining.svg", x:1298, y:5053, scale: 4}, 
     {name: "microplastic", url: "assets/SVGs/microplastic.svg", x:5116, y:3934, scale: 4},
+    {name: "whale", url: "assets/SVGs/whale.svg", x: 6868, y: 5168, scale: 4},
+    {name: "starfish", url: "assets/SVGs/starfish.svg", x: 4654, y: 5996, scale: 4},
+    {name: "seaweed", url: "assets/SVGs/seaweed.svg", x: 3773, y: 5920, scale: 4},
+    {name: "jellyfish", url: "assets/SVGs/jellyfish.svg", x: 3683, y: 3592, scale: 4},
+    {name: "humanwateringcan", url: "assets/SVGs/human-wateringcan.svg", x: 6816, y: 1293, scale: 4},
+    {name: "humanunderwater", url: "assets/SVGs/human-under-water.svg", x: 2326, y: 4876, scale: 4},
+    {name: "humanonisland", url: "assets/SVGs/human-on-island.svg", x: 5346, y: 1339, scale: 4},
+    {name: "humanonboat", url: "assets/SVGs/human-on-boat.svg", x: 1144, y: 1216, scale: 4},
+    {name: "anchor", url: "assets/SVGs/anchor.svg", x: 907, y: 6414, scale: 4},
+    {name: "corals", url:" assets/SVGs/corals.svg", x: 4020, y: 6842, scale: 4},
 ]
 
 let buttons = [
