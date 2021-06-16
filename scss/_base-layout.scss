@@ -22,7 +22,7 @@ h4 {
     @include headline-l;
 }
 
-h1 {
+h1, .headline {
     @include headline-l;
 }
 
@@ -38,7 +38,7 @@ a {
     position: fixed;
     left: 25px;
     top: 22px;
-    z-index: 200;
+    z-index: 2000;
 }
 
 .close-icon {
@@ -67,6 +67,14 @@ a {
     left: 25px;
     z-index: 100;
     width: 45px;
+}
+
+#imprint, #privacy {
+    background: linear-gradient(180deg, #86B8E7 0%, #2168B6 100%);
+
+    .content {
+        padding-top: 100px;
+    }
 }
 
 section {

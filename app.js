@@ -50,6 +50,17 @@ const infopages = [
 
 infopages.forEach(function(page) {
   app.get(page, function (req, res) { 
-    res.render(`infopages${page}`);
+    res.render(`infopages${page}`, {
+      cx: 0,
+      cy: 0,
+    });
   });
+});
+
+app.get('/impressum', function (req, res) { 
+  res.render('impressum');
+});
+
+app.get('/datenschutz', function (req, res) { 
+  res.render('datenschutz');
 });

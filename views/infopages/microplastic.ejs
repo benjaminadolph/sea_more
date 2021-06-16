@@ -7,17 +7,17 @@
 
   <div class="grid-container">
     <div class="video-container section active">
+      <h1>Mikroplastik</h1>
       <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/rA82_3O2lD8?autoplay=0&showinfo=0&controls=1"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        >
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/4m_-qiENRTM?controls=0" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
         </iframe>
         <%- include ('../partials/video-loading-animation') %>
       </div>
-      <h1>Mikroplastik</h1>
     </div>
 
     <div class="facts section text-right">
@@ -40,34 +40,80 @@
         </p>
       </div>
     </div>
+  </div>
 
-    <div class="action section">
-      <div class="text">
-        <h1 class="headline">Was kann ich unternehmen?</h1>
-        <p>
-          Keine Unternehmen unterstützen, die von Tiefseebergbau profitieren,
-          oder selbst betreiben
-        </p>
-        <p>
-          Unternehmen können ein Formular ausfüllen, welches einen globales
-          Moratorium für den Tiefseebergbau
-        </p>
-        <p>
-          Weniger konsumieren, nach dem Prinzip: refuse, reduce, reuse, recycle,
-          rot
-        </p>
-      </div>
+  <div class="action section">
+    <div class="text grid-container">
+      <h2 class="headline">Was kann ich unternehmen?</h2>
+    </div>
+    <div class="bottom-info">
+      <svg
+        width="1442px"
+        height="769px"
+        id="bottom-info-line"
+        viewBox="0 0 1442 769"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <g
+          stroke="none"
+          stroke-width="1"
+          fill="none"
+          fill-rule="evenodd"
+        >
+          <g id="bottom-line">
+            <%- include ('../partials/bottom-line-path'); %>
+            <g id="Button-first"  class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx: 22, cy: 22.5}); %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="60" y="16">Wasche deine Kleidung immer in</tspan>
+                <tspan x="60" y="36">einer vollen Waschmaschine.</tspan>
+                <tspan x="60" y="56">Dadurch kannst du die Anzahl an</tspan>
+                <tspan x="60" y="76">Mikroplastikpartikeln verringern.</tspan>
+              </text>
+            </g>
+            <g id="Button-second" class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx: 330, cy: 38.5}); %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="10" y="45">Mach bei <a href="https://www.trashbusters.de/aktionswochen/" target="_blank">Müllsammelaktionen</a> mit.</tspan>
+                <tspan x="10" y="65">In vielen Orten und Städten gibt</tspan>
+                <tspan x="10" y="85">es Aufrufe, sich an der Beseitigung</tspan>
+                <tspan x="10" y="105">von Müll aus der Landschaft zu beteiligen.</tspan>
+              </text>
+            </g>
+            <g id="Button-third" class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx:22, cy:79.5}); %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="67" y="16">Achte darauf, dass du deine Produkte oder</tspan>
+                <tspan x="67" y="35">Kleidung möglichst lange verwendest,</tspan>
+                <tspan x="67" y="54">bevor du sie <a href="https://www.resorti.de/blog/altkleiderentsorgung/" target="_blank" >sachgerecht entsorgst</a>.</tspan>
+              </text>
+            </g>
+            <g id="Button-fourth" class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx:319, cy:32.5}); %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="0" y="16">Verzichte auf Kosmetika mit</tspan>
+                <tspan x="0" y="36"><a href="https://www.umweltbundesamt.de/themen/mikroplastik-in-kosmetika-was-ist-das" target="_blank" >Mikroplastikpartikeln</a> und nutze</tspan>
+                <tspan x="0" y="56">Alternativen wie z.B. <a href="https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/produkte/was-ist-naturkosmetik-26394" target="_blank" >zertifizierte</a> </tspan>
+                <tspan x="0" y="76"><a href="https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/produkte/was-ist-naturkosmetik-26394" target="_blank" ></a>Naturkosmetik.</a></tspan>
+              </text>
+            </g>
+          </g>
+        </g>
+      </svg>
     </div>
   </div>
 
   <div class="background-elements">
-    <div class="wave wave-first"></div>
-    <div class="wave wave-second"></div>
+    <div class="wave wave-first">
+      <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs></defs><path fill="currentColor" id="bottom-wave-path" d=""/></svg>
+    </div>
     <div class="background-element top"></div>
     <div class="background-element middle">
       <img src="/assets/infopages/microplastic/middle.png" />
     </div>
-    <div class="background-element bottom">
+    <div class="background-element bottom left">
       <img src="/assets/infopages/microplastic/bottom.png" />
     </div>
   </div>

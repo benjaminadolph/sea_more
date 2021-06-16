@@ -3,11 +3,10 @@ import { Power4, Power2 } from 'gsap';
 
 window.menu = (function ($) {
   function init() {
-    
-	setCharsToSpan();
+    setCharsToSpan();
 
     $('.menu-button.menu-icon').on('click', function () {
-		openNavigation();
+      openNavigation();
     });
 
     $('.menu-button.close-icon').on('click', function () {
@@ -23,10 +22,25 @@ window.menu = (function ($) {
     $charElement.on('mouseleave', function () {
       groundWaveAnimation();
     });
+    // set wave width and height (to work in chrome)
+    function resizeMenuWave() {
+      var $wave = $('.svg-wave');
+      var $waveHeight = (3067/2623)* $(window).width();
+      $wave.attr({
+          width: $(window).width(),
+          height: $waveHeight
+      });
+    }
+
+    resizeMenuWave();
+    
+    $( window ).resize(function() {
+        resizeMenuWave();
+    });
   }
 
   function setCharsToSpan() {
-	var $menuElements = $('#nav').find('.menu-item');
+    var $menuElements = $('#nav').find('.menu-item');
 
     // set chars to span to create wave animation
     $menuElements.each(function () {
@@ -39,29 +53,32 @@ window.menu = (function ($) {
   }
 
   function openNavigation() {
-	gsap.to('#nav', { y: 0, ease: Power4.easeInOut, duration: 2 });
+    gsap.to('#nav', { y: 0, ease: Power4.easeInOut, duration: 2 });
 
-	gsap.to('#wave-path', {
-		duration: 3,
-		attr: { d: `${$('#wave-path').data('to')}` },
-		// ease: Power4.easeOut,
-	});
+    gsap.to('#wave-path', {
+      duration: 3,
+      attr: { d: `${$('#wave-path').data('to')}` },
+    });
 
-	gsap.to('.shell-content', { x: 0, opacity: 1, delay: 1.2 });
-	gsap.to('.footer-links', { opacity: 1, delay: 1.2 });
+    gsap.to('.shell-content', { x: 0, opacity: 1, delay: 1.2 });
+    gsap.to('.footer-links', { opacity: 1, delay: 1.2 });
   }
 
   function closeNavigation() {
-	// gsap.to('.shell-content', { x: 200 });
-	gsap.to('#wave-path', {
-        duration: 2,
-        attr: { d: `${$('#wave-path').data('from')}` },
-		delay: 0.3
-        // ease: Power4.easeOut,
-      });
-	gsap.to('#nav', { y: '-100vh', ease: Power4.easeInOut, duration: 3, delay: 0.3 });
-	gsap.to('.shell-content', { x: 200, opacity: 0 });
-	gsap.to('.footer-links', { opacity: 0 });
+    // gsap.to('.shell-content', { x: 200 });
+    gsap.to('#wave-path', {
+      duration: 2,
+      attr: { d: `${$('#wave-path').data('from')}` },
+      delay: 0.3,
+    });
+    gsap.to('#nav', {
+      y: '-100vh',
+      ease: Power4.easeInOut,
+      duration: 3,
+      delay: 0.3,
+    });
+    gsap.to('.shell-content', { x: 200, opacity: 0 });
+    gsap.to('.footer-links', { opacity: 0 });
   }
 
   function waveTextAnimation($element) {
@@ -77,24 +94,24 @@ window.menu = (function ($) {
       startPercent += 5;
       $prevElement = $prevElement.prev();
       $nextElement = $nextElement.next();
-	  if ($prevElement.length) {
-		gsap.to($prevElement, { yPercent: startPercent });
-	  }
-	  if ($nextElement.length) {
-		gsap.to($nextElement, { yPercent: startPercent });
-	  }
+      if ($prevElement.length) {
+        gsap.to($prevElement, { yPercent: startPercent });
+      }
+      if ($nextElement.length) {
+        gsap.to($nextElement, { yPercent: startPercent });
+      }
     }
   }
 
   function groundWaveAnimation() {
-	$('#nav ul').removeClass('hover');
+    $('#nav ul').removeClass('hover');
     $('#nav ul a').removeClass('active');
     gsap.to('.char', { yPercent: 0, ease: Power2.easeOut });
   }
 
   return {
     init: init,
-	closeNavigation: closeNavigation
+    closeNavigation: closeNavigation,
   };
 })(jQuery);
 

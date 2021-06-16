@@ -19,15 +19,8 @@
     }
 
     .video-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         position: relative;
-        flex-direction: column;
-
-        h1 {
-            align-self: flex-start;
-        }
+        padding-top: 95px;
 
         .video {
             position: relative;
@@ -49,6 +42,7 @@
     .facts { 
         display: flex;
         align-items: center;
+        min-height: 70vh;
 
         &.text-right {
             justify-content: flex-end;
@@ -56,12 +50,64 @@
 
         .text {
             width: 70%;
+
+            @media (max-width: 550px){
+                width: 100%;
+            }
         }
     }
 
     .action {
         .text {
-            padding-top: 20vh;
+            padding-top: 10vh;
+            z-index: 2;
+        }
+    }
+
+    .bottom-info {
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        width: 100%;
+
+        svg {
+            width: 100%;
+        }
+
+        .svg-bottom-text {
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 140%;
+            width: 100px;
+
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        @media (max-width: 860px) {
+            bottom: 0;
+
+            .mobile-bottom-line-path {
+                display: block;
+            }
+
+            .bottom-line-path {
+                display: none;
+            }
+        }
+
+        @media (min-width: 861px) {
+            bottom: 50px;
+
+            .mobile-bottom-line-path {
+                display: none;
+            }
+
+            .bottom-line-path {
+                display: block;
+            }
         }
     }
 }
@@ -129,14 +175,6 @@
 }
 
 
-/* layout */
-.base-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
-  }
-
 .background-elements {
     width: 100%;
     height: 100%;
@@ -157,6 +195,11 @@
         &.middle {
             top: 50vh;
             right: 0;
+
+            &.left {
+                right: auto;
+                left: 0;
+            }
         }
 
         &.bottom {
@@ -164,6 +207,18 @@
             left: 0;
             width: 100%;
             z-index: 1;
+
+            &.left {
+                width: auto;
+                max-width: 50vw;
+            }
+
+            &.right {
+                left: auto;
+                right: 0;
+                width: auto;
+                max-width: 50vw;
+            }
         }
 
         img {
@@ -199,11 +254,6 @@
             top: 60vh;
             right: auto;
         }
-        &.bottom {
-            right: 0;
-            left: auto;
-            width: auto;
-        }
     }
 }
 
@@ -220,6 +270,8 @@
         &.middle {
             top: 80vh;
             width: 100%;
+
+            @include after-infopage-background;
         }
     }
 }
@@ -235,13 +287,13 @@
         }
 
         &.middle {
-            top: 80vh;
+            top: 85vh;
             width: 100%;
+
+            @include after-infopage-background;
         }
 
         &.bottom {
-            right: 0;
-            left: auto;
             width: auto;
         }
     }
@@ -260,12 +312,8 @@
         &.middle {
             top: 80vh;
             width: 100%;
-        }
 
-        &.bottom {
-            right: 0;
-            left: auto;
-            width: auto;
+            @include after-infopage-background;
         }
     }
 }
@@ -276,78 +324,24 @@
         position: absolute;
         bottom: 0px;
         width: 7680px;
-        height: 90vh;
-        -webkit-animation: wave 20s cubic-bezier(.36,.45,.63,.53) infinite;
-        animation: wave 20s cubic-bezier(.36,.45,.63,.53) infinite;
+        height: 100vh;
         -webkit-transform: translate3d(0,0,0);
         transform: translate3d(0,0,0);
         z-index: 1;
-    }
-    
-    .wave-second {
-        left: -30px;
-        opacity: 0.5;
-        -webkit-animation: wave 25s cubic-bezier(.36,.45,.63,.53) infinite;
-        animation: wave 25s cubic-bezier(.36,.45,.63,.53) infinite;
-    }
-    
-    @media screen and (max-width: 600px) {
-        .wave {
-            top:-75px;
-            height: 75px
+
+        #bottom-wave-path {
+            color: $PRIMARY_COLOR;
         }
     }
-    
-    @-webkit-keyframes wave {
-        0% {
-            margin-left: 0
-        }
-    
-        100% {
-            margin-left: -1920px
-        }
-    }
-    
-    @keyframes wave {
-        0% {
-            margin-left: 0
-        }
-    
-        100% {
-            margin-left: -1920px
-        }
-    }
-    
-    @-webkit-keyframes swell {
-        0%,100% {
-            -webkit-transform: translate3d(0,-25px,0);
-            transform: translate3d(0,-25px,0)
-        }
-    
-        50% {
-            -webkit-transform: translate3d(0,5px,0);
-            transform: translate3d(0,5px,0)
-        }
-    }
-    
-    @keyframes swell {
-        0%,100% {
-            -webkit-transform: translate3d(0,-25px,0);
-            transform: translate3d(0,-25px,0)
-        }
-    
-        50% {
-            -webkit-transform: translate3d(0,5px,0);
-            transform: translate3d(0,5px,0)
-        }
-    }    
 }
 
 
 #sewage, #fishernets, #microplastic, #overfishing {
     .background-elements {
         .wave {
-            background: url('../assets/wave-bright.svg') repeat-x;
+            #bottom-wave-path {
+                color: #1056A4;
+            }
         }
     }
 }
@@ -355,30 +349,10 @@
 
 #deep-sea-mining, #shipwrecks {
     .background-elements {
-        .wave{
-            background: url('../assets/wave.svg') repeat-x;
+        .wave {
+            #bottom-wave-path {
+                color: #1F2642;
+            }
         }
     }
-}
-
-
-.layer-bg {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_bg.jpg');
-}
-.layer-1 {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_03.png');
-	background-position: left bottom;
-}
-.layer-2 {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_02.png');
-}
-.layer-3 {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_man.png');
-	background-position: right bottom;
-}
-.layer-4 {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_01.png');
-}
-.layer-overlay {
-	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/272781/ilu_overlay.png');
 }

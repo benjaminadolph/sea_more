@@ -7,17 +7,17 @@
 
   <div class="grid-container">
     <div class="video-container section active">
+      <h1>Schiffwracks</h1>
       <div class="video">
         <iframe
-          src="https://www.youtube.com/embed/rA82_3O2lD8?autoplay=0&showinfo=0&controls=1"
+          src="https://www.youtube-nocookie.com/embed/ww0HLaO5uyI?controls=0"
+          title="YouTube video player"
           frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
-        >
-        </iframe>
+        ></iframe>
         <%- include ('../partials/video-loading-animation') %>
       </div>
-      <h1>Schiffwracks</h1>
     </div>
 
     <div class="facts section text-right">
@@ -38,29 +38,67 @@
         </p>
       </div>
     </div>
-
-    <div class="action section">
-      <div class="text">
-        <h1 class="headline">Was kann ich unternehmen?</h1>
-        <p>
-          Keine Unternehmen unterstützen, die von Tiefseebergbau profitieren,
-          oder selbst betreiben
-        </p>
-        <p>
-          Unternehmen können ein Formular ausfüllen, welches einen globales
-          Moratorium für den Tiefseebergbau
-        </p>
-        <p>
-          Weniger konsumieren, nach dem Prinzip: refuse, reduce, reuse, recycle,
-          rot
-        </p>
-      </div>
+  </div>
+  <div class="action section">
+    <div class="text grid-container">
+      <h2 class="headline">Was kann ich unternehmen?</h2>
+    </div>
+    <div class="bottom-info">
+      <svg
+        width="100%"
+        id="bottom-info-line"
+        height="769px"
+        viewBox="0 0 1442 769"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+      >
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="bottom-line">
+            <%- include ('../partials/bottom-line-path'); %>
+            <g id="Button-first" class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx: 22, cy: 22.5});
+              %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="60" y="16">Starte eine Petition, z.B. für eine</tspan>
+                <tspan x="60" y="36">
+                  gesetzliche Grundlage eine verpflichtende
+                </tspan>
+                <tspan x="60" y="56">
+                  Bergung von Treibstoffresten festzulegen,
+                </tspan>
+                <tspan x="60" y="76">
+                  um auf die Regierung Druck auszuüben.
+                </tspan>
+              </text>
+            </g>
+            <g id="Button-second" class="bottom-info-button">
+              <%- include('../partials/bottom-line-button', {cx: 330, cy:
+              38.5}); %>
+              <text class="svg-bottom-text" fill="currentColor">
+                <tspan x="10" y="45">Wähle Parteien, die sich für</tspan>
+                <tspan x="10" y="65">den Schutz der Umwelt einsetzen</tspan>
+              </text>
+            </g>
+          </g>
+        </g>
+      </svg>
     </div>
   </div>
 
   <div class="background-elements">
-    <div class="wave wave-first"></div>
-    <div class="wave wave-second"></div>
+    <div class="wave wave-first">
+      <svg
+        width="100%"
+        height="100%"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs></defs>
+        <path fill="currentColor" id="bottom-wave-path" d="" />
+      </svg>
+    </div>
+    <!-- <div class="wave wave-second"></div> -->
     <div class="background-element top">
       <img src="/assets/infopages/shipwrecks/top.png" />
     </div>

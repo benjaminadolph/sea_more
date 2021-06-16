@@ -62,12 +62,5 @@ $(function() {
             $result.load(`/${page}`);
         });
     });
-    
-    // set wave width and height (to work in chrome)
-    var $wave = $('.svg-wave');
-    var $waveHeight = (3067/2623)* $(window).width();
-    $wave.attr({
-        width: $(window).width(),
-        height: $waveHeight
-    });
+
 });
