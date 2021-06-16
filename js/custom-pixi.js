@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { Viewport } from 'pixi-viewport'
+import { Emitter } from 'pixi-particles'
 import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin.js";
 
@@ -332,3 +333,104 @@ function handleLoadProgress(loader, resource){
     document.getElementById("loader-percentage").innerHTML = Math.round(loader.progress) + "% loaded";
     console.log(Math.round(loader.progress) + "% loaded", resource.name)
 }
+
+
+
+// Create a new emitter
+// note: if importing library like "import * as particles from 'pixi-particles'"
+// or "const particles = require('pixi-particles')", the PIXI namespace will
+// not be modified, and may not exist - use "new particles.Emitter()", or whatever
+// your imported namespace is
+var emitter = new Emitter(
+
+	// The PIXI.Container to put the emitter in
+	// if using blend modes, it's important to put this
+	// on top of a bitmap, and not use the root stage Container
+	viewport,
+
+	// The collection of particle images to use
+	[PIXI.Texture.from('assets/bubble.png')],
+
+	// Emitter configuration, edit this to change the look
+	// of the emitter
+	{
+        "alpha": {
+            "start": 1,
+            "end": 0.22
+        },
+        "scale": {
+            "start": 0.25,
+            "end": 0.5,
+            "minimumScaleMultiplier": 0.5
+        },
+        "color": {
+            "start": "#ffffff",
+            "end": "#ffffff"
+        },
+        "speed": {
+            "start": 200,
+            "end": 200,
+            "minimumSpeedMultiplier": 1
+        },
+        "acceleration": {
+            "x": 0,
+            "y": 0
+        },
+        "maxSpeed": 0,
+        "startRotation": {
+            "min": 260,
+            "max": 280
+        },
+        "noRotation": false,
+        "rotationSpeed": {
+            "min": 0,
+            "max": 50
+        },
+        "lifetime": {
+            "min": 3.5,
+            "max": 4
+        },
+        "blendMode": "normal",
+        "frequency": 0.016,
+        "emitterLifetime": -1,
+        "maxParticles": 500,
+        "pos": {
+            "x": 0,
+            "y": 0
+        },
+        "addAtBack": false,
+        "spawnType": "rect",
+        "spawnRect": {
+            "x": -0,
+            "y": 2500,
+            "w": 8090,
+            "h": 6627
+        }
+    }
+);
+
+// Calculate the current time
+var elapsed = Date.now();
+
+// Update function every frame
+var update = function(){
+
+	// Update the next frame
+	requestAnimationFrame(update);
+
+	var now = Date.now();
+
+	// The emitter requires the elapsed
+	// number of seconds since the last update
+	emitter.update((now - elapsed) * 0.001);
+	elapsed = now;
+
+	// Should re-render the PIXI Stage
+	// renderer.render(stage);
+};
+
+// Start emitting
+emitter.emit = true;
+
+// Start the update
+update();
