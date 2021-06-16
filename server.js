@@ -55,3 +55,11 @@ infopages.forEach(function(page) {
     });
   });
 });
+
+app.get('/impressum', function (req, res) { 
+  res.render('impressum');
+});
+
+app.get('/datenschutz', function (req, res) { 
+  res.render('datenschutz');
+});

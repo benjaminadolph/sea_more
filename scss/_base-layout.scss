@@ -69,6 +69,14 @@ a {
     width: 45px;
 }
 
+#imprint, #privacy {
+    background: linear-gradient(180deg, #86B8E7 0%, #2168B6 100%);
+
+    .content {
+        padding-top: 100px;
+    }
+}
+
 section {
     @include radialBackground;
 }
