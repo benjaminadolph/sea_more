@@ -1,5 +1,27 @@
+# GIT IGNORE FOR sea more
+*.DS_Store
+.DS_Store
 node_modules
 public/css/
 public/dist/
 
-*.DS_Store
+
+# local env files
+.env.local
+.env.*.local
+.env
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

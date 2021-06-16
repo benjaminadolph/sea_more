@@ -41,9 +41,8 @@ $(function() {
         moveViewport(data.direction)
     });
 
-    socket.on('canvasDblClickButton', function(data) {
+    socket.on('emitClick', function(data) {
         tapButton = data.clicked;
-        setTimeout(function(){ tapButton = false;}, 2000);
     });
 
     // rendering of infopages:

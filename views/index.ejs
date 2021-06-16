@@ -6,16 +6,6 @@
 
 <%- include ('partials/scripts') %>
 
-<style>
-    .pointer {
-        position: absolute;
-        background-image: url('assets/unicorn.png');
-        background-repeat: no-repeat; 
-        width: 240px;
-        height: 215px;
-    }
-</style>
-
 <body>
     <canvas id="mycanvas"></canvas>
     <div class="base">
@@ -30,8 +20,10 @@
 
     <%- include ('partials/navigation') %>
 
+    <%- include ('partials/loading-screen') %>
     <%- include ('partials/start-intro') %>
     <%- include ('partials/all-coins-collected') %>
+
 
     <script src="/dist/bundle.js"></script>
     <script src="/dist/menu.js"></script>
