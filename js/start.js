@@ -10,10 +10,15 @@ function randomString(length_) {
     return str;
 }
 
+const socket = io();
+// const roomid = randomString(21);
+const roomid = 'test';
+
+window.changeText = function(text) {
+    socket.emit('changeText', text);
+}
+
 $(function() {
-    const socket = io();
-    // const roomid = randomString(21);
-    const roomid = 'test';
     socket.emit('join-room', roomid);
     console.log(roomid);
 

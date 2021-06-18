@@ -30,6 +30,10 @@ io.on('connection', function(socket) {
       socket.broadcast.to(roomid).emit('emitClick', {session_id: socket.id, clicked: data });
     });
 
+    socket.on('changeText', function(data) {
+      socket.broadcast.to(roomid).emit('changeText', {session_id: socket.id, text: data });
+    });
+
   });
 });
 
