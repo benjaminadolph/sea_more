@@ -45,9 +45,13 @@ let content = [
     {name: "submarine", url: "assets/SVGs/submarine.svg", x:4917, y:6020, scale: 4}, 
     {name: "submarinerocks", url: "assets/SVGs/submarine-rocks.svg", x:4148, y:6790, scale: 4}, 
     {name: "island1", url: "assets/SVGs/island1.svg", x:7137, y:1631, scale: 4}, 
-    {name: "garbagecarpet", url: "assets/SVGs/garbage-carpet.svg", x:3568, y:1672, scale: 4}, 
+    /* {name: "garbagecarpet", url: "assets/SVGs/garbage-carpet.svg", x:3568, y:1762, scale: 4}, */ 
+    {name: "garbagecarpet1", url: "assets/SVGs/animation/garbage-carpet-1.svg", x:3568, y:1762, scale: 4},
+    {name: "garbagecarpet2", url: "assets/SVGs/animation/garbage-carpet-2.svg", x:3568, y:1762, scale: 4},
+    {name: "garbagecarpet3", url: "assets/SVGs/animation/garbage-carpet-3.svg", x:3568, y:1762, scale: 4},
+    {name: "garbagecarpet4", url: "assets/SVGs/animation/garbage-carpet-4.svg", x:3568, y:1762, scale: 4},
     {name: "boat", url: "assets/SVGs/boat.svg", x:1339, y:1209, scale: 4}, 
-    {name: "fishnet", url: "assets/SVGs/fish-net.svg", x:1837, y:2356, scale: 4}, 
+    {name: "fishnet", url: "assets/SVGs/fish-net.svg", x:1792, y:2185, scale: 4}, 
     {name: "deepseamining", url: "assets/SVGs/deep-sea-mining.svg", x:1298, y:5053, scale: 4}, 
     {name: "microplastic", url: "assets/SVGs/microplastic.svg", x:5116, y:3934, scale: 4},
     {name: "whale", url: "assets/SVGs/whale.svg", x: 6868, y: 5168, scale: 4},
@@ -158,6 +162,7 @@ function handleLoadComplete(){
         content[i].spriteRef = PIXI.Sprite.from(resourcename)
         content[i].spriteRef.position.set(content[i].x, content[i].y)
         content[i].spriteRef.anchor.set(0.5); 
+        content[i].spriteRef.name = content[i].name; 
         viewport.addChild(content[i].spriteRef);
     }
 
@@ -212,6 +217,7 @@ function intersectInfoBtn() {
         var btn = buttons[i].spriteRef.getBounds();
         var trtl = turtle_sprite.getBounds();
         if(btn.x + btn.width > trtl.x && btn.x < trtl.x + trtl.width && btn.y + btn.height > trtl.y && btn.y < trtl.y + trtl.height){
+            changeText("Open");
             delta += 0.1
             buttons[i].spriteRef.width = buttons[i].spriteRef.width + Math.sin(delta) *1
             buttons[i].spriteRef.height = buttons[i].spriteRef.height + Math.sin(delta) *1
@@ -219,6 +225,7 @@ function intersectInfoBtn() {
                 touchInfoBtn(buttons[i].content)
                 showInfopage = true;
                 tapButton = false;
+                changeText("Close");
                 return true;
             }
         }
@@ -230,6 +237,7 @@ function intersectCoin() {
         var coin = coins[i].spriteRef.getBounds();
         var trtl = turtle_sprite.getBounds();
         if(coin.x + coin.width > trtl.x && coin.x < trtl.x + trtl.width && coin.y + coin.height > trtl.y && coin.y < trtl.y + trtl.height){
+            changeText("Collect");
             delta += 0.1
             coins[i].spriteRef.width = coins[i].spriteRef.width + Math.sin(delta) *1
             coins[i].spriteRef.height = coins[i].spriteRef.height + Math.sin(delta) *1
@@ -289,12 +297,14 @@ function animate() {
         turtle_sprite.texture = turtle_texture;
     }
 
+   
+
     /* if(tapButton){
         intersectInfoBtn()
         intersectCoin()
     } */
-    
     if(!showInfopage){
+        changeText("");
         intersectInfoBtn()
         intersectCoin()
     }else if (tapButton && showInfopage){
@@ -335,24 +345,13 @@ function handleLoadProgress(loader, resource){
 }
 
 
-
 // Create a new emitter
-// note: if importing library like "import * as particles from 'pixi-particles'"
-// or "const particles = require('pixi-particles')", the PIXI namespace will
-// not be modified, and may not exist - use "new particles.Emitter()", or whatever
-// your imported namespace is
 var emitter = new Emitter(
-
 	// The PIXI.Container to put the emitter in
-	// if using blend modes, it's important to put this
-	// on top of a bitmap, and not use the root stage Container
 	viewport,
-
 	// The collection of particle images to use
-	[PIXI.Texture.from('assets/bubble.png')],
-
-	// Emitter configuration, edit this to change the look
-	// of the emitter
+	['assets/bubble-big.png', 'assets/bubble-small.png'],
+	// Emitter configuration
 	{
         "alpha": {
             "start": 1,
@@ -393,7 +392,7 @@ var emitter = new Emitter(
         "blendMode": "normal",
         "frequency": 0.016,
         "emitterLifetime": -1,
-        "maxParticles": 500,
+        "maxParticles": 150,
         "pos": {
             "x": 0,
             "y": 0
@@ -411,26 +410,19 @@ var emitter = new Emitter(
 
 // Calculate the current time
 var elapsed = Date.now();
-
 // Update function every frame
 var update = function(){
-
 	// Update the next frame
 	requestAnimationFrame(update);
-
 	var now = Date.now();
-
 	// The emitter requires the elapsed
 	// number of seconds since the last update
 	emitter.update((now - elapsed) * 0.001);
 	elapsed = now;
-
 	// Should re-render the PIXI Stage
 	// renderer.render(stage);
 };
-
 // Start emitting
 emitter.emit = true;
-
 // Start the update
 update();

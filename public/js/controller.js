@@ -17,6 +17,10 @@ function toggleBtn(){
     console.log("toggle")
 }
 
+socket.on('changeText', function(data){
+    clickBtn.innerHTML = data.text
+});
+
 function createJoystick(parent) {
     const maxDiff = 100;
     const stick = document.createElement('div');
