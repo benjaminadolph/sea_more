@@ -1,6 +1,7 @@
 # Sea More - Interactive 2D Map 
 An interactive 2D map to raise awareness about the problems in our ocean. The user can navigate through the ocean in the form of a turtle via smartphone and is made aware of various problems. He can also collect coins and download cool screensavers upon successful completion of the mini-game.
 
+For the best experience use the latest chrome version. Depending on your firefox version it can be possible that the backgroundtexture is too large to load. 
 ---
 ## Requirements
 
