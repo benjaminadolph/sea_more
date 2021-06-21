@@ -8,12 +8,12 @@
             <stop stop-color="#73ACB4" offset="0%"></stop>
             <stop stop-color="#27182A" offset="100%"></stop>
         </linearGradient>
-        <linearGradient x1="42.7920744%" y1="65.2415478%" x2="71.1919081%" y2="13.0752848%" id="linearGradient-2">
-            <stop stop-color="#75B0B7" offset="7%"></stop>
+        <linearGradient x1="44.7800628%" y1="61.5899094%" x2="71.1919081%" y2="13.0752848%" id="linearGradient-2">
+            <stop stop-color="#75B0B7" offset="0%"></stop>
             <stop stop-color="#81B6BC" offset="14%"></stop>
             <stop stop-color="#BCD8D9" offset="55%"></stop>
-            <stop stop-color="#E2ECEA" offset="84%"></stop>
-            <stop stop-color="#F0F4F1" offset="100%"></stop>
+            <stop stop-color="#B9DED7" offset="84%"></stop>
+            <stop stop-color="#AEAEAE" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
