@@ -16,6 +16,7 @@ window.infopage = (function ($) {
         }
 
         moveBottomWave();
+        youtubePrivacy();
     
         setBottomInfoSvg();
         // set timeout, so image is loaded
@@ -26,6 +27,21 @@ window.infopage = (function ($) {
             setMiddleAfter();
         });
 	}
+
+    function youtubePrivacy() {
+        $( document ).ready( function() {
+            if( $( '.video_wrapper' ).length > 0 ) {
+                $( '.video_wrapper' ).each( function() {
+                    var _wrapper = $( this );
+                    _wrapper.find( '.privacy-okay-btn' ).on('click', function() {
+                        var _trigger = $( this ).parent();
+                        _trigger.fadeOut();
+                        _trigger.siblings( '.video_layer' ).show().children( 'iframe' ).attr( 'src', 'https://www.youtube-nocookie.com/embed/' + _trigger.attr( 'data-source' ) + '?rel=0&controls=0&showinfo=0&autoplay=1' );
+                    });
+                });
+            }
+        });
+    }
 
     function setMiddleAfter() {
         if ($('.middle').height() < $(window).height() + 30 && $('.after-element').length) {
