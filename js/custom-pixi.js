@@ -15,8 +15,12 @@ const canvas = document.getElementById('mycanvas')
 let _w = window.innerWidth
 let _h = window.innerHeight
 
-let turtle_sprite, turtle_texture;
+let turtle_sprite;
 let cointerCounter = 0;
+let turtleSheet = {};
+let superTurtleSheet = {};
+let animatedSheet = {};
+let ssheet, superssheet;
 
 window.tapButton = false;
 window.showInfopage = false;
@@ -49,10 +53,10 @@ let content = [
     {name: "submarinerocks", url: "assets/SVGs/submarine-rocks.svg", x:4148, y:6790, scale: 4},
     /* {name: "island1", url: "assets/SVGs/island1.svg", x:7137, y:1631, scale: 4},  */
     /* {name: "garbagecarpet", url: "assets/SVGs/garbage-carpet.svg", x:3568, y:1762, scale: 4}, */
-    {name: "garbagecarpet1", url: "assets/SVGs/animation/garbage-carpet-1.svg", x:3568, y:1762, scale: 4},
-    {name: "garbagecarpet2", url: "assets/SVGs/animation/garbage-carpet-2.svg", x:3568, y:1762, scale: 4},
-    {name: "garbagecarpet3", url: "assets/SVGs/animation/garbage-carpet-3.svg", x:3568, y:1762, scale: 4},
-    {name: "garbagecarpet4", url: "assets/SVGs/animation/garbage-carpet-4.svg", x:3568, y:1762, scale: 4},
+    {name: "garbagecarpet1", url: "assets/SVGs/animation/garbage-carpet-1.svg", x:3568, y:1742, scale: 4},
+    {name: "garbagecarpet2", url: "assets/SVGs/animation/garbage-carpet-2.svg", x:3568, y:1742, scale: 4},
+    {name: "garbagecarpet3", url: "assets/SVGs/animation/garbage-carpet-3.svg", x:3568, y:1742, scale: 4},
+    {name: "garbagecarpet4", url: "assets/SVGs/animation/garbage-carpet-4.svg", x:3568, y:1742, scale: 4},
     /* {name: "boat", url: "assets/SVGs/boat.svg", x:1339, y:1209, scale: 4}, 
     {name: "fishnet", url: "assets/SVGs/fish-net.svg", x:1792, y:2185, scale: 4}, */ 
     /* {name: "fishnet1", url: "assets/SVGs/animation/fish-net-1.svg", x:1792, y:2185, scale: 4},  */
@@ -63,10 +67,10 @@ let content = [
     {name: "microplastic", url: "assets/SVGs/microplastic.svg", x:5116, y:3934, scale: 4},
     /* {name: "whale", url: "assets/SVGs/whale.svg", x: 6868, y: 5168, scale: 4}, */
     {name: "starfish", url: "assets/SVGs/starfish.svg", x: 4654, y: 5996, scale: 4},
-    {name: "seaweed", url: "assets/SVGs/seaweed.svg", x: 3773, y: 5920, scale: 4},
-    /* {name: "seaweed1", url: "assets/SVGs/animation/seaweed-1.svg", x: 3773, y: 5920, scale: 4},
-    {name: "seaweed2", url: "assets/SVGs/animation/seaweed-2.svg", x: 3773, y: 5920, scale: 4},
-    {name: "seaweed3", url: "assets/SVGs/animation/seaweed-3.svg", x: 3773, y: 5920, scale: 4}, */
+    /* {name: "seaweed", url: "assets/SVGs/seaweed.svg", x: 3773, y: 5920, scale: 4}, */
+    /* {name: "seaweed1", url: "assets/SVGs/animation/seaweed-1.svg", x: 3833, y: 5984, scale: 4},
+    {name: "seaweed2", url: "assets/SVGs/animation/seaweed-2.svg", x: 3833, y: 5984, scale: 4},
+    {name: "seaweed3", url: "assets/SVGs/animation/seaweed-3.svg", x: 3833, y: 5984, scale: 4}, */
     /* {name: "jellyfish", url: "assets/SVGs/jellyfish.svg", x: 3683, y: 3592, scale: 4}, */
     {name: "jellyfish1", url: "assets/SVGs/animation/jellyfish-1.svg", x: 3683, y: 3592, scale: 4},
     {name: "jellyfish2", url: "assets/SVGs/animation/jellyfish-2.svg", x: 3683, y: 3592, scale: 4},
@@ -89,39 +93,28 @@ let content = [
 ]
 
 let buttons = [
-    {name: "buttonsewage", url: "assets/SVGs/marker.svg", x:5815, y:1482, scale: 1, content: "sewage"},
-    {name: "buttonsubmarine", url: "assets/SVGs/marker.svg", x:4917, y:6020, scale: 1, content: "shipwrecks"},
-    {name: "buttongarbagecarpet", url: "assets/SVGs/marker.svg", x:3568, y:1672,  scale: 1, content: "fishernets"},
-    {name: "buttonboat", url: "assets/SVGs/marker.svg", x:1339, y:1209, scale: 1, content: "overfishing"},
-    {name: "buttondeepseamining", url: "assets/SVGs/marker.svg", x:1298, y:5053, scale: 1, content: "deep-sea-mining"},
-    {name: "buttonmicroplastic", url: "assets/SVGs/marker.svg", x:5116, y:3934, scale: 1, content: "microplastic"},
+    {name: "buttonsewage", url: "assets/SVGs/marker.svg", x:5815, y:1482, scale: 4, content: "sewage"},
+    {name: "buttonsubmarine", url: "assets/SVGs/marker.svg", x:4917, y:6020, scale: 4, content: "shipwrecks"},
+    {name: "buttongarbagecarpet", url: "assets/SVGs/marker.svg", x:3568, y:1672,  scale: 4, content: "fishernets"},
+    {name: "buttonboat", url: "assets/SVGs/marker.svg", x:1339, y:1209, scale: 4, content: "overfishing"},
+    {name: "buttondeepseamining", url: "assets/SVGs/marker.svg", x:1928, y:5363, scale: 4, content: "deep-sea-mining"},
+    {name: "buttonmicroplastic", url: "assets/SVGs/marker.svg", x:5116, y:3934, scale: 4, content: "microplastic"},
 ]
 
 let coins = [
     {name: "coin1", url: "assets/SVGs/coin.svg", x:5077, y:6350, scale: 2, content: "submarine"},
     {name: "coin2", url: "assets/SVGs/coin.svg", x:1739, y:1279, scale: 2, content: "boat"},
-    {name: "coin3", url: "assets/SVGs/coin.svg", x:1838, y:5493, scale: 2, content: "deepseamining"},
-    {name: "coin4", url: "assets/SVGs/coin.svg", x:3077, y:6350, scale: 2, content: "deepsea"},
-    {name: "coin5", url: "assets/SVGs/coin.svg", x:2739, y:1279, scale: 2, content: "garbagecarpet"},
+    {name: "coin3", url: "assets/SVGs/coin.svg", x:2138, y:5913, scale: 2, content: "deepseamining"},
+    {name: "coin4", url: "assets/SVGs/coin.svg", x:6180, y:1204, scale: 2, content: "sewageisland"},
+    {name: "coin5", url: "assets/SVGs/coin.svg", x:2378, y:3009, scale: 2, content: "fishnet"},
 ]
 
 let loader = PIXI.Loader.shared
 
+loader.add("turtle", "assets/turtle-sprite.png")
+loader.add("superturtle", "assets/superturtle-sprite.png")
+
 loader.add("bg", "assets/background_performance.jpg")
-loader.add("turtle", "assets/SVGs/turtle.svg", { 
-    metadata: {
-        resourceOptions: {
-            scale: 4
-        }
-    }
-});
-loader.add("superturtle", "assets/SVGs/superturtle.svg", { 
-    metadata: {
-        resourceOptions: {
-            scale: 4
-        }
-    }
-});
 
 for(let i = 0; i < content.length; i++) {
     loader.add(content[i].name, content[i].url, { 
@@ -178,6 +171,18 @@ function handleLoadComplete(){
     bg_sprite.height = viewport.screenWorldHeight
     viewport.addChild(bg_sprite)
 
+    for(let i = 0; i < coins.length; i++) {
+        let resourcename = eval("loader.resources." + coins[i].name + ".texture")
+        coins[i].spriteRef = PIXI.Sprite.from(resourcename)
+        coins[i].spriteRef.position.set(coins[i].x, coins[i].y)
+        coins[i].spriteRef.anchor.set(0.5); 
+        viewport.addChild(coins[i].spriteRef);
+        coins[i].spriteRef.interactive = true
+        coins[i].spriteRef.buttonMode = true
+        coins[i].spriteRef.name = coins[i].name
+        coins[i].spriteRef.on('pointerdown', clickCoin)
+    }
+
     for(let i = 0; i < content.length; i++) {
         let resourcename = eval("loader.resources." + content[i].name + ".texture")
         content[i].spriteRef = PIXI.Sprite.from(resourcename)
@@ -198,37 +203,170 @@ function handleLoadComplete(){
         buttons[i].spriteRef.content = buttons[i].content
         buttons[i].spriteRef.on('pointerdown', clickInfoBtn)
     }
-
-    for(let i = 0; i < coins.length; i++) {
-        let resourcename = eval("loader.resources." + coins[i].name + ".texture")
-        coins[i].spriteRef = PIXI.Sprite.from(resourcename)
-        coins[i].spriteRef.position.set(coins[i].x, coins[i].y)
-        coins[i].spriteRef.anchor.set(0.5); 
-        viewport.addChild(coins[i].spriteRef);
-        coins[i].spriteRef.interactive = true
-        coins[i].spriteRef.buttonMode = true
-        coins[i].spriteRef.name = coins[i].name
-        coins[i].spriteRef.on('pointerdown', clickCoin)
-    }
-    
-    turtle_texture = loader.resources.turtle.texture
-    turtle_sprite = PIXI.Sprite.from(turtle_texture)
-    turtle_sprite.visible = false;
-    turtle_sprite.anchor.set(0.5); 
-    turtle_sprite.position.set(viewport.center.x, viewport.center.y)
-    turtle_sprite.interactive;
-
-    viewport.addChild(turtle_sprite)
-
     app.ticker.add(animate)
 
     /*********
      * PIXIJS WITH GSAP TEST
      ********/
-// Animating using GSAP
+    // Animating using GSAP
     /*  gsap.to(circle, {
         x: 500, duration: 2, repeat: -1, yoyo: true,
     }); */
+
+
+    // ANIMATION TURTLE
+    ssheet = loader.resources.turtle.texture;
+    let w = 416;
+    let h = 368;
+
+    turtleSheet["standRightUp"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(1 * w, 0, w, h))
+    ];
+    turtleSheet["standLeftUp"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(4 * w, 0, w, h))
+    ];
+    turtleSheet["standUp"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(7 * w, 0, w, h))
+    ];
+    turtleSheet["standDown"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(10 * w, 0, w, h))
+    ];
+    turtleSheet["standRight"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(13 * w, 0, w, h))
+    ];
+    turtleSheet["standLeft"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(16 * w, 0, w, h))
+    ];
+    turtleSheet["standRightDown"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(19 * w, 0, w, h))
+    ];
+    turtleSheet["standLeftDown"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(22 * w, 0, w, h))
+    ];
+
+    turtleSheet["swimRightUp"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(0 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(1 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(2 * w, 0, w, h))
+    ];
+    turtleSheet["swimLeftUp"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(3 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(4 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(5 * w, 0, w, h))
+    ];
+    turtleSheet["swimUp"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(6 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(7 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(8 * w, 0, w, h))
+    ];
+    turtleSheet["swimDown"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(9 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(10 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(11 * w, 0, w, h))
+    ];
+    turtleSheet["swimRight"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(12 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(13 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(14 * w, 0, w, h))
+    ];
+    turtleSheet["swimLeft"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(15 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(16 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(17 * w, 0, w, h))
+    ];
+    turtleSheet["swimRightDown"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(18 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(19 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(20 * w, 0, w, h))
+    ];
+    turtleSheet["swimLeftDown"] = [
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(21 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(22 * w, 0, w, h)),
+        new PIXI.Texture(ssheet, new PIXI.Rectangle(23 * w, 0, w, h))
+    ];
+
+    // ANIMATION SUPERTURTLE
+    superssheet = loader.resources.superturtle.texture;
+
+    superTurtleSheet["standRightUp"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(1 * w, 0, w, h))
+    ];
+    superTurtleSheet["standLeftUp"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(4 * w, 0, w, h))
+    ];
+    superTurtleSheet["standUp"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(7 * w, 0, w, h))
+    ];
+    superTurtleSheet["standDown"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(10 * w, 0, w, h))
+    ];
+    superTurtleSheet["standRight"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(13 * w, 0, w, h))
+    ];
+    superTurtleSheet["standLeft"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(16 * w, 0, w, h))
+    ];
+    superTurtleSheet["standRightDown"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(19 * w, 0, w, h))
+    ];
+    superTurtleSheet["standLeftDown"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(22 * w, 0, w, h))
+    ];
+
+    superTurtleSheet["swimRightUp"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(0 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(1 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(2 * w, 0, w, h))
+    ];
+    superTurtleSheet["swimLeftUp"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(3 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(4 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(5 * w, 0, w, h))
+    ];
+    superTurtleSheet["swimUp"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(6 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(7 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(8 * w, 0, w, h))
+    ];
+    superTurtleSheet["swimDown"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(9 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(10 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(11 * w, 0, w, h))
+    ];
+    superTurtleSheet["swimRight"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(12 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(13 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(14 * w, 0, w, h))
+    ];
+    superTurtleSheet["swimLeft"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(15 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(16 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(17 * w, 0, w, h))
+    ];
+    superTurtleSheet["swimRightDown"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(18 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(19 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(20 * w, 0, w, h))
+    ];
+    superTurtleSheet["swimLeftDown"] = [
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(21 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(22 * w, 0, w, h)),
+        new PIXI.Texture(superssheet, new PIXI.Rectangle(23 * w, 0, w, h))
+    ];
+
+    //set Startsheet
+    animatedSheet = turtleSheet;    
+
+    turtle_sprite = new PIXI.AnimatedSprite(animatedSheet.standUp)
+    turtle_sprite.anchor.set(0.5)
+    turtle_sprite.animationSpeed =0.01;
+    turtle_sprite.loop = false;
+    turtle_sprite.visible = false;
+    turtle_sprite.interactive;
+    turtle_sprite.position.set(viewport.center.x, viewport.center.y)
+    viewport.addChild(turtle_sprite)
+    turtle_sprite.play();
+
 }
 
 let delta = 0
@@ -315,9 +453,9 @@ let gamma = 0
 function animate() {
     turtle_sprite.position.set(viewport.center.x, viewport.center.y)
     if(viewport.position.y > -970){
-        turtle_sprite.texture = loader.resources.superturtle.texture;
+        animatedSheet = superTurtleSheet;
     } else {
-        turtle_sprite.texture = turtle_texture;
+        animatedSheet = turtleSheet;
     }
 
     gamma += 0.1
@@ -334,20 +472,15 @@ function animate() {
    content[8].spriteRef.position.y = content[8].spriteRef.position.y + Math.cos(gamma) *0.3
    content[9].spriteRef.position.x = content[9].spriteRef.position.x + Math.sin(gamma) *0.2
    content[10].spriteRef.position.y = content[10].spriteRef.position.y + Math.sin(gamma) *0.4
-   // Animation Seaweed
-   /* content[14].spriteRef.position.y = content[14].spriteRef.position.x + Math.cos(gamma) *0.8
-   content[15].spriteRef.position.x = content[15].spriteRef.position.x + Math.sin(gamma) *0.8
-   content[16].spriteRef.position.y = content[16].spriteRef.position.x + Math.sin(gamma) *0.8 */
    //Animation Jellyfish
-   content[17].spriteRef.position.y = content[17].spriteRef.position.y + Math.cos(gamma) *0.3
-   content[18].spriteRef.position.x = content[18].spriteRef.position.x + Math.sin(gamma) *0.2
-   content[19].spriteRef.position.y = content[19].spriteRef.position.y + Math.sin(gamma) *0.4
-   content[20].spriteRef.position.y = content[20].spriteRef.position.y + Math.sin(gamma) *0.4
+   content[14].spriteRef.position.y = content[14].spriteRef.position.y + Math.cos(gamma) *0.3
+   content[15].spriteRef.position.x = content[15].spriteRef.position.x + Math.sin(gamma) *0.2
+   content[16].spriteRef.position.y = content[16].spriteRef.position.y + Math.sin(gamma) *0.4
+   content[17].spriteRef.position.y = content[17].spriteRef.position.y + Math.sin(gamma) *0.4
    //Animation Human under Water
-   content[21].spriteRef.position.y = content[21].spriteRef.position.y + Math.cos(gamma) *0.3
-   content[22].spriteRef.position.x = content[22].spriteRef.position.x + Math.sin(gamma) *0.2
-   content[23].spriteRef.position.y = content[23].spriteRef.position.y + Math.sin(gamma) *0.4
-
+   content[18].spriteRef.position.y = content[18].spriteRef.position.y + Math.cos(gamma) *0.3
+   content[19].spriteRef.position.x = content[19].spriteRef.position.x + Math.sin(gamma) *0.2
+   content[20].spriteRef.position.y = content[20].spriteRef.position.y + Math.sin(gamma) *0.4
 
     if(!showInfopage){
         changeText("");
@@ -366,8 +499,60 @@ window.moveViewport = function(directions){
     } else {
         viewport.position.x = viewport.position.x - (directions.x/10)
         viewport.position.y = viewport.position.y - (directions.y/10)
+
+        //calculate degrees to display correct sprite
+        let angle = calcAngleDegrees(directions.x, directions.y);
+        console.log(angle)
+        //calculate correct Animation speed based on drag on the joystick
+        turtle_sprite.animationSpeed = Math.sqrt(Math.pow(Math.abs(directions.x),2) + Math.pow(Math.abs(directions.y),2))/400;
+
+        if(angle < 110 && angle > 70){
+            if (!turtle_sprite.playing) {
+                turtle_sprite.textures = animatedSheet.swimDown;
+                turtle_sprite.play();
+            }
+        } else if(angle > -110 && angle < -70){
+            if (!turtle_sprite.playing) {
+                turtle_sprite.textures = animatedSheet.swimUp;
+                turtle_sprite.play();
+            }
+        } else if(angle < -160 || angle > 160){
+            if (!turtle_sprite.playing) {
+                turtle_sprite.textures = animatedSheet.swimLeft;
+                turtle_sprite.play();
+            }
+        } else if(angle > -20 && angle < 20){
+            if (!turtle_sprite.playing) {
+                turtle_sprite.textures = animatedSheet.swimRight;
+                turtle_sprite.play();
+            }
+        } else if(angle > -70 && angle < -20){
+            if (!turtle_sprite.playing) {
+                turtle_sprite.textures = animatedSheet.swimRightUp;
+                turtle_sprite.play();
+            }
+        } else if(angle > -160 && angle < -110){
+            if (!turtle_sprite.playing) {
+                turtle_sprite.textures = animatedSheet.swimLeftUp;
+                turtle_sprite.play();
+            }
+        } else if(angle < 70 && angle > 20){
+            if (!turtle_sprite.playing) {
+                turtle_sprite.textures = animatedSheet.swimRightDown;
+                turtle_sprite.play();
+            }
+        } else if(angle < 160 && angle > 110){
+            if (!turtle_sprite.playing) {
+                turtle_sprite.textures = animatedSheet.swimLeftDown;
+                turtle_sprite.play();
+            }
+        }
     }
 } 
+
+function calcAngleDegrees(x, y) {
+    return Math.atan2(y, x) * 180 / Math.PI;
+}
 
 window.addTurtle = function() {
     turtle_sprite.visible = true;
@@ -400,11 +585,11 @@ var emitter = new Emitter(
 	{
         "alpha": {
             "start": 1,
-            "end": 0.22
+            "end": 0
         },
         "scale": {
             "start": 0.25,
-            "end": 0.5,
+            "end": 0.35,
             "minimumScaleMultiplier": 0.5
         },
         "color": {
@@ -437,7 +622,7 @@ var emitter = new Emitter(
         "blendMode": "normal",
         "frequency": 0.016,
         "emitterLifetime": -1,
-        "maxParticles": 150,
+        "maxParticles": 80,
         "pos": {
             "x": 0,
             "y": 0
