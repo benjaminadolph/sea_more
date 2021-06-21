@@ -1,0 +1,238 @@
+#do-something {
+    background: #fff;
+
+    .top {
+        h2, p {
+            width: 70%;
+            color: $PRIMARY_COLOR;
+        }
+    }
+
+    .help-elements {
+        margin-top: 150px;
+    }
+
+    .help-element {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        .button {
+            padding: 6px 20px;
+            font-size: 12px;
+            margin-top: -15px;
+        }
+        
+        .image-link {
+            width: 200px;
+            flex-shrink: 0;
+        }
+
+        .info-text {
+            margin-left: 20px;
+            color: $PRIMARY_COLOR;
+
+            h3 {
+                @include text-s;
+                font-weight: bold;
+                margin-bottom: 0;
+            }
+
+            p{
+                margin-top: 0;
+            } 
+        }
+    }
+
+    .background-elements {
+        .heaven {
+            height: 80vh;
+            width: 100%;
+            background: linear-gradient(42.89deg, #F0F4F1 30.5%, #2168B6 107.52%);
+        }
+
+        .human {
+            top: 0;
+            right: 0;
+            width: 550px;
+            z-index: 1;
+        }
+
+        .island-right {
+            top: 41vh;
+            right: 0;
+            width: 60%;
+            max-width: 700px;
+            opacity: 0.4;
+        }
+
+        .island-left {
+            top: 41vh;
+            left: 0;
+            width: 40%;
+            max-width: 400px;
+            opacity: 0.4;
+        }
+
+        .sand-wave {
+            width: 100%;
+            top: 58vh;
+
+            .after-element {
+                height: 100vh;
+                width: 100%;
+                margin-top: -2px;
+                background: linear-gradient(180deg, #DAB86A 0%, #FFFFFF 100%);
+            }
+        }
+    }
+}
+
+@media (max-width: 1350px) {
+    #do-something {
+        .top {
+            h2, p {
+                width: 40%;
+            }
+        }
+
+        .help-elements {
+            padding-top: 20px;
+        }
+    }
+}
+
+@media (max-width: 985px) {
+    #do-something {
+        .top {
+            h2, p {
+                width: 40%;
+            }
+        }
+
+        .background-elements {
+            .human {
+                width: 400px;
+            }
+
+            .island-right, .island-left {
+                top: 25vh;
+            }
+
+            .sand-wave {
+                top: 41vh;
+            }
+        }
+
+        .help-elements {
+            margin-top: 0;
+        }
+    }
+}
+
+@media (max-width: 918px) {
+    #do-something {
+        .top {
+            padding-bottom: 0;
+
+            h2, p {
+                width: 70%;
+            }
+        }
+
+        .background-elements {
+            .human {
+                width: 250px;
+            }
+
+            .island-right, .island-left {
+                top: 120px;
+            }
+
+            .sand-wave {
+                top: 255px;
+            }
+        }
+    }
+}
+
+@media (max-width: 730px) {
+    #do-something {
+        .top {
+            padding-top: 280px;
+            padding-bottom: 0;
+
+            h2, p {
+                width: 80%;
+            }
+        }
+
+        .background-elements {
+            .human {
+                width: 250px;
+            }
+
+            .island-right, .island-left {
+                top: 120px;
+            }
+
+            .sand-wave {
+                top: 225px;
+            }
+        }
+    }
+}
+
+@media (max-width: 542px) {
+    #do-something {
+        .top {
+            padding-top: 240px;
+            padding-bottom: 0;
+
+            h2 {
+                font-size: 30px;
+            }
+
+            h2, p {
+                width: 100%;
+            }
+        }
+
+        .background-elements {
+            .human {
+                width: 200px;
+            }
+
+            .island-right {
+                top: 86px;
+                width: 100%;
+            }
+
+            .island-left {
+                display: none;
+            }
+
+            .sand-wave {
+                top: 200px;
+            }
+        }
+    }
+}
+
+@media (max-width: 440px) {
+    #do-something {
+        .help-elements {
+            top: 0px;
+
+            .help-element {
+                display: block;
+            }
+        }   
+        .background-elements {
+            .island-right {
+                top: 99px;
+                width: 100%;
+            }
+        }
+    }
+}

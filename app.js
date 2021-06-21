@@ -74,6 +74,10 @@ app.get('/impressum', function (req, res) {
   res.render('impressum');
 });
 
+app.get('/unternimm-etwas', function (req, res) { 
+  res.render('unternimm-etwas');
+});
+
 app.get('/datenschutz', function (req, res) { 
   res.render('datenschutz');
 });

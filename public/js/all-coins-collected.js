@@ -11,7 +11,6 @@ seamore.allCoinsCollected = (function ($) {
         });
 
         $('.download--button').on('click', function(e) {
-            e.preventDefault();
             $('#all-coins-collected').fadeOut();
         });
 	}
