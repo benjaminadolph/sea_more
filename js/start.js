@@ -24,7 +24,7 @@ $(function() {
 
     const QRCode = require('qrcode');
     // Sarah's IP: http://192.168.0.171:3000 sonst: http://localhost:3000
-    const stringdata = `http://192.168.188.44:3000/controller/${roomid}`;
+    const stringdata = `https://seamore.herokuapp.com/controller/${roomid}`;
    
     QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, function (err, canvas) {
         if (err) throw err
