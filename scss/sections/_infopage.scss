@@ -208,16 +208,9 @@
             width: 100%;
             z-index: 1;
 
-            &.left {
-                width: auto;
-                max-width: 50vw;
-            }
-
             &.right {
                 left: auto;
                 right: 0;
-                width: auto;
-                max-width: 50vw;
             }
         }
 
@@ -231,16 +224,31 @@
 #deep-sea-mining, 
 #deep-sea-mining .background-elements {
     background: linear-gradient(180deg, #2168B6 -39.89%, #27182A 100%);
+    .background-element {
+        &.top {
+            width: 55vw;
+        }
+        &.middle {
+            width: 50vw;
+        }
+    }
 }
 
 #shipwrecks, 
 #shipwrecks .background-elements  {
     background: linear-gradient(180deg, #2168B6 -39.89%, #27182A 100%);
 
-    .background-element.middle {
-        left: 0;
-        top: 100vh;
-        right: auto;
+    .background-element {
+        &.middle {
+            left: 10vw;
+            top: 140vh;
+            right: auto;
+            width: 10vw;
+        }
+
+        &.bottom {
+            width: 100vw;
+        }
     }
 }
 
@@ -253,6 +261,11 @@
             left: 0;
             top: 60vh;
             right: auto;
+            width: 40vw;
+        }
+
+        &.bottom {
+            width: 40vw;
         }
     }
 }
@@ -294,7 +307,7 @@
         }
 
         &.bottom {
-            width: auto;
+            width: 70vw;
         }
     }
 }
@@ -314,6 +327,10 @@
             width: 100%;
 
             @include after-infopage-background;
+        }
+
+        &.bottom {
+            width: 50vw;
         }
     }
 }

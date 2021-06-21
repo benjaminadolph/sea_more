@@ -6,41 +6,131 @@
 
   <%- include ('partials/scripts') %>
 
-  <body id="imprint">
+  <body id="do-something">
     <div class="base">
-      <div id="logo"><a href="/"><img src="/assets/logo.svg" /></a></div>
+      <div id="logo">
+        <a href="/"><img src="/assets/logo.svg" /></a>
+      </div>
       <div class="menu-button menu-icon"></div>
-
-      <a href="#help" id="help-button" class="button"
-        ><span class="text"
-          >Unternimm etwas <i class="arrow-white right"></i></span
-      ></a>
     </div>
 
     <%- include ('partials/navigation') %>
 
-    <script src="/dist/menu.js"></script>
+    <div class="grid-container content top">
+      <h1>Unternimm etwas!</h1>
+      <p>
+        Der Schutz unserer Ozeane ist ein wichtiger Bestandteil im Kampf gegen
+        die Klimakrise, denn sie halten unsere Erde kühl. Durch den Menschen
+        werden die Meere allerdings immer mehr bedroht. Unser Konsumverhalten
+        führt z.B. zu Überfischung, Versauerung und Müllstrudel unter der
+        Wasseroberfläche. Darunter leiden nicht nur wir Menschen, sondern vor
+        allem die Bewohner der Ozeane! Diese Vielfalt ist bedroht und müssen wir
+        um jeden Preis schützen!
+      </p>
+      <p class="text-m bold">
+        Hier erfährst du, welche Organisationen du unterstützen kannst, um die
+        Meere zu retten!
+      </p>
+    </div>
 
     <div class="grid-container content">
-      <h1>Datenschutz</h1>
-      <p>
-        Dieses Projekt ist in Gemeinschaftsarbeit an der Hochschule Augsburg als
-        Semesterprojekt entstanden.<br>
-        <stronng>Team:</stronng> Benjamin Adolph, Veronika Remiger und Sarah Schneller.
-      </p>
-      <h2>Datenverarbeitung</h2>
-      <p>Es werden keine personenbezogenen Daten von uns gesammelt oder gespeichert, wir verwenden jedoch Youtube, um passende Videos darzustellen.</p>
-      <h2>Hosting bei Heroku</h2>
-      <p></p>
-      <h2>Youtube</h2>
-      <p>Weitere Details gibt es in der <a href="https://www.youtube.com/static?gl=DE&template=terms&hl=de" target="_blank">Datenschutzerklärung von Youtube</a></p>
-      <h2>Rechte</h2>
-      <h3>Beschwerderecht bei der zuständigen Aufsichtsbehörde</h3>
-      <p>Im Falle datenschutzrechtlicher Verstöße steht dem Betroffenen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu. Zuständige Aufsichtsbehörde in datenschutzrechtlichen Fragen ist der Landesdatenschutzbeauftragte des Bundeslandes, in dem unser Unternehmen seinen Sitz hat. Eine Liste der Datenschutzbeauftragten sowie deren Kontaktdaten können folgendem Link entnommen werden: <a href="https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html" target="_blank">https://www.bfdi.bund.de/DE/Infothek/Anschriften_Links/anschriften_links-node.html</a></p>
-      <h3>Recht auf Datenübertragbarkeit</h3>
-      <p>Ihr habt das Recht, Daten, die ich auf Grundlage eurer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeite, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen. Sofern ihr die direkte Übertragung der Daten an einen anderen Verantwortlichen verlangt, erfolgt dies nur, soweit es technisch machbar ist.</p>
-      <h3>Auskunft, Sperrung, Löschung</h3>
-      <p>Ihr habt im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über eure gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten. Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten könnt ihr euch jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
+      <div class="help-element">
+        <div class="image-link">
+          <img src="/assets/unternimm-etwas/wwf-1.png" alt="" />
+          <a
+            href="https://www.wwf.de/plastikflut/"
+            target="_blank"
+            class="button"
+            ><span class="text">Jetzt Spenden</span></a
+          >
+        </div>
+        <div class="info-text">
+          <h2>Unterstütze den WWF im Kampf gegen die Plastik</h2>
+          <p>
+            Der WWF startet Modellprojekte in den Ländern, in denen die Sammlung
+            und Verwertung von Abfällen nicht richtig funktioniert. Mit einer
+            Spende setzt sich der Verein ein, um die Plastikflut zu stoppen, der
+            Recycling-System zu verbessern und baut Druck auf die Regierung auf.
+          </p>
+        </div>
+      </div>
+      <div class="help-element">
+        <div class="image-link">
+          <img src="/assets/unternimm-etwas/wwf-2.png" alt="" />
+          <a
+            href="https://www.wwf.de/stop-plastic/#c22226"
+            target="_blank"
+            class="button"
+            ><span class="text">Zur Petition</span></a
+          >
+        </div>
+        <div class="info-text">
+          <h2>Jetzt Petition gegen Plastik unterschreiben!</h2>
+          <p>
+            Mit deiner Unterschrift kannst du den WWF dabei unterstützen, unsere
+            Ozeane von Plastik zu befreien. Er fordert Regierungen dazu auf,
+            Verantwortung zu übernehmen und sich für eine Konvention gegen
+            Plastikmüll im Meer einzusetzen. Dadurch will er erreichen, dass wir
+            eine globale, rechtlich bindende UN-Konvention beschließen, mit der
+            sich jedes Land zum Schutz der Meere gegen Plastik verpflichtet.
+          </p>
+        </div>
+      </div>
+      <div class="help-element">
+        <div class="image-link">
+          <img src="/assets/unternimm-etwas/greenpeace-1.png" alt="" />
+          <a
+            href="https://meeresschutz.greenpeace.de/?utm_campaign=oceans&utm_source=offline&utm_medium=print&utm_content=link&utm_term=br1-meeresschutz-2019-08&_ga=2.33197882.540349775.1623830583-476077539.1623231370"
+            target="_blank"
+            class="button"
+            ><span class="text">Hier eintragen</span></a
+          >
+        </div>
+        <div class="info-text">
+          <h2>In Bewegung für die Meere</h2>
+          <p>
+            Lege eine Strecke ohne Motorkraft im oder auf dem Wasser zurück und
+            trage sie bei Greenpeace ein. Mit deiner Hilfe will der Verein bis
+            zu 50% unserer Meere symbolisch schützen und dadurch den
+            verantwortlichen Politiker*innen bei den UN, wie wichtig uns die
+            Meere sind.
+          </p>
+        </div>
+      </div>
+      <div class="help-element">
+        <div class="image-link">
+          <img src="/assets/unternimm-etwas/greenpeace-2.png" alt="" />
+          <a
+            href="#"
+            target="_blank"
+            class="button"
+            ><span class="text">Mitmachen</span></a
+          >
+        </div>
+        <div class="info-text">
+          <h2>Dabei sein bei Greenpeace</h2>
+          <p>
+            Jeder kann etwas tun: Setze dich selbst ein im Kampf für den Schutz
+            der Meere und unterstütze Greenpeace aktiv! Egal ob Schüler*innen,
+            Student*innen, Berufstätige, oder Personen im Ruhestand. Jeder kann
+            sich beteiligen, indem man in Gruppen beitritt oder sich vernetzt
+            und sich für den Schutz der Meere stark macht!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="background-elements">
+      <div class="background-element top">
+        <img src="/assets/infopages/fishernets/top.png" />
+      </div>
+      <div class="background-element middle">
+        <img src="/assets/infopages/fishernets/middle.png" />
+        <div class="after-element"></div>
+      </div>
+      <div class="background-element bottom left">
+        <img src="/assets/infopages/fishernets/bottom.png" />
+      </div>
     </div>
   </body>
 </html>

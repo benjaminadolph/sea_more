@@ -60,11 +60,12 @@ a {
     z-index: 100;
 }
 
-#imprint, #privacy {
+#imprint, #privacy, #do-something {
     background: linear-gradient(180deg, #86B8E7 0%, #2168B6 100%);
 
     .content {
         padding-top: 100px;
+        padding-bottom: 100px;
     }
 }
 
