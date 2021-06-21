@@ -16,11 +16,10 @@
     }
 
     .intro-container {
-        background-image: url('../assets/intro-background.svg');
-        background-repeat: no-repeat;
-        width: 1076px;
-        height: 744px;
-        padding: 150px 170px;
+        width: 876px;
+        height: 557px;
+        padding: 50px 70px;
+        position: relative;
         color: black;
         z-index: 100;
 
@@ -29,8 +28,16 @@
         }
     }
 
+    .screen-background {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
     .screen {
         display: none;
+        position: relative;
 
         &.screen-one {
             display: block;
@@ -155,5 +162,55 @@
                 }
             }
         }
+    }
+}
+
+@media(max-width: 940px) {
+    #start-intro {    
+        .intro-container {
+            h1 {
+                font-size: 30px;
+            }
+
+            .text-s {
+                font-size: 14px;
+            }
+
+            .text-m {
+                font-size: 16px;
+            }
+
+            .button {
+                font-size: 12px;
+            }
+
+            #qrcode canvas {
+                width: 140px !important;
+                height: 140px !important;
+            }
+        }
+
+        .screen-background {
+            width: 95%;
+            left: 2.5%;
+        }
+    }
+}
+
+@media(max-width: 682px) {
+    #start-intro {    
+        .intro-container {
+            padding: 35px 57px;
+
+            h1 {
+                font-size: 25px;
+            }
+        }
+    }
+}
+
+@media(max-width: 628px) {
+    #start-intro {    
+        display: none;
     }
 }
