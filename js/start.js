@@ -29,9 +29,16 @@ $(function() {
     QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, function (err, canvas) {
         if (err) throw err
        
-        var container = document.getElementById('qrcode')
-        container.appendChild(canvas)
-      })
+        var container = document.getElementById('qrcode');
+        container.appendChild(canvas);
+    });
+
+    QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, function (err, canvas) {
+        if (err) throw err
+       
+        var container = document.getElementById('qrcode-bottom');
+        container.appendChild(canvas);
+    });
 
     socket.on('controllerAdded', function(data){
         $('#start-intro').fadeOut();
@@ -43,7 +50,7 @@ $(function() {
     });
 
     socket.on('canvasMoveViewport', function(data) {
-        moveViewport(data.direction)
+        moveViewport(data.direction);
     });
 
     socket.on('emitClick', function(data) {
@@ -66,6 +73,54 @@ $(function() {
             menu.closeNavigation();
             $result.load(`/${page}`);
         });
+    });
+
+
+    // qr code bottom click
+    $('#qrcode-bottom').on('click', function(){
+        if ($(this).hasClass('big')) {
+            $(this)
+            .removeClass('big')
+            .css({
+                width: 60,
+                height: 60,
+                top: 'auto',
+                left: 'auto'
+            });
+        } else {
+            $(this)
+            .addClass('big')
+            .animate({
+                width: 300,
+                height: 300,
+                top: window.innerHeight / 2 - 150,
+                left: window.innerWidth / 2 - 150
+            });
+        }
+    });
+
+    // facts slider
+    var $slider = $('.slider');
+    var $sliderElements = $slider.find('li');
+    var $arrow = $('.arrow');
+    var index = 0;
+
+    $arrow.on('click', function() {
+        $sliderElements.fadeOut('fast');
+        if ($(this).hasClass('left')){
+            if (index === 0) {
+                index = $sliderElements.length-1;
+            } else {
+                index -= 1;
+            }
+        } else {
+            if (index + 1 >= $sliderElements.length) {
+                index = 0;
+            } else {
+                index += 1;
+            }
+        }
+        $($sliderElements.get(index)).delay(500).fadeIn();
     });
 
 });

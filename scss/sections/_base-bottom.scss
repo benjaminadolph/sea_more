@@ -1,0 +1,163 @@
+.base-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+
+    #qrcode-bottom {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(255,255,255,0.6);
+        flex-shrink: 0;
+        cursor: pointer;
+
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        &.big {
+            position: fixed;
+        }
+    }
+
+    .facts {
+        background-color: rgba(255,255,255,0.6);
+        height: 60px;
+        width: 100%;
+        margin: 0 25px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+
+        ul.slider {
+            list-style: none;
+            margin: auto;
+            padding: 0;
+
+            li {
+                text-align: center;
+                color: #000;
+                display: none;
+                padding: 0 40px;
+
+                &:first-child {
+                    display: block;
+                }
+            }
+        }
+
+        .slider-navigation {
+            .arrow {
+                position: absolute;
+                cursor: pointer;
+                top: 50%;
+                width: 16px;
+                height: 16px;
+                background: transparent;
+                border-top: 4px solid #000;
+                border-right: 4px solid #000;
+                box-shadow: 0 0 0 lightgray;
+                transition: all 800ms ease;
+                
+                &.left {
+                    left: 25px;
+                    transform: translate3d(0,-50%,0) rotate(-135deg);
+                }
+
+                &.right {
+                    right: 25px;
+                    transform: translate3d(0,-50%,0) rotate(45deg);
+                }
+                
+                &:hover {
+                    border-color: $HIGHLIGHT_YELLOW_COLOR;
+                }
+                
+                &:before { // for better hit area
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-40%,-60%) rotate(45deg);
+                    width: 200%;
+                    height: 200%;
+                }
+
+            }
+        }
+    }
+
+    .treasure-hunt {
+        width: 215px;
+        flex-shrink: 0;
+        background-color: rgba(255,255,255,0.6);
+        position: relative;
+
+        img {
+            position: absolute;
+            bottom: 13px;
+            left: 10px;
+        }
+
+        #counter {
+            @include headline-l;
+            color: $HIGHLIGHT_YELLOW_COLOR;
+            position: absolute;
+            right: 23px;
+            bottom: 10px;
+            z-index: 1;
+        }
+    }
+}
+
+@media (max-width: 820px) {
+    .base-bottom {
+        #qrcode-bottom {
+            display: none;
+        }
+    
+        .facts {
+            margin-left: 0;
+    
+            .slider-navigation {
+                .arrow {                
+                    &.left {
+                        left: 15px;
+                    }
+    
+                    &.right {
+                        right: 15px;
+                    }
+                }
+            }
+        }
+    
+        .treasure-hunt {
+            width: 153px;
+    
+            img {
+                width: 130px;
+            }
+    
+            #counter {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+@media (max-width: 645px) {
+    .base-bottom {
+        .facts {
+            margin-right: 0;
+        }
+        .treasure-hunt {
+            display: none;
+        }
+    }
+}
