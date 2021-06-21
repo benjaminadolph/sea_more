@@ -1,3 +1,11 @@
+@import 'variables/colors';
+@import 'variables/fonts';
+@import 'variables/mixins';
+
+body {
+    background: radial-gradient(90.67% 90.67% at 50% 50%, #7EB1E3 0%, #3376BF 100%);
+}
+
 #controller-body {
     overflow: hidden;
 } 
@@ -13,8 +21,7 @@
         @include button;
         position: absolute;
         bottom: 10vh;
-        width: 183px;
-        height: 40px;
+        cursor: pointer;
     }
 }
 
