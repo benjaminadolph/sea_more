@@ -41,7 +41,7 @@
 
             li {
                 text-align: center;
-                color: #000;
+                color: $BACKGROUND_DARK_COLOR;
                 display: none;
                 padding: 0 40px;
 
@@ -59,8 +59,8 @@
                 width: 16px;
                 height: 16px;
                 background: transparent;
-                border-top: 4px solid #000;
-                border-right: 4px solid #000;
+                border-top: 4px solid $BACKGROUND_DARK_COLOR;
+                border-right: 4px solid $BACKGROUND_DARK_COLOR;
                 box-shadow: 0 0 0 lightgray;
                 transition: all 800ms ease;
                 
