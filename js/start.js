@@ -11,8 +11,8 @@ function randomString(length_) {
 }
 
 const socket = io();
-// const roomid = randomString(21);
-const roomid = 'test';
+const roomid = randomString(21);
+// const roomid = 'test';
 
 window.changeText = function(text) {
     socket.emit('changeText', text);
