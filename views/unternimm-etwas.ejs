@@ -1,20 +1,11 @@
-<html lang="de">
-  <head>
-    <title>sea more | Unternimm etwas</title>
-    <%- include ('partials/head') %>
-  </head>
+<script>
+  jQuery('.infopage .close-icon').on('click', function() {
+    jQuery('.infopage').remove();
+  }); 
+</script>
 
-  <%- include ('partials/scripts') %>
-
-  <body id="do-something">
-    <div class="base">
-      <div id="logo">
-        <a href="/"><img src="/assets/logo.svg" /></a>
-      </div>
-      <div class="menu-button menu-icon"></div>
-    </div>
-
-    <%- include ('partials/navigation') %>
+<div id="do-something" class="infopage">
+    <div class="close-icon"></div>
 
     <div class="grid-container content top">
       <h2 class="headline">Unternimm etwas!</h2>
@@ -136,5 +127,4 @@
         <div class="after-element"></div>
       </div>
     </div>
-  </body>
-</html>
+  </div>

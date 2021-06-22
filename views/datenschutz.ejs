@@ -1,20 +1,11 @@
-<html lang="de">
-  <head>
-    <title>sea more | Datenschutz</title>
-    <%- include ('partials/head') %>
-  </head>
+<script>
+  jQuery('.infopage .close-icon').on('click', function() {
+    jQuery('.infopage').remove();
+  }); 
+</script>
 
-  <%- include ('partials/scripts') %>
-
-  <body id="imprint">
-    <div class="base">
-      <div id="logo">
-        <a href="/"><img src="/assets/logo.svg" /></a>
-      </div>
-      <div class="menu-button menu-icon"></div>
-    </div>
-
-    <%- include ('partials/navigation') %>
+  <div id="privacy" class="infopage">
+    <div class="close-icon"></div>
 
     <div class="grid-container content">
       <h1>Datenschutz</h1>
@@ -93,5 +84,4 @@
         angegebenen Adresse an uns wenden.
       </p>
     </div>
-  </body>
-</html>
+  </div>

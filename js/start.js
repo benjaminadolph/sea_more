@@ -75,6 +75,21 @@ $(function() {
         });
     });
 
+    $('.open-do-something').on('click', function() {
+        menu.closeNavigation();
+        $result.load('/unternimm-etwas');
+    });
+
+    $('.open-imprint').on('click', function() {
+        menu.closeNavigation();
+        $result.load('/impressum');
+    });
+
+    $('.open-privacy').on('click', function() {
+        menu.closeNavigation();
+        $result.load('/datenschutz');
+    });
+
 
     // qr code bottom click
     $('#qrcode-bottom').on('click', function(){
