@@ -8,15 +8,14 @@
   <div class="grid-container">
     <div class="video-container section active">
       <h1>Bergbau in der Tiefe</h1>
-      <div class="video">
-        <iframe
-          src="https://www.youtube.com/embed/rA82_3O2lD8?autoplay=0&showinfo=0&controls=1"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        >
-        </iframe>
-        <%- include ('../partials/video-loading-animation'); %>
+      <div class="video" style="background-image: url( 'assets/deep-sea-mining.png' );">
+        <div class="video_wrapper" >
+            <div class="video_trigger" data-source="rA82_3O2lD8">
+              <p class="text-center">Mit dem Aufruf des Videos erklärst du dich einverstanden, dass deine Daten an YouTube übermittelt werden und dass du die <a href="/datenschutz/" target="_blank">Datenschutzerklärung</a> gelesen hast.</p>
+              <a class="button privacy-okay-btn" href="#"><span class="text">Akzeptieren</span></a>
+            </div>
+            <div class="video_layer"><iframe src="" border="0"></iframe></div>
+        </div>
       </div>
     </div>
 
