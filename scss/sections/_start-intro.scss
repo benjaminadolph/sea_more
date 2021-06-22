@@ -7,6 +7,13 @@
     height: 100vh;
     width: 100vw;
 
+    .close-icon {
+        position: absolute;
+        right: 6px;
+        top: 27px;
+        background-image: url(../assets/close-blue.svg);
+    }
+
     .overlay {
         width: 100%;
         height: 100%;
@@ -46,7 +53,24 @@
         }
 
         &.screen-two {
-            .screen-two--button {
+            h2 {
+                width: 50%;
+            }
+            .text-m {
+                margin-top: 80px;
+                margin-bottom: 59px;
+                width: 50%;
+            }
+            
+            img {
+                flex-shrink: 0;
+                width: 200px;
+                height: auto;
+            }
+        }
+
+        &.screen-three {
+            .screen-three--button {
                 transform: skew(-10deg);
 
                 span {

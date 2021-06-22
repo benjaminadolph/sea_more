@@ -30,6 +30,12 @@ a {
     color: $BASE_TEXT_COLOR;
 }
 
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
 .content {
     @include content-container;
 }
