@@ -11,12 +11,18 @@ seamore.startIntro = (function ($) {
             $('.screen-two').fadeIn();
         });
 
-        $('.screen-two--button').on('click', function(e) {
+        $('.screen-two--button').on('click', function(e){
+            e.preventDefault();
+            $('.screen-two').hide();
+            $('.screen-three').fadeIn();
+        });
+
+        $('.screen-three--button, #start-intro .close-icon').on('click', function(e) {
             e.preventDefault();
             $('#start-intro').fadeOut();
         });
 
-        $('.screen-two-highlight-qr--button').on('click', function(e) {
+        $('.screen-three-highlight-qr--button').on('click', function(e) {
             e.preventDefault();
             $('#qrcode').addClass('pulsation');
         });
