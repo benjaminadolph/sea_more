@@ -43,49 +43,31 @@
       <h2 class="headline">Was kann ich unternehmen?</h2>
     </div>
     <div class="bottom-info">
-      <svg
-        id="bottom-info-line"
-        width="1442px"
-        height="769px"
-        viewBox="0 0 1442 769"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-      >
-        <g
-          stroke="none"
-          stroke-width="1"
-          fill="none"
-          fill-rule="evenodd"
-        >
-          <g id="bottom-line">
-            <%- include ('../partials/bottom-line-path'); %>
-            <g id="Button-first" class="bottom-info-button">
-              <%- include('../partials/bottom-line-button', {cx: 22, cy: 22.5}); %>
-              <text class="svg-bottom-text" fill="currentColor">
-                <tspan x="60" y="16">Keine Unternehmen unterstützen,</tspan>
-                <tspan x="60" y="36">die von Tiefseebergbau profitieren,</tspan>
-                <tspan x="60" y="56">oder selbst betreiben</tspan>
-              </text>
+      <div class="bottom-info-buttons">
+        <div class="bottom-info-button first">
+            Keine Unternehmen unterstützen, die von Tiefseebergbau profitieren, oder selbst betreiben
+         </div>
+        <div class="bottom-info-button second">
+          Weniger konsumieren, nach dem Prinzip: refuse, reduce, reuse, recycle, rot
+        </div>
+        <div class="bottom-info-button third">
+          Unternehmen können ein <a target="_blank" href="https://www.noseabedmining.org/">Formular ausfüllen</a>, welches einen globales Moratorium für den Tiefseebergbau fordert.
+        </div>
+      </div>
+      <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="bottom-line">
+              <%- include ('../partials/bottom-line-path'); %>
+                <g id="Button-first" class="bottom-info-button">
+                  <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+                </g>
+                <g id="Button-second" class="bottom-info-button">
+                  <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
+                </g>
+                <g id="Button-third" class="bottom-info-button">
+                  <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
+                </g>
             </g>
-            <g id="Button-second" class="bottom-info-button">
-              <%- include('../partials/bottom-line-button', {cx: 330, cy: 38.5}); %>
-              <text class="svg-bottom-text" fill="currentColor">
-                <tspan x="10" y="45">Weniger konsumieren,</tspan>
-                <tspan x="10" y="65">nach dem Prinzip: refuse, reduce,</tspan>
-                <tspan x="10" y="85">reuse, recycle, rot</tspan>
-              </text>
-            </g>
-            <g id="Button-third" class="bottom-info-button">
-              <%- include('../partials/bottom-line-button', {cx:22, cy:79.5}); %>
-              <text class="svg-bottom-text" fill="currentColor">
-                <tspan x="67" y="16">Unternehmen können ein</tspan>
-                <tspan x="67" y="35"><a target="_blank" href="https://www.noseabedmining.org/">Formular ausfüllen</a>, welches</tspan>
-                <tspan x="67" y="54">einen globales Moratorium</tspan>
-                <tspan x="67" y="73">für den Tiefseebergbau fordert.</tspan>
-              </text>
-            </g>
-          </g>
         </g>
       </svg>
     </div>

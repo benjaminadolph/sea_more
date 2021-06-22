@@ -46,59 +46,35 @@
       <h2 class="headline">Was kann ich unternehmen?</h2>
     </div>
     <div class="bottom-info">
-      <svg
-        width="1442px"
-        height="769px"
-        id="bottom-info-line"
-        viewBox="0 0 1442 769"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-      >
-        <g
-          stroke="none"
-          stroke-width="1"
-          fill="none"
-          fill-rule="evenodd"
-        >
-          <g id="bottom-line">
-            <%- include ('../partials/bottom-line-path'); %>
-            <g id="Button-first"  class="bottom-info-button">
-              <%- include('../partials/bottom-line-button', {cx: 22, cy: 22.5}); %>
-              <text class="svg-bottom-text" fill="currentColor">
-                <tspan x="60" y="16">Wasche deine Kleidung immer in</tspan>
-                <tspan x="60" y="36">einer vollen Waschmaschine.</tspan>
-                <tspan x="60" y="56">Dadurch kannst du die Anzahl an</tspan>
-                <tspan x="60" y="76">Mikroplastikpartikeln verringern.</tspan>
-              </text>
+      <div class="bottom-info-buttons">
+        <div class="bottom-info-button first">
+          Wasche deine Kleidung immer in einer vollen Waschmaschine. Dadurch kannst du die Anzahl an Mikroplastikpartikeln verringern.
+        </div>
+        <div class="bottom-info-button second">
+          Mach bei <a href="https://www.trashbusters.de/aktionswochen/" target="_blank">Müllsammelaktionen</a> mit. In vielen Orten und Städten gibt es Aufrufe, sich an der Beseitigung von Müll aus der Landschaft zu beteiligen.
+        </div>
+        <div class="bottom-info-button third">
+          Achte darauf, dass du deine Produkte oder Kleidung möglichst lange verwendest, bevor du sie <a href="https://www.resorti.de/blog/altkleiderentsorgung/" target="_blank" >sachgerecht entsorgst</a>.
+        </div>
+        <div class="bottom-info-button fourth">
+          Verzichte auf Kosmetika mit <a href="https://www.umweltbundesamt.de/themen/mikroplastik-in-kosmetika-was-ist-das" target="_blank" >Mikroplastikpartikeln</a> und nutze
+          Alternativen wie z.B. <a href="https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/produkte/was-ist-naturkosmetik-26394" target="_blank" >zertifizierte Naturkosmetik.</a>
+        </div>
+      </div>
+      <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="bottom-line">
+              <%- include ('../partials/bottom-line-path'); %>
+                <g id="Button-first" class="bottom-info-button">
+                  <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+                </g>
+                <g id="Button-second" class="bottom-info-button">
+                  <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
+                </g>
+                <g id="Button-third" class="bottom-info-button">
+                  <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
+                </g>
             </g>
-            <g id="Button-second" class="bottom-info-button">
-              <%- include('../partials/bottom-line-button', {cx: 330, cy: 38.5}); %>
-              <text class="svg-bottom-text" fill="currentColor">
-                <tspan x="10" y="45">Mach bei <a href="https://www.trashbusters.de/aktionswochen/" target="_blank">Müllsammelaktionen</a> mit.</tspan>
-                <tspan x="10" y="65">In vielen Orten und Städten gibt</tspan>
-                <tspan x="10" y="85">es Aufrufe, sich an der Beseitigung</tspan>
-                <tspan x="10" y="105">von Müll aus der Landschaft zu beteiligen.</tspan>
-              </text>
-            </g>
-            <g id="Button-third" class="bottom-info-button">
-              <%- include('../partials/bottom-line-button', {cx:22, cy:79.5}); %>
-              <text class="svg-bottom-text" fill="currentColor">
-                <tspan x="67" y="16">Achte darauf, dass du deine Produkte oder</tspan>
-                <tspan x="67" y="35">Kleidung möglichst lange verwendest,</tspan>
-                <tspan x="67" y="54">bevor du sie <a href="https://www.resorti.de/blog/altkleiderentsorgung/" target="_blank" >sachgerecht entsorgst</a>.</tspan>
-              </text>
-            </g>
-            <g id="Button-fourth" class="bottom-info-button">
-              <%- include('../partials/bottom-line-button', {cx:319, cy:32.5}); %>
-              <text class="svg-bottom-text" fill="currentColor">
-                <tspan x="0" y="16">Verzichte auf Kosmetika mit</tspan>
-                <tspan x="0" y="36"><a href="https://www.umweltbundesamt.de/themen/mikroplastik-in-kosmetika-was-ist-das" target="_blank" >Mikroplastikpartikeln</a> und nutze</tspan>
-                <tspan x="0" y="56">Alternativen wie z.B. <a href="https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/produkte/was-ist-naturkosmetik-26394" target="_blank" >zertifizierte</a> </tspan>
-                <tspan x="0" y="76"><a href="https://www.verbraucherzentrale.de/wissen/umwelt-haushalt/produkte/was-ist-naturkosmetik-26394" target="_blank" ></a>Naturkosmetik.</a></tspan>
-              </text>
-            </g>
-          </g>
         </g>
       </svg>
     </div>

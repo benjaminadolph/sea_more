@@ -43,43 +43,25 @@
       <h2 class="headline">Was kann ich unternehmen?</h2>
     </div>
     <div class="bottom-info">
-      <svg
-        width="100%"
-        id="bottom-info-line"
-        height="769px"
-        viewBox="0 0 1442 769"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-      >
+      <div class="bottom-info-buttons">
+        <div class="bottom-info-button first">
+            Starte eine Petition, z.B. für eine gesetzliche Grundlage eine verpflichtende Bergung von Treibstoffresten festzulegen, um auf die Regierung Druck auszuüben.
+        </div>
+        <div class="bottom-info-button second">
+            Wähle Parteien, die sich für den Schutz der Umwelt einsetzen
+        </div>
+      </div>
+      <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-          <g id="bottom-line">
-            <%- include ('../partials/bottom-line-path'); %>
-            <g id="Button-first" class="bottom-info-button">
-              <%- include('../partials/bottom-line-button', {cx: 22, cy: 22.5});
-              %>
-              <text class="svg-bottom-text" fill="currentColor">
-                <tspan x="60" y="16">Starte eine Petition, z.B. für eine</tspan>
-                <tspan x="60" y="36">
-                  gesetzliche Grundlage eine verpflichtende
-                </tspan>
-                <tspan x="60" y="56">
-                  Bergung von Treibstoffresten festzulegen,
-                </tspan>
-                <tspan x="60" y="76">
-                  um auf die Regierung Druck auszuüben.
-                </tspan>
-              </text>
+            <g id="bottom-line">
+              <%- include ('../partials/bottom-line-path'); %>
+                <g id="Button-first" class="bottom-info-button">
+                  <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+                </g>
+                <g id="Button-second" class="bottom-info-button">
+                  <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
+                </g>
             </g>
-            <g id="Button-second" class="bottom-info-button">
-              <%- include('../partials/bottom-line-button', {cx: 330, cy:
-              38.5}); %>
-              <text class="svg-bottom-text" fill="currentColor">
-                <tspan x="10" y="45">Wähle Parteien, die sich für</tspan>
-                <tspan x="10" y="65">den Schutz der Umwelt einsetzen</tspan>
-              </text>
-            </g>
-          </g>
         </g>
       </svg>
     </div>

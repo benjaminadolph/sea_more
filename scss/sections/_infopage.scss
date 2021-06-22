@@ -90,6 +90,61 @@
             width: 100%;
         }
 
+        .bottom-info-buttons {
+            width:100%; 
+            height: 100%;
+
+            .bottom-info-button {
+                width: 230px;
+                font-size: 13px;
+                position: absolute;
+
+                &.first {
+                    top: 32%;
+                    left: 25%;
+                }
+
+                &.second {
+                    right: 43%;
+                    text-align: right;
+                    top: 49%;
+                }
+
+                &.third {
+                    left: 72%;
+                    top: 55%;
+                }
+
+                &.fourth {
+                    right: 25%;
+                    text-align: right;
+                    top: 80%;
+                }
+
+                @media(max-width: 860px) {
+                    &.first {
+                        top: 41%;
+                        left: 39%;
+                    }
+    
+                    &.second {
+                        right: 63%;
+                        top: 52%;
+                    }
+    
+                    &.third {
+                        left: 60%;
+                        top: 70%;
+                    }
+    
+                    &.fourth {
+                        right: 56%;
+                        top: 78%;
+                    }
+                }
+            } 
+        }
+
         .svg-bottom-text {
             color: white;
             font-weight: bold;
@@ -125,6 +180,12 @@
                 display: block;
             }
         }
+    }
+}
+
+#sewage {
+    .infopage .bottom-info .bottom-info-buttons .bottom-info-button.first {
+        width: 315px;
     }
 }
 

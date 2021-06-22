@@ -54,26 +54,26 @@ window.infopage = (function ($) {
 
         if ($(window).width() > 860) {
             $svg.removeAttr('viewBox');
-            $svg.each(function () { $(this)[0].setAttribute('viewBox', '0 0 1442 769') });
+            $svg.each(function () { $(this)[0].setAttribute('viewBox', '0 0 1920 1024') });
             $svg.attr({
                 width: $(window).width(),
-                height: (769 / 1442) * $(window).width()
+                height: (1024 / 1920) * $(window).width()
             });
 
             $('#Button-first').attr({
-                transform: "translate(280.000000, 181.000000)"
+                transform: "translate(418.000000, 343.000000)"
             });
 
             $('#Button-second').attr({
-                transform: "translate(515.000000, 340.000000)"
+                transform: "translate(796.000000, 468.000000)"
             });
 
             $('#Button-third').attr({
-                transform: "translate(988.000000, 426.000000)"
+                transform: "translate(1315.000000, 555.000000)"
             });
 
             $('#Button-fourth').attr({
-                transform: "translate(868.000000, 663.000000)"
+                transform: "translate(1094.000000, 825.000000)"
             });
 
         } else {
@@ -89,15 +89,15 @@ window.infopage = (function ($) {
             });
 
             $('#Button-second').attr({
-                transform: "translate(30.000000, 631.000000)"
+                transform: "translate(20.000000, 631.000000)"
             });
 
             $('#Button-third').attr({
-                transform: "translate(440.000000, 779.000000)"
+                transform: "translate(430.000000, 779.000000)"
             });
 
             $('#Button-fourth').attr({
-                transform: "translate(110.000000, 934.000000)"
+                transform: "translate(10.000000, 934.000000)"
             });
 
 
