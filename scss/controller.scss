@@ -2,8 +2,18 @@
 @import 'variables/fonts';
 @import 'variables/mixins';
 
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
 body {
+    margin: 0;
+    padding: 0;
     background: radial-gradient(90.67% 90.67% at 50% 50%, #7EB1E3 0%, #3376BF 100%);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 #controller-body {
@@ -22,6 +32,9 @@ body {
         position: absolute;
         bottom: 10vh;
         cursor: pointer;
+        text-align: center;
+        min-height: 23px;
+        width: 200px;
     }
 }
 

@@ -376,7 +376,7 @@ function intersectInfoBtn() {
         var btn = buttons[i].spriteRef.getBounds();
         var trtl = turtle_sprite.getBounds();
         if(btn.x + btn.width > trtl.x && btn.x < trtl.x + trtl.width && btn.y + btn.height > trtl.y && btn.y < trtl.y + trtl.height){
-            changeText("Open");
+            changeText("Öffnen");
             delta += 0.1
             buttons[i].spriteRef.width = buttons[i].spriteRef.width + Math.sin(delta) *1
             buttons[i].spriteRef.height = buttons[i].spriteRef.height + Math.sin(delta) *1
@@ -384,7 +384,7 @@ function intersectInfoBtn() {
                 touchInfoBtn(buttons[i].content)
                 showInfopage = true;
                 tapButton = false;
-                changeText("Close");
+                changeText("Schließen");
                 return true;
             }
         }
@@ -396,7 +396,7 @@ function intersectCoin() {
         var coin = coins[i].spriteRef.getBounds();
         var trtl = turtle_sprite.getBounds();
         if(coin.x + coin.width > trtl.x && coin.x < trtl.x + trtl.width && coin.y + coin.height > trtl.y && coin.y < trtl.y + trtl.height){
-            changeText("Collect");
+            changeText("Einsammeln");
             delta += 0.1
             coins[i].spriteRef.width = coins[i].spriteRef.width + Math.sin(delta) *1
             coins[i].spriteRef.height = coins[i].spriteRef.height + Math.sin(delta) *1
