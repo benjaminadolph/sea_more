@@ -44,45 +44,45 @@ const viewport = app.stage.addChild(new Viewport({
 }))
 
 let content = [
-    /* {name: "sewageisland", url: "assets/SVGs/sewage-island.svg", x:5815, y:1482, scale: 4}, */ 
+    {name: "sewageisland", url: "assets/SVGs/sewage-island.svg", x:5806, y:1462, scale: 4}, 
     /* {name: "sewage", url: "assets/SVGs/sewage.svg", x:5665, y:1932, scale: 4},  */
-    /* {name: "sewage1", url: "assets/SVGs/animation/sewage-1.svg", x:5665, y:1932, scale: 4}, */ 
-    {name: "sewage2", url: "assets/SVGs/animation/sewage-2.svg", x:5707, y:1888, scale: 3.7}, 
-    {name: "sewage3", url: "assets/SVGs/animation/sewage-3.svg", x:5707, y:1888, scale: 3.7}, 
+    {name: "sewage1", url: "assets/SVGs/animation/sewage-1.svg", x:5665, y:1932, scale: 4},
+    {name: "sewage2", animation: "horizontal", url: "assets/SVGs/animation/sewage-2.svg", x:5666, y:1932, scale: 4}, 
+    {name: "sewage3", animation: "horizontal", url: "assets/SVGs/animation/sewage-3.svg", x:5666, y:1932, scale: 4}, 
     {name: "submarine", url: "assets/SVGs/submarine.svg", x:4917, y:6020, scale: 4}, 
     {name: "submarinerocks", url: "assets/SVGs/submarine-rocks.svg", x:4148, y:6790, scale: 4},
     /* {name: "island1", url: "assets/SVGs/island1.svg", x:7137, y:1631, scale: 4},  */
     /* {name: "garbagecarpet", url: "assets/SVGs/garbage-carpet.svg", x:3568, y:1762, scale: 4}, */
-    {name: "garbagecarpet1", url: "assets/SVGs/animation/garbage-carpet-1.svg", x:3568, y:1742, scale: 4},
-    {name: "garbagecarpet2", url: "assets/SVGs/animation/garbage-carpet-2.svg", x:3568, y:1742, scale: 4},
-    {name: "garbagecarpet3", url: "assets/SVGs/animation/garbage-carpet-3.svg", x:3568, y:1742, scale: 4},
-    {name: "garbagecarpet4", url: "assets/SVGs/animation/garbage-carpet-4.svg", x:3568, y:1742, scale: 4},
-    /* {name: "boat", url: "assets/SVGs/boat.svg", x:1339, y:1209, scale: 4}, 
-    {name: "fishnet", url: "assets/SVGs/fish-net.svg", x:1792, y:2185, scale: 4}, */ 
-    /* {name: "fishnet1", url: "assets/SVGs/animation/fish-net-1.svg", x:1792, y:2185, scale: 4},  */
-    {name: "fishnet2", url: "assets/SVGs/animation/fish-net-2.svg", x:1792, y:2185, scale: 4}, 
-    {name: "fishnet3", url: "assets/SVGs/animation/fish-net-3.svg", x:1792, y:2185, scale: 4}, 
-    {name: "fishnet4", url: "assets/SVGs/animation/fish-net-4.svg", x:1792, y:2185, scale: 4}, 
+    {name: "garbagecarpet1", animation: "horizontal", url: "assets/SVGs/animation/garbage-carpet-1.svg", x:3568, y:1742, scale: 4},
+    {name: "garbagecarpet2", animation: "horizontal", url: "assets/SVGs/animation/garbage-carpet-2.svg", x:3568, y:1742, scale: 4},
+    {name: "garbagecarpet3", animation: "horizontal", url: "assets/SVGs/animation/garbage-carpet-3.svg", x:3568, y:1742, scale: 4},
+    {name: "garbagecarpet4", animation: "vertical", url: "assets/SVGs/animation/garbage-carpet-4.svg", x:3568, y:1742, scale: 4},
+    {name: "boat", url: "assets/SVGs/boat.svg", x:1339, y:1209, scale: 4}, 
+    /* {name: "fishnet", url: "assets/SVGs/fish-net.svg", x:1792, y:2185, scale: 4}, */ 
+    {name: "fishnet1", url: "assets/SVGs/animation/fish-net-1.svg", x:1792, y:2185, scale: 4}, 
+    {name: "fishnet2", animation: "horizontal", url: "assets/SVGs/animation/fish-net-2.svg", x:1792, y:2185, scale: 4}, 
+    {name: "fishnet3", animation: "vertical", url: "assets/SVGs/animation/fish-net-3.svg", x:1792, y:2185, scale: 4}, 
+    {name: "fishnet4", animation: "horizontal", url: "assets/SVGs/animation/fish-net-4.svg", x:1792, y:2185, scale: 4}, 
     {name: "deepseamining", url: "assets/SVGs/deep-sea-mining.svg", x:1298, y:5053, scale: 4}, 
     {name: "microplastic", url: "assets/SVGs/microplastic.svg", x:5116, y:3934, scale: 4},
-    /* {name: "whale", url: "assets/SVGs/whale.svg", x: 6868, y: 5168, scale: 4}, */
+    {name: "whale", animation: "vertical", url: "assets/SVGs/animation/whale.svg", x: 6868, y: 5168, scale: 4},
     {name: "starfish", url: "assets/SVGs/starfish.svg", x: 4654, y: 5996, scale: 4},
     /* {name: "seaweed", url: "assets/SVGs/seaweed.svg", x: 3773, y: 5920, scale: 4}, */
     /* {name: "seaweed1", url: "assets/SVGs/animation/seaweed-1.svg", x: 3833, y: 5984, scale: 4},
     {name: "seaweed2", url: "assets/SVGs/animation/seaweed-2.svg", x: 3833, y: 5984, scale: 4},
     {name: "seaweed3", url: "assets/SVGs/animation/seaweed-3.svg", x: 3833, y: 5984, scale: 4}, */
     /* {name: "jellyfish", url: "assets/SVGs/jellyfish.svg", x: 3683, y: 3592, scale: 4}, */
-    {name: "jellyfish1", url: "assets/SVGs/animation/jellyfish-1.svg", x: 3683, y: 3592, scale: 4},
-    {name: "jellyfish2", url: "assets/SVGs/animation/jellyfish-2.svg", x: 3683, y: 3592, scale: 4},
-    {name: "jellyfish3", url: "assets/SVGs/animation/jellyfish-3.svg", x: 3683, y: 3592, scale: 4},
-    {name: "jellyfish4", url: "assets/SVGs/animation/jellyfish-4.svg", x: 3683, y: 3592, scale: 4},
+    {name: "jellyfish1", animation: "vertical", url: "assets/SVGs/animation/jellyfish-1.svg", x: 3683, y: 3592, scale: 4},
+    {name: "jellyfish2", animation: "vertical",url: "assets/SVGs/animation/jellyfish-2.svg", x: 3683, y: 3592, scale: 4},
+    {name: "jellyfish3", animation: "vertical", url: "assets/SVGs/animation/jellyfish-3.svg", x: 3683, y: 3592, scale: 4},
+    {name: "jellyfish4", animation: "horizontal", url: "assets/SVGs/animation/jellyfish-4.svg", x: 3683, y: 3592, scale: 4},
     /* {name: "humanwateringcan", url: "assets/SVGs/human-wateringcan.svg", x: 6816, y: 1293, scale: 4},
     {name: "humanunderwater", url: "assets/SVGs/human-under-water.svg", x: 2326, y: 4876, scale: 4}, */
-    {name: "humanunderwater1", url: "assets/SVGs/animation/human-under-water-1.svg", x: 2326, y: 4876, scale: 4},
-    {name: "humanunderwater2", url: "assets/SVGs/animation/human-under-water-2.svg", x: 2326, y: 4876, scale: 4},
-    {name: "humanunderwater3", url: "assets/SVGs/animation/human-under-water-3.svg", x: 2326, y: 4876, scale: 4},
-    /* {name: "humanonisland", url: "assets/SVGs/human-on-island.svg", x: 5346, y: 1339, scale: 4},
-    {name: "humanonboat", url: "assets/SVGs/human-on-boat.svg", x: 1144, y: 1216, scale: 4}, */
+    {name: "humanunderwater1", animation: "vertical", url: "assets/SVGs/animation/human-under-water-1.svg", x: 2326, y: 4876, scale: 4},
+    {name: "humanunderwater2", animation: "horizontal", url: "assets/SVGs/animation/human-under-water-2.svg", x: 2326, y: 4876, scale: 4},
+    {name: "humanunderwater3", animation: "vertical", url: "assets/SVGs/animation/human-under-water-3.svg", x: 2326, y: 4876, scale: 4},
+    {name: "humanonisland", url: "assets/SVGs/human-on-island.svg", x: 5346, y: 1339, scale: 4},
+    {name: "humanonboat", url: "assets/SVGs/human-on-boat.svg", x: 1144, y: 1216, scale: 4},
     /* {name: "anchor", url: "assets/SVGs/anchor.svg", x: 907, y: 6414, scale: 4},
     {name: "corals", url:" assets/SVGs/corals.svg", x: 4020, y: 6842, scale: 4}, */
     /* {name: "corals1", url:" assets/SVGs/animation/corals-1.svg", x: 4020, y: 6842, scale: 4},
@@ -102,11 +102,11 @@ let buttons = [
 ]
 
 let coins = [
-    {name: "coin1", url: "assets/SVGs/coin.svg", x:5077, y:6350, scale: 2, content: "submarine"},
-    {name: "coin2", url: "assets/SVGs/coin.svg", x:1739, y:1279, scale: 2, content: "boat"},
+    {name: "coin1", url: "assets/SVGs/coin.svg", x:5407, y:6340, scale: 2, content: "submarine"},
+    {name: "coin2", url: "assets/SVGs/coin.svg", x:1733, y:1287, scale: 2, content: "boat"},
     {name: "coin3", url: "assets/SVGs/coin.svg", x:2138, y:5913, scale: 2, content: "deepseamining"},
-    {name: "coin4", url: "assets/SVGs/coin.svg", x:6180, y:1204, scale: 2, content: "sewageisland"},
-    {name: "coin5", url: "assets/SVGs/coin.svg", x:2378, y:3009, scale: 2, content: "fishnet"},
+    {name: "coin4", url: "assets/SVGs/coin.svg", x:6166, y:1198, scale: 2, content: "sewageisland"},
+    {name: "coin5", url: "assets/SVGs/coin.svg", x:2418, y:3069, scale: 2, content: "fishnet"},
 ]
 
 let loader = PIXI.Loader.shared
@@ -463,8 +463,21 @@ function animate() {
 
     gamma += 0.1
 
+    for(let i = 0; i < content.length; i++){
+        if(content[i].animation == "horizontal"){
+            content[i].spriteRef.position.x = content[i].spriteRef.position.x + Math.cos(gamma) * getRandomArbitrary(0, 0.5)
+        } else if (content[i].animation == "vertical") {
+            content[i].spriteRef.position.y = content[i].spriteRef.position.y + Math.cos(gamma) * getRandomArbitrary(0, 0.5)
+        }
+        
+    }
+
+    function getRandomArbitrary(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+    
     // Animation Sewage
-   content[0].spriteRef.position.x = content[0].spriteRef.position.x + Math.cos(gamma) *0.2
+ /*   content[0].spriteRef.position.x = content[0].spriteRef.position.x + Math.cos(gamma) *0.2
    content[1].spriteRef.position.y = content[1].spriteRef.position.y + Math.cos(gamma) *0.2
    // Animation Garbagecarpet
    content[4].spriteRef.position.x = content[4].spriteRef.position.x + Math.cos(gamma) *0.1
@@ -472,18 +485,18 @@ function animate() {
    content[6].spriteRef.position.x = content[6].spriteRef.position.x + Math.sin(gamma) *0.2
    content[7].spriteRef.position.y = content[7].spriteRef.position.y + Math.sin(gamma) *0.1
    // Animation Fish-Net
-   content[8].spriteRef.position.y = content[8].spriteRef.position.y + Math.cos(gamma) *0.3
-   content[9].spriteRef.position.x = content[9].spriteRef.position.x + Math.sin(gamma) *0.2
-   content[10].spriteRef.position.y = content[10].spriteRef.position.y + Math.sin(gamma) *0.4
+   content[10].spriteRef.position.y = content[10].spriteRef.position.y + Math.cos(gamma) *0.3
+   content[11].spriteRef.position.x = content[11].spriteRef.position.x + Math.sin(gamma) *0.2
+   content[12].spriteRef.position.y = content[12].spriteRef.position.y + Math.sin(gamma) *0.4
    //Animation Jellyfish
-   content[14].spriteRef.position.y = content[14].spriteRef.position.y + Math.cos(gamma) *0.3
-   content[15].spriteRef.position.x = content[15].spriteRef.position.x + Math.sin(gamma) *0.2
-   content[16].spriteRef.position.y = content[16].spriteRef.position.y + Math.sin(gamma) *0.4
-   content[17].spriteRef.position.y = content[17].spriteRef.position.y + Math.sin(gamma) *0.4
+   content[16].spriteRef.position.y = content[16].spriteRef.position.y + Math.cos(gamma) *0.3
+   content[17].spriteRef.position.x = content[17].spriteRef.position.x + Math.sin(gamma) *0.2
+   content[18].spriteRef.position.y = content[18].spriteRef.position.y + Math.sin(gamma) *0.4
+   content[19].spriteRef.position.y = content[19].spriteRef.position.y + Math.sin(gamma) *0.4
    //Animation Human under Water
-   content[18].spriteRef.position.y = content[18].spriteRef.position.y + Math.cos(gamma) *0.3
-   content[19].spriteRef.position.x = content[19].spriteRef.position.x + Math.sin(gamma) *0.2
-   content[20].spriteRef.position.y = content[20].spriteRef.position.y + Math.sin(gamma) *0.4
+   content[20].spriteRef.position.y = content[20].spriteRef.position.y + Math.cos(gamma) *0.3
+   content[21].spriteRef.position.x = content[21].spriteRef.position.x + Math.sin(gamma) *0.2
+   content[22].spriteRef.position.y = content[22].spriteRef.position.y + Math.sin(gamma) *0.4 */
 
     if(!showInfopage){
         changeText("");
