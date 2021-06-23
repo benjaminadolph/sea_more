@@ -162,8 +162,11 @@ function handleLoadComplete(){
         .decelerate()
         .clamp({ direction: 'all' })
 
-    viewport.position.x = -viewport.worldWidth/2
-    viewport.position.y = -viewport.worldHeight/2
+    /* viewport.position.x = -viewport.worldWidth/2
+    viewport.position.y = -viewport.worldHeight/2 */
+
+    viewport.position.x = -4136
+    viewport.position.y = -1226
 
     const bg_texture = loader.resources.bg.texture
     const bg_sprite = PIXI.Sprite.from(bg_texture)
