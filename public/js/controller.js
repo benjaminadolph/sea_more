@@ -18,7 +18,7 @@ function toggleBtn(){
 }
 
 socket.on('changeText', function(data){
-    clickBtn.innerHTML = data.text
+    $('#clickBtn .text').html(data.text);
 });
 
 function createJoystick(parent) {
