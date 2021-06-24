@@ -29,14 +29,19 @@ body {
 
     #clickBtn{
         @include button;
+        background-color: #fff;
+        color: $PRIMARY_COLOR;
         position: absolute;
         bottom: 10vh;
         cursor: pointer;
+        text-align: center;
+        min-height: 23px;
+        min-width: 200px;
 
         .text {
             text-align: center;
             min-height: 23px;
-            width: 200px;
+            min-width: 200px;
         }
     }
 }
