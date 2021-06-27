@@ -18,6 +18,7 @@ function toggleBtn(){
 }
 
 socket.on('changeText', function(data){
+    console.log(data.text)
     $('#clickBtn .text').html(data.text);
 });
 
@@ -40,30 +41,11 @@ function createJoystick(parent) {
     let dragStart = null;
     let currentPos = { x: 0, y: 0 };
     let emitTimer;
-
-   /*  let timeout;
-    let lastTap = 0;
-
-    function handleDoubleTouch(event) {
-        console.log("event")
-        let currentTime = new Date().getTime();
-        let tapLength = currentTime - lastTap;
-        clearTimeout(timeout);
-        if (tapLength < 500 && tapLength > 0) {
-            console.log("doubletouch")
-            tapButton = true
-            socket.emit('clickObject', tapButton);
-            tapButton = false
-            event.preventDefault();
-        }
-        lastTap = currentTime;
-    }; */
   
     function handleMouseDown(event) {
         stick.style.transition = '0s';
         emitTimer = setInterval(function(){
             socket.emit('moveJoystick', currentPos);
-            console.log(currentPos)
         }, 10);
         if (event.changedTouches) {
             dragStart = {
@@ -107,7 +89,6 @@ function createJoystick(parent) {
       dragStart = null;
       currentPos = { x: 0, y: 0 };
       clearInterval(emitTimer);
-      console.log(currentPos)
     }
   
     parent.appendChild(stick);

@@ -1,11 +1,8 @@
 import * as PIXI from 'pixi.js'
 import { Viewport } from 'pixi-viewport'
 import { Emitter } from 'pixi-particles'
-import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin.js";
 
-// register the plugin
-gsap.registerPlugin(PixiPlugin);
 // give the plugin a reference to the PIXI object
 PixiPlugin.registerPIXI(PIXI);
 //Nur für Devtools in Chrome notwendig
@@ -234,18 +231,23 @@ function handleLoadComplete(){
     }
     app.ticker.add(animate)
 
-    /*********
-     * PIXIJS WITH GSAP TEST
-     ********/
-    // Animating using GSAP
-    /*  gsap.to(circle, {
-        x: 500, duration: 2, repeat: -1, yoyo: true,
-    }); */
-
-    // ANIMATION TURTLE
     let w = 420;
     let h = 300;
 
+    function animatedTextureInit(texture){
+        return [
+            new PIXI.Texture(texture, new PIXI.Rectangle(0 * w, 0, w, h)),
+            new PIXI.Texture(texture, new PIXI.Rectangle(1 * w, 0, w, h)),
+            new PIXI.Texture(texture, new PIXI.Rectangle(2 * w, 0, w, h))
+        ]
+    }
+    function textureInit(texture){
+        return [
+            new PIXI.Texture(texture, new PIXI.Rectangle(1 * w, 0, w, h)),
+        ]
+    }
+
+    // ANIMATION TURTLE
     const texture_turtledown = loader.resources.turtledown.texture;
     const texture_turtledownleft = loader.resources.turtledownleft.texture;
     const texture_turtledownright = loader.resources.turtledownright.texture;
@@ -255,71 +257,23 @@ function handleLoadComplete(){
     const texture_turtleright = loader.resources.turtleright.texture;
     const texture_turtleleft = loader.resources.turtleleft.texture;
 
-    turtleSheet["standRightUp"] = [
-        new PIXI.Texture(texture_turtleupright, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    turtleSheet["standLeftUp"] = [
-        new PIXI.Texture(texture_turtleupleft, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    turtleSheet["standUp"] = [
-        new PIXI.Texture(texture_turtleup, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    turtleSheet["standDown"] = [
-        new PIXI.Texture(texture_turtledown, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    turtleSheet["standRight"] = [
-        new PIXI.Texture(texture_turtleright, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    turtleSheet["standLeft"] = [
-        new PIXI.Texture(texture_turtleleft, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    turtleSheet["standRightDown"] = [
-        new PIXI.Texture(texture_turtledownright, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    turtleSheet["standLeftDown"] = [
-        new PIXI.Texture(texture_turtledownleft, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
+    turtleSheet["standRightUp"] = textureInit(texture_turtleupright)
+    turtleSheet["standLeftUp"] = textureInit(texture_turtleupleft)
+    turtleSheet["standUp"] = textureInit(texture_turtleup)
+    turtleSheet["standDown"] = textureInit(texture_turtledown)
+    turtleSheet["standRight"] = textureInit(texture_turtleright)
+    turtleSheet["standLeft"] = textureInit(texture_turtleleft)
+    turtleSheet["standRightDown"] = textureInit(texture_turtledownright)
+    turtleSheet["standLeftDown"] = textureInit(texture_turtledownleft)
 
-    turtleSheet["swimRightUp"] = [
-        new PIXI.Texture(texture_turtleupright, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleupright, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleupright, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    turtleSheet["swimLeftUp"] = [
-        new PIXI.Texture(texture_turtleupleft, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleupleft, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleupleft, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    turtleSheet["swimUp"] = [
-        new PIXI.Texture(texture_turtleup, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleup, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleup, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    turtleSheet["swimDown"] = [
-        new PIXI.Texture(texture_turtledown, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtledown, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtledown, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    turtleSheet["swimRight"] = [
-        new PIXI.Texture(texture_turtleright, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleright, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleright, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    turtleSheet["swimLeft"] = [
-        new PIXI.Texture(texture_turtleleft, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleleft, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtleleft, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    turtleSheet["swimRightDown"] = [
-        new PIXI.Texture(texture_turtledownright, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtledownright, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtledownright, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    turtleSheet["swimLeftDown"] = [
-        new PIXI.Texture(texture_turtledownleft, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtledownleft, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_turtledownleft, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
+    turtleSheet["swimRightUp"] = animatedTextureInit(texture_turtleupright)
+    turtleSheet["swimLeftUp"] = animatedTextureInit(texture_turtleupleft)
+    turtleSheet["swimUp"] = animatedTextureInit(texture_turtleup)
+    turtleSheet["swimDown"] = animatedTextureInit(texture_turtledown)
+    turtleSheet["swimRight"] = animatedTextureInit(texture_turtleright)
+    turtleSheet["swimLeft"] = animatedTextureInit(texture_turtleleft)
+    turtleSheet["swimRightDown"] = animatedTextureInit(texture_turtledownright)
+    turtleSheet["swimLeftDown"] = animatedTextureInit(texture_turtledownleft)
 
     const texture_superturtledown = loader.resources.superturtledown.texture;
     const texture_superturtledownleft = loader.resources.superturtledownleft.texture;
@@ -330,71 +284,23 @@ function handleLoadComplete(){
     const texture_superturtleright = loader.resources.superturtleright.texture;
     const texture_superturtleleft = loader.resources.superturtleleft.texture;
 
-    superturtleSheet["standRightUp"] = [
-        new PIXI.Texture(texture_superturtleupright, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    superturtleSheet["standLeftUp"] = [
-        new PIXI.Texture(texture_superturtleupleft, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    superturtleSheet["standUp"] = [
-        new PIXI.Texture(texture_superturtleup, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    superturtleSheet["standDown"] = [
-        new PIXI.Texture(texture_superturtledown, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    superturtleSheet["standRight"] = [
-        new PIXI.Texture(texture_superturtleright, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    superturtleSheet["standLeft"] = [
-        new PIXI.Texture(texture_superturtleleft, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    superturtleSheet["standRightDown"] = [
-        new PIXI.Texture(texture_superturtledownright, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
-    superturtleSheet["standLeftDown"] = [
-        new PIXI.Texture(texture_superturtledownleft, new PIXI.Rectangle(1 * w, 0, w, h))
-    ];
+    superturtleSheet["standRightUp"] = textureInit(texture_superturtleupright)
+    superturtleSheet["standLeftUp"] = textureInit(texture_superturtleupleft)
+    superturtleSheet["standUp"] = textureInit(texture_superturtleup)
+    superturtleSheet["standDown"] = textureInit(texture_superturtledown)
+    superturtleSheet["standRight"] = textureInit(texture_superturtleright)
+    superturtleSheet["standLeft"] = textureInit(texture_superturtleleft)
+    superturtleSheet["standRightDown"] = textureInit(texture_superturtledownright)
+    superturtleSheet["standLeftDown"] = textureInit(texture_superturtledownleft)
 
-    superturtleSheet["swimRightUp"] = [
-        new PIXI.Texture(texture_superturtleupright, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleupright, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleupright, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    superturtleSheet["swimLeftUp"] = [
-        new PIXI.Texture(texture_superturtleupleft, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleupleft, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleupleft, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    superturtleSheet["swimUp"] = [
-        new PIXI.Texture(texture_superturtleup, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleup, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleup, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    superturtleSheet["swimDown"] = [
-        new PIXI.Texture(texture_superturtledown, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtledown, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtledown, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    superturtleSheet["swimRight"] = [
-        new PIXI.Texture(texture_superturtleright, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleright, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleright, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    superturtleSheet["swimLeft"] = [
-        new PIXI.Texture(texture_superturtleleft, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleleft, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtleleft, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    superturtleSheet["swimRightDown"] = [
-        new PIXI.Texture(texture_superturtledownright, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtledownright, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtledownright, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
-    superturtleSheet["swimLeftDown"] = [
-        new PIXI.Texture(texture_superturtledownleft, new PIXI.Rectangle(0 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtledownleft, new PIXI.Rectangle(1 * w, 0, w, h)),
-        new PIXI.Texture(texture_superturtledownleft, new PIXI.Rectangle(2 * w, 0, w, h))
-    ];
+    superturtleSheet["swimRightUp"] = animatedTextureInit(texture_superturtleupright)
+    superturtleSheet["swimLeftUp"] = animatedTextureInit(texture_superturtleupleft)
+    superturtleSheet["swimUp"] = animatedTextureInit(texture_superturtleup)
+    superturtleSheet["swimDown"] = animatedTextureInit(texture_superturtledown)
+    superturtleSheet["swimRight"] = animatedTextureInit(texture_superturtleright)
+    superturtleSheet["swimLeft"] = animatedTextureInit(texture_superturtleleft)
+    superturtleSheet["swimRightDown"] = animatedTextureInit(texture_superturtledownright)
+    superturtleSheet["swimLeftDown"] = animatedTextureInit(texture_superturtledownleft)
 
     //set Startsheet
     animatedSheet = turtleSheet;    
@@ -411,14 +317,46 @@ function handleLoadComplete(){
 
 }
 
+const btnText = {
+    nothing: 0,
+    close: 1,
+    open: 2,
+    collect: 3
+};
+
+let currentButtonText;
+
+function setBtnText(changeBtnText){
+    if(changeBtnText != currentButtonText){
+        switch(changeBtnText) {
+            case btnText.nothing:
+                changeText("")
+              break;
+            case btnText.close:
+                changeText("Schließen")
+              break;
+            case btnText.open:
+                changeText("Öffnen")
+            break;
+            case btnText.collect:
+                changeText("Einsammeln")
+            break;
+            default: 
+                console.log("Fehler")
+
+        }
+        currentButtonText = changeBtnText;
+    }
+}
+
 let delta = 0
 
-function intersectInfoBtn() {
+/* function intersectInfoBtn() {
     for(let i = 0; i < buttons.length; i++) {
         var btn = buttons[i].spriteRef.getBounds();
         var trtl = turtle_animatedSprite.getBounds();
         if(btn.x + btn.width > trtl.x && btn.x < trtl.x + trtl.width && btn.y + btn.height > trtl.y && btn.y < trtl.y + trtl.height){
-            changeText("Öffnen");
+            setBtnText(btnText.open);
             delta += 0.1
             buttons[i].spriteRef.width = buttons[i].spriteRef.width + Math.sin(delta) *1
             buttons[i].spriteRef.height = buttons[i].spriteRef.height + Math.sin(delta) *1
@@ -426,7 +364,7 @@ function intersectInfoBtn() {
                 touchInfoBtn(buttons[i].content)
                 showInfopage = true;
                 tapButton = false;
-                changeText("Schließen");
+                setBtnText(btnText.close);
                 return true;
             }
         }
@@ -438,7 +376,7 @@ function intersectCoin() {
         var coin = coins[i].spriteRef.getBounds();
         var trtl = turtle_animatedSprite.getBounds();
         if(coin.x + coin.width > trtl.x && coin.x < trtl.x + trtl.width && coin.y + coin.height > trtl.y && coin.y < trtl.y + trtl.height){
-            changeText("Einsammeln");
+            setBtnText(btnText.collect);
             delta += 0.1
             coins[i].spriteRef.width = coins[i].spriteRef.width + Math.sin(delta) *1
             coins[i].spriteRef.height = coins[i].spriteRef.height + Math.sin(delta) *1
@@ -447,6 +385,45 @@ function intersectCoin() {
                 tapButton = false;
                 return true;
             }
+        }
+    } 
+} */
+
+function intersect() {
+    for(let i = 0; i < coins.length; i++) {
+        var coin = coins[i].spriteRef.getBounds();
+        var trtl = turtle_animatedSprite.getBounds();
+        if(coin.x + coin.width > trtl.x && coin.x < trtl.x + trtl.width && coin.y + coin.height > trtl.y && coin.y < trtl.y + trtl.height){
+            setBtnText(btnText.collect);
+            delta += 0.1
+            coins[i].spriteRef.width = coins[i].spriteRef.width + Math.sin(delta) *1
+            coins[i].spriteRef.height = coins[i].spriteRef.height + Math.sin(delta) *1
+            if(tapButton){
+                touchCoin(coins[i])
+                tapButton = false;
+                return;
+            }
+            return
+        }
+    } 
+    for(let i = 0; i < buttons.length; i++) {
+        var btn = buttons[i].spriteRef.getBounds();
+        var trtl = turtle_animatedSprite.getBounds();
+        if(btn.x + btn.width > trtl.x && btn.x < trtl.x + trtl.width && btn.y + btn.height > trtl.y && btn.y < trtl.y + trtl.height){
+            setBtnText(btnText.open);
+            delta += 0.1
+            buttons[i].spriteRef.width = buttons[i].spriteRef.width + Math.sin(delta) *1
+            buttons[i].spriteRef.height = buttons[i].spriteRef.height + Math.sin(delta) *1
+            if(tapButton){
+                touchInfoBtn(buttons[i].content)
+                showInfopage = true;
+                tapButton = false;
+                setBtnText(btnText.close);
+                return;
+            }
+            return
+        } else {
+            setBtnText(btnText.nothing);
         }
     } 
 }
@@ -513,9 +490,9 @@ function animate() {
       }
 
     if(!showInfopage){
-        changeText("");
-        intersectInfoBtn()
-        intersectCoin()
+        /* intersectInfoBtn()
+        intersectCoin() */
+        intersect()
     }else if (tapButton && showInfopage){
         $('.infopage').remove();
         showInfopage = false;
@@ -536,46 +513,16 @@ window.moveViewport = function(directions){
         //calculate correct Animation speed based on drag on the joystick
         turtle_animatedSprite.animationSpeed = Math.sqrt(Math.pow(Math.abs(directions.x),2) + Math.pow(Math.abs(directions.y),2))/400;
 
-        if(angle < 110 && angle > 70){
-            if (!turtle_animatedSprite.playing) {
-                turtle_animatedSprite.textures = animatedSheet.swimDown;
-                turtle_animatedSprite.play();
-            }
-        } else if(angle > -110 && angle < -70){
-            if (!turtle_animatedSprite.playing) {
-                turtle_animatedSprite.textures = animatedSheet.swimUp;
-                turtle_animatedSprite.play();
-            }
-        } else if(angle < -160 || angle > 160){
-            if (!turtle_animatedSprite.playing) {
-                turtle_animatedSprite.textures = animatedSheet.swimLeft;
-                turtle_animatedSprite.play();
-            }
-        } else if(angle > -20 && angle < 20){
-            if (!turtle_animatedSprite.playing) {
-                turtle_animatedSprite.textures = animatedSheet.swimRight;
-                turtle_animatedSprite.play();
-            }
-        } else if(angle > -70 && angle < -20){
-            if (!turtle_animatedSprite.playing) {
-                turtle_animatedSprite.textures = animatedSheet.swimRightUp;
-                turtle_animatedSprite.play();
-            }
-        } else if(angle > -160 && angle < -110){
-            if (!turtle_animatedSprite.playing) {
-                turtle_animatedSprite.textures = animatedSheet.swimLeftUp;
-                turtle_animatedSprite.play();
-            }
-        } else if(angle < 70 && angle > 20){
-            if (!turtle_animatedSprite.playing) {
-                turtle_animatedSprite.textures = animatedSheet.swimRightDown;
-                turtle_animatedSprite.play();
-            }
-        } else if(angle < 160 && angle > 110){
-            if (!turtle_animatedSprite.playing) {
-                turtle_animatedSprite.textures = animatedSheet.swimLeftDown;
-                turtle_animatedSprite.play();
-            }
+        if (!turtle_animatedSprite.playing) {
+            if      (angle <  110 && angle >  70) { turtle_animatedSprite.textures = animatedSheet.swimDown; }
+            else if (angle > -110 && angle < -70) { turtle_animatedSprite.textures = animatedSheet.swimUp; }
+            else if (angle < -160 || angle > 160) { turtle_animatedSprite.textures = animatedSheet.swimLeft; }
+            else if (angle > -20 && angle < 20) { turtle_animatedSprite.textures = animatedSheet.swimRight; }
+            else if (angle > -70 && angle < -20) { turtle_animatedSprite.textures = animatedSheet.swimRightUp; }
+            else if (angle > -160 && angle < -110) { turtle_animatedSprite.textures = animatedSheet.swimLeftUp; }
+            else if (angle < 70 && angle > 20) { turtle_animatedSprite.textures = animatedSheet.swimRightDown; }
+            else if (angle < 160 && angle > 110) { turtle_animatedSprite.textures = animatedSheet.swimLeftDown; }
+            turtle_animatedSprite.play();
         }
     }
 } 
