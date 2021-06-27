@@ -4,6 +4,9 @@ import { Emitter } from 'pixi-particles'
 import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin.js";
 
+// Import Data from data.js
+import { content, buttons, coins, turtle, superturtle, background } from './data'
+
 // register the plugin
 gsap.registerPlugin(PixiPlugin);
 // give the plugin a reference to the PIXI object
@@ -11,10 +14,11 @@ PixiPlugin.registerPIXI(PIXI);
 //Nur für Devtools in Chrome notwendig
 window.PIXI = PIXI
 
+// Variables
+// ______________________________________________________________________________________________
 const canvas = document.getElementById('mycanvas')
 let _w = window.innerWidth
 let _h = window.innerHeight
-
 let turtle_animatedSprite;
 let cointerCounter = 0;
 const turtleSheet = {};
@@ -42,82 +46,11 @@ const viewport = app.stage.addChild(new Viewport({
     interaction: app.renderer.plugins.interaction,
 }))
 
-const content = [
-    {name: "sewageisland", url: "assets/SVGs/sewage-island.svg", x:5806, y:1462, scale: 4}, 
-    {name: "sewage1", url: "assets/SVGs/animation/sewage-1.svg", x:5665, y:1932, scale: 4},
-    {name: "sewage2", animation: "horizontal", url: "assets/SVGs/animation/sewage-2.svg", x:5666, y:1932, scale: 4}, 
-    {name: "sewage3", animation: "horizontal", url: "assets/SVGs/animation/sewage-3.svg", x:5666, y:1932, scale: 4}, 
-    {name: "submarine", url: "assets/SVGs/submarine.svg", x:4917, y:6020, scale: 4}, 
-    {name: "submarinerocks", url: "assets/SVGs/submarine-rocks.svg", x:4148, y:6790, scale: 4},
-    {name: "garbagecarpet1", animation: "horizontal", url: "assets/SVGs/animation/garbage-carpet-1.svg", x:3568, y:1742, scale: 4},
-    {name: "garbagecarpet2", animation: "horizontal", url: "assets/SVGs/animation/garbage-carpet-2.svg", x:3568, y:1742, scale: 4},
-    {name: "garbagecarpet3", animation: "horizontal", url: "assets/SVGs/animation/garbage-carpet-3.svg", x:3568, y:1742, scale: 4},
-    {name: "garbagecarpet4", animation: "vertical", url: "assets/SVGs/animation/garbage-carpet-4.svg", x:3568, y:1742, scale: 4},
-    {name: "boat", url: "assets/SVGs/boat.svg", x:1339, y:1209, scale: 4}, 
-    {name: "fishnet1", url: "assets/SVGs/animation/fish-net-1.svg", x:1792, y:2185, scale: 4}, 
-    {name: "fishnet2", animation: "horizontal", url: "assets/SVGs/animation/fish-net-2.svg", x:1792, y:2185, scale: 4}, 
-    {name: "fishnet3", animation: "vertical", url: "assets/SVGs/animation/fish-net-3.svg", x:1792, y:2185, scale: 4}, 
-    {name: "fishnet4", animation: "horizontal", url: "assets/SVGs/animation/fish-net-4.svg", x:1792, y:2185, scale: 4}, 
-    {name: "deepseamining", url: "assets/SVGs/deep-sea-mining.svg", x:1298, y:5053, scale: 4}, 
-    {name: "microplastic", url: "assets/SVGs/microplastic.svg", x:5116, y:3934, scale: 4},
-    {name: "whale", animation: "vertical", url: "assets/SVGs/animation/whale.svg", x: 6868, y: 5168, scale: 4},
-    {name: "starfish", url: "assets/SVGs/starfish.svg", x: 4654, y: 5996, scale: 4},
-    {name: "jellyfish1", animation: "vertical", url: "assets/SVGs/animation/jellyfish-1.svg", x: 3683, y: 3592, scale: 4},
-    {name: "jellyfish2", animation: "vertical",url: "assets/SVGs/animation/jellyfish-2.svg", x: 3683, y: 3592, scale: 4},
-    {name: "jellyfish3", animation: "vertical", url: "assets/SVGs/animation/jellyfish-3.svg", x: 3683, y: 3592, scale: 4},
-    {name: "jellyfish4", animation: "horizontal", url: "assets/SVGs/animation/jellyfish-4.svg", x: 3683, y: 3592, scale: 4},
-    {name: "humanunderwater1", animation: "vertical", url: "assets/SVGs/animation/human-under-water-1.svg", x: 2326, y: 4876, scale: 4},
-    {name: "humanunderwater2", animation: "horizontal", url: "assets/SVGs/animation/human-under-water-2.svg", x: 2326, y: 4876, scale: 4},
-    {name: "humanunderwater3", animation: "vertical", url: "assets/SVGs/animation/human-under-water-3.svg", x: 2326, y: 4876, scale: 4},
-    {name: "humanonisland", url: "assets/SVGs/human-on-island.svg", x: 5346, y: 1339, scale: 4},
-    {name: "humanonboat", url: "assets/SVGs/human-on-boat.svg", x: 1144, y: 1216, scale: 4},
-]
-
-const buttons = [
-    {name: "buttonsewage", url: "assets/SVGs/marker.svg", x:5815, y:1482, scale: 4, content: "sewage"},
-    {name: "buttonsubmarine", url: "assets/SVGs/marker.svg", x:4917, y:6020, scale: 4, content: "shipwrecks"},
-    {name: "buttongarbagecarpet", url: "assets/SVGs/marker.svg", x:3568, y:1672,  scale: 4, content: "fishernets"},
-    {name: "buttonboat", url: "assets/SVGs/marker.svg", x:1339, y:1209, scale: 4, content: "overfishing"},
-    {name: "buttondeepseamining", url: "assets/SVGs/marker.svg", x:1928, y:5363, scale: 4, content: "deep-sea-mining"},
-    {name: "buttonmicroplastic", url: "assets/SVGs/marker.svg", x:5116, y:3934, scale: 4, content: "microplastic"},
-]
-
-const coins = [
-    {name: "coin1", url: "assets/SVGs/coin.svg", x:5407, y:6340, scale: 2, content: "submarine"},
-    {name: "coin2", url: "assets/SVGs/coin.svg", x:1733, y:1287, scale: 2, content: "boat"},
-    {name: "coin3", url: "assets/SVGs/coin.svg", x:2138, y:5913, scale: 2, content: "deepseamining"},
-    {name: "coin4", url: "assets/SVGs/coin.svg", x:6166, y:1198, scale: 2, content: "sewageisland"},
-    {name: "coin5", url: "assets/SVGs/coin.svg", x:2418, y:3069, scale: 2, content: "fishnet"},
-]
-
-const turtle = [
-    {name: "turtledown", url: "assets/turtle/turtle-down.png"},
-    {name: "turtledownright", url: "assets/turtle/turtle-down-right.png"},
-    {name: "turtledownleft", url: "assets/turtle/turtle-down-left.png"},
-    {name: "turtleup", url: "assets/turtle/turtle-up.png"},
-    {name: "turtleupright", url: "assets/turtle/turtle-up-right.png"},
-    {name: "turtleupleft", url: "assets/turtle/turtle-up-left.png"},
-    {name: "turtleright", url: "assets/turtle/turtle-right.png"},
-    {name: "turtleleft", url: "assets/turtle/turtle-left.png"},
-]
-
-const superturtle = [
-    {name: "superturtledown", url: "assets/turtle/superturtle-down.png"},
-    {name: "superturtledownright", url: "assets/turtle/superturtle-down-right.png"},
-    {name: "superturtledownleft", url: "assets/turtle/superturtle-down-left.png"},
-    {name: "superturtleup", url: "assets/turtle/superturtle-up.png"},
-    {name: "superturtleupright", url: "assets/turtle/superturtle-up-right.png"},
-    {name: "superturtleupleft", url: "assets/turtle/superturtle-up-left.png"},
-    {name: "superturtleright", url: "assets/turtle/superturtle-right.png"},
-    {name: "superturtleleft", url: "assets/turtle/superturtle-left.png"},
-]
-
 let loader = PIXI.Loader.shared
 
-loader.add("bg1", "assets/background_performance1.jpg")
-loader.add("bg2", "assets/background_performance2.jpg")
-loader.add("bg3", "assets/background_performance3.jpg")
-loader.add("bg4", "assets/background_performance4.jpg")
+for(let i = 0; i < background.length; i++) {
+    loader.add(background[i].name, background[i].url);
+}
 
 for(let i = 0; i < content.length; i++) {
     loader.add(content[i].name, content[i].url, { 
@@ -175,32 +108,17 @@ function handleLoadComplete(){
 
     viewport.position.x = -4136
     viewport.position.y = -1226
-    
-    const bg1_texture = loader.resources.bg1.texture
-    const bg1_sprite = PIXI.Sprite.from(bg1_texture)
-    bg1_sprite.anchor.set(0);
-    bg1_sprite.position.set(0, 0)
-    viewport.addChild(bg1_sprite)
 
-    const bg2_texture = loader.resources.bg2.texture
-    const bg2_sprite = PIXI.Sprite.from(bg2_texture)
-    bg2_sprite.anchor.set(0);
-    bg2_sprite.position.set(4045, 0)
-    viewport.addChild(bg2_sprite)
+    for(let i in background) {
+        let resourcename = eval("loader.resources." + background[i].name + ".texture")
+        background[i].spriteRef = PIXI.Sprite.from(resourcename)
+        background[i].spriteRef.position.set(background[i].x, background[i].y)
+        background[i].spriteRef.anchor.set(0); 
+        background[i].spriteRef.name = background[i].name; 
+        viewport.addChild(background[i].spriteRef);
+    }
 
-    const bg3_texture = loader.resources.bg3.texture
-    const bg3_sprite = PIXI.Sprite.from(bg3_texture)
-    bg3_sprite.anchor.set(0);
-    bg3_sprite.position.set(4045, 4063.5)
-
-    viewport.addChild(bg3_sprite)
-    const bg4_texture = loader.resources.bg4.texture
-    const bg4_sprite = PIXI.Sprite.from(bg4_texture)
-    bg4_sprite.anchor.set(0);
-    bg4_sprite.position.set(0, 4063.5)
-    viewport.addChild(bg4_sprite)
-
-    for(let i = 0; i < coins.length; i++) {
+    for(let i in coins) {
         let resourcename = eval("loader.resources." + coins[i].name + ".texture")
         coins[i].spriteRef = PIXI.Sprite.from(resourcename)
         coins[i].spriteRef.position.set(coins[i].x, coins[i].y)
@@ -212,7 +130,7 @@ function handleLoadComplete(){
         coins[i].spriteRef.on('pointerdown', clickCoin)
     }
 
-    for(let i = 0; i < content.length; i++) {
+    for(let i in content) {
         let resourcename = eval("loader.resources." + content[i].name + ".texture")
         content[i].spriteRef = PIXI.Sprite.from(resourcename)
         content[i].spriteRef.position.set(content[i].x, content[i].y)
@@ -221,7 +139,7 @@ function handleLoadComplete(){
         viewport.addChild(content[i].spriteRef);
     }
 
-    for(let i = 0; i < buttons.length; i++) {
+    for(let i in buttons) {
         let resourcename = eval("loader.resources." + buttons[i].name + ".texture")
         buttons[i].spriteRef = PIXI.Sprite.from(resourcename)
         buttons[i].spriteRef.position.set(buttons[i].x, buttons[i].y)
@@ -232,6 +150,7 @@ function handleLoadComplete(){
         buttons[i].spriteRef.content = buttons[i].content
         buttons[i].spriteRef.on('pointerdown', clickInfoBtn)
     }
+
     app.ticker.add(animate)
 
     /*********
@@ -396,6 +315,8 @@ function handleLoadComplete(){
         new PIXI.Texture(texture_superturtledownleft, new PIXI.Rectangle(2 * w, 0, w, h))
     ];
 
+
+    console.log(turtleSheet)
     //set Startsheet
     animatedSheet = turtleSheet;    
 
@@ -414,7 +335,7 @@ function handleLoadComplete(){
 let delta = 0
 
 function intersectInfoBtn() {
-    for(let i = 0; i < buttons.length; i++) {
+    for(let i in buttons) {
         var btn = buttons[i].spriteRef.getBounds();
         var trtl = turtle_animatedSprite.getBounds();
         if(btn.x + btn.width > trtl.x && btn.x < trtl.x + trtl.width && btn.y + btn.height > trtl.y && btn.y < trtl.y + trtl.height){
@@ -434,7 +355,7 @@ function intersectInfoBtn() {
 } 
 
 function intersectCoin() {
-    for(let i = 0; i < coins.length; i++) {
+    for(let i in coins) {
         var coin = coins[i].spriteRef.getBounds();
         var trtl = turtle_animatedSprite.getBounds();
         if(coin.x + coin.width > trtl.x && coin.x < trtl.x + trtl.width && coin.y + coin.height > trtl.y && coin.y < trtl.y + trtl.height){
@@ -500,7 +421,7 @@ function animate() {
         animatedSheet = turtleSheet;
     }
     gamma += 0.1
-    for(let i = 0; i < content.length; i++){
+    for(let i in content){
         if(content[i].animation == "horizontal"){
             content[i].spriteRef.position.x = content[i].spriteRef.position.x + Math.cos(gamma) * getRandomArbitrary(0, 0.5)
         } else if (content[i].animation == "vertical") {
