@@ -428,67 +428,18 @@ function handleLoadProgress(loader, resource){
     console.log(Math.round(loader.progress) + "% loaded", resource.name)
 }
 
-// Create a new emitter
+
+// Pixi Particles, Create an Emitter for the Bubbles
+// ______________________________________________________________________________________________
+
+var emitterConfiguration = require('./emitter-configuration.json'); 
 var emitter = new Emitter(
 	// The PIXI.Container to put the emitter in
 	viewport,
 	// The collection of particle images to use
 	['assets/bubble-big.png', 'assets/bubble-small.png'],
 	// Emitter configuration
-	{
-        "alpha": {
-            "start": 1,
-            "end": 0
-        },
-        "scale": {
-            "start": 0.25,
-            "end": 0.35,
-            "minimumScaleMultiplier": 0.5
-        },
-        "color": {
-            "start": "#ffffff",
-            "end": "#ffffff"
-        },
-        "speed": {
-            "start": 200,
-            "end": 200,
-            "minimumSpeedMultiplier": 1
-        },
-        "acceleration": {
-            "x": 0,
-            "y": 0
-        },
-        "maxSpeed": 0,
-        "startRotation": {
-            "min": 260,
-            "max": 280
-        },
-        "noRotation": false,
-        "rotationSpeed": {
-            "min": 0,
-            "max": 50
-        },
-        "lifetime": {
-            "min": 3.5,
-            "max": 4
-        },
-        "blendMode": "normal",
-        "frequency": 0.016,
-        "emitterLifetime": -1,
-        "maxParticles": 80,
-        "pos": {
-            "x": 0,
-            "y": 0
-        },
-        "addAtBack": false,
-        "spawnType": "rect",
-        "spawnRect": {
-            "x": -0,
-            "y": 2500,
-            "w": 8090,
-            "h": 6627
-        }
-    }
+	emitterConfiguration
 );
 
 // Calculate the current time
