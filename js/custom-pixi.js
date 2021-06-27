@@ -5,8 +5,6 @@ import { Emitter } from 'pixi-particles'
 // Import Data from data.js
 import { content, buttons, coins, turtle, superturtle, background } from './data'
 
-// give the plugin a reference to the PIXI object
-PixiPlugin.registerPIXI(PIXI);
 //Nur für Devtools in Chrome notwendig
 window.PIXI = PIXI
 
@@ -220,8 +218,6 @@ function handleLoadComplete(){
     superturtleSheet["swimRightDown"] = animatedTextureInit(texture_superturtledownright)
     superturtleSheet["swimLeftDown"] = animatedTextureInit(texture_superturtledownleft)
 
-
-    console.log(turtleSheet)
     //set Startsheet
     animatedSheet = turtleSheet;    
 
@@ -285,7 +281,7 @@ function intersect() {
                 tapButton = false;
                 return;
             }
-            return
+            return;
         }
     } 
     for(let i in buttons) {
@@ -303,7 +299,7 @@ function intersect() {
                 setBtnText(btnText.close);
                 return;
             }
-            return
+            return;
         } else {
             setBtnText(btnText.nothing);
         }
@@ -372,8 +368,6 @@ function animate() {
       }
 
     if(!showInfopage){
-        /* intersectInfoBtn()
-        intersectCoin() */
         intersect()
     }else if (tapButton && showInfopage){
         $('.infopage').remove();
