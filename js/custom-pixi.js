@@ -8,7 +8,7 @@ import { content, buttons, coins, turtle, superturtle, background } from './data
 //Nur für Devtools in Chrome notwendig
 window.PIXI = PIXI
 
-// Variables
+// Set global variables
 // ______________________________________________________________________________________________
 const canvas = document.getElementById('mycanvas')
 let _w = window.innerWidth
@@ -22,6 +22,8 @@ let animatedSheet = {};
 window.tapButton = false;
 window.showInfopage = false;
 
+// Create Pixi Application and Viewport
+// ______________________________________________________________________________________________
 const app = new PIXI.Application({
     view: canvas,
     resolution: window.devicePixelRatio,
@@ -40,13 +42,15 @@ const viewport = app.stage.addChild(new Viewport({
     interaction: app.renderer.plugins.interaction,
 }))
 
+// Create Loader and add Images to loading queue
+// ______________________________________________________________________________________________
 let loader = PIXI.Loader.shared
 
-for(let i = 0; i < background.length; i++) {
+for(let i in background) {
     loader.add(background[i].name, background[i].url);
 }
 
-for(let i = 0; i < content.length; i++) {
+for(let i in content) {
     loader.add(content[i].name, content[i].url, { 
         metadata: {
             resourceOptions: {
@@ -56,7 +60,7 @@ for(let i = 0; i < content.length; i++) {
     });
 }
 
-for(let i = 0; i < buttons.length; i++) {
+for(let i in buttons) {
     loader.add(buttons[i].name, buttons[i].url, { 
         metadata: {
             resourceOptions: {
@@ -66,7 +70,7 @@ for(let i = 0; i < buttons.length; i++) {
     });
 }
 
-for(let i = 0; i < coins.length; i++) {
+for(let i in coins) {
     loader.add(coins[i].name, coins[i].url, { 
         metadata: {
             resourceOptions: {
@@ -76,19 +80,38 @@ for(let i = 0; i < coins.length; i++) {
     });
 }
 
-for(let i = 0; i < turtle.length; i++) {
+for(let i in turtle) {
     loader.add(turtle[i].name, turtle[i].url);
 }
 
-for(let i = 0; i < superturtle.length; i++) {
+for(let i in superturtle) {
     loader.add(superturtle[i].name, superturtle[i].url);
 }
+
+// Definde Actions for loader
+// ______________________________________________________________________________________________
 
 loader.onComplete.add(handleLoadComplete)
 loader.onLoad.add(handleLoadAsset)
 loader.onError.add(handleLoadError)
 loader.onProgress.add(handleLoadProgress)
 loader.load()
+
+function handleLoadError(){
+    console.error("error loading")
+}
+
+function handleLoadAsset(){
+    console.log("asset loaded")
+}
+
+function handleLoadProgress(loader, resource){
+    document.getElementById("loader-percentage").innerHTML = Math.round(loader.progress) + "% loaded";
+    console.log(Math.round(loader.progress) + "% loaded", resource.name)
+}
+
+// Handle Loader Complete: Create Textures and Sprites for canvas
+// ______________________________________________________________________________________________
 
 function handleLoadComplete(){
     
@@ -147,6 +170,7 @@ function handleLoadComplete(){
 
     app.ticker.add(animate)
 
+    // Create Textures for turtle animation
     let w = 420;
     let h = 300;
 
@@ -163,7 +187,6 @@ function handleLoadComplete(){
         ]
     }
 
-    // ANIMATION TURTLE
     const texture_turtledown = loader.resources.turtledown.texture;
     const texture_turtledownleft = loader.resources.turtledownleft.texture;
     const texture_turtledownright = loader.resources.turtledownright.texture;
@@ -218,7 +241,7 @@ function handleLoadComplete(){
     superturtleSheet["swimRightDown"] = animatedTextureInit(texture_superturtledownright)
     superturtleSheet["swimLeftDown"] = animatedTextureInit(texture_superturtledownleft)
 
-    //set Startsheet
+    //set sheet for turtle animation
     animatedSheet = turtleSheet;    
 
     turtle_animatedSprite = new PIXI.AnimatedSprite(animatedSheet.standUp)
@@ -230,8 +253,10 @@ function handleLoadComplete(){
     turtle_animatedSprite.position.set(viewport.center.x, viewport.center.y)
     viewport.addChild(turtle_animatedSprite)
     turtle_animatedSprite.play();
-
 }
+
+// Create Enum for button text
+// ______________________________________________________________________________________________
 
 const btnText = {
     nothing: 0,
@@ -259,15 +284,18 @@ function setBtnText(changeBtnText){
             break;
             default: 
                 console.log("Fehler")
-
         }
         currentButtonText = changeBtnText;
     }
 }
 
+// Intersect function for hit testing (Check if objects on canvas overlap)
+// ______________________________________________________________________________________________
+
 let delta = 0;
 
 function intersect() {
+    // check if turtle intersects with a coin
     for(let i in coins) {
         var coin = coins[i].spriteRef.getBounds();
         var trtl = turtle_animatedSprite.getBounds();
@@ -284,6 +312,7 @@ function intersect() {
             return;
         }
     } 
+    // check if turtle intersects with a button
     for(let i in buttons) {
         var btn = buttons[i].spriteRef.getBounds();
         var trtl = turtle_animatedSprite.getBounds();
@@ -305,6 +334,9 @@ function intersect() {
         }
     } 
 }
+
+// Functions which handle click on coins or buttons
+// ______________________________________________________________________________________________
 
 function touchInfoBtn(content) {
     console.log(content)
@@ -345,6 +377,9 @@ function clickCoin() {
     }
 }
 
+// Animate Function which animates the Sprites on Canvas
+// ______________________________________________________________________________________________
+
 let gamma = 0
 
 function animate() {
@@ -375,6 +410,9 @@ function animate() {
         tapButton = false;
     }
 }
+
+// MoveViewport Functions, moves the Viewport and animates the turtle
+// ______________________________________________________________________________________________
 
 window.moveViewport = function(directions){
     if (document.getElementById("infopages").querySelector(".infopage")) {
@@ -407,6 +445,9 @@ function calcAngleDegrees(x, y) {
     return Math.atan2(y, x) * 180 / Math.PI;
 }
 
+// Add/delete turtle when socket is connected/disconnected
+// ______________________________________________________________________________________________
+
 window.addTurtle = function() {
     turtle_animatedSprite.visible = true;
 }
@@ -414,20 +455,6 @@ window.addTurtle = function() {
 window.removeTurtle = function() {
     turtle_animatedSprite.visible = false;
 }
-
-function handleLoadError(){
-    console.error("error loading")
-}
-
-function handleLoadAsset(){
-    console.log("asset loaded")
-}
-
-function handleLoadProgress(loader, resource){
-    document.getElementById("loader-percentage").innerHTML = Math.round(loader.progress) + "% loaded";
-    console.log(Math.round(loader.progress) + "% loaded", resource.name)
-}
-
 
 // Pixi Particles, Create an Emitter for the Bubbles
 // ______________________________________________________________________________________________
