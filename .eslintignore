@@ -1,0 +1,10 @@
+/views/*
+/scss/*
+/public/assets/*
+/public/css/*
+/public/dist/*
+/public/downloads/*
+/public/fonts/*
+/public/jquery/*
+/js/wavify.js
+webpack.config.js

@@ -1,25 +1,26 @@
-"use strict";
+'use strict';
 
-var seamore = seamore || {};
+seamore = seamore || {};
 
 seamore.allCoinsCollected = (function ($) {
+  function init() {
+    $('.screen-one--button').on('click', (e) => {
+      e.preventDefault();
+      $('#all-coins-collected').fadeOut();
+    });
 
-	function init() {
-        $('.screen-one--button').on('click', function(e){
-            e.preventDefault();
-            $('#all-coins-collected').fadeOut();
-        });
+    $('.download--button').on('click', (e) => {
+      e.preventDefault();
+      $('#all-coins-collected').fadeOut();
+    });
+  }
 
-        $('.download--button').on('click', function(e) {
-            $('#all-coins-collected').fadeOut();
-        });
-	}
+  return {
+    init,
+  };
+}(jQuery));
 
-	return {
-		init: init
-	}
-})(jQuery);
-
-jQuery(function ($) {
-    seamore.allCoinsCollected.init();
+// eslint-disable-next-line no-unused-vars
+jQuery(($) => {
+  seamore.allCoinsCollected.init();
 });

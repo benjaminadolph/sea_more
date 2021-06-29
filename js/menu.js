@@ -1,53 +1,16 @@
-import { gsap } from 'gsap';
-import { Power4, Power2 } from 'gsap';
+import { gsap, Power4, Power2 } from 'gsap';
 
 window.menu = (function ($) {
-  function init() {
-    setCharsToSpan();
-
-    $('.menu-button.menu-icon').on('click', function () {
-      openNavigation();
-    });
-
-    $('.menu-button.close-icon').on('click', function () {
-      closeNavigation();
-    });
-
-    // create wave animation on hover
-    var $charElement = $('.char');
-    $charElement.on('mouseenter', function () {
-      waveTextAnimation($(this));
-    });
-
-    $charElement.on('mouseleave', function () {
-      groundWaveAnimation();
-    });
-    // set wave width and height (to work in chrome)
-    function resizeMenuWave() {
-      var $wave = $('.svg-wave');
-      var $waveHeight = (3067/2623)* $(window).width();
-      $wave.attr({
-          width: $(window).width(),
-          height: $waveHeight
-      });
-    }
-
-    resizeMenuWave();
-    
-    $( window ).resize(function() {
-        resizeMenuWave();
-    });
-  }
-
   function setCharsToSpan() {
-    var $menuElements = $('#nav').find('.menu-item');
+    const $menuElements = $('#nav').find('.menu-item');
 
     // set chars to span to create wave animation
     $menuElements.each(function () {
-      var textNode = $(this).html();
+      const textNode = $(this).html();
       $(this).empty();
-      for (var i = 0; i < textNode.length; i++) {
-        $(this).append('<span class="char">' + textNode.charAt(i) + '</span>');
+      /* for (let i = 0; i < textNode.length; i++) { */
+      for (let i in textNode) {
+        $(this).append(`<span class="char">${textNode.charAt(i)}</span>`);
       }
     });
   }
@@ -82,15 +45,15 @@ window.menu = (function ($) {
   }
 
   function waveTextAnimation($element) {
-    var startPercent = -40;
+    let startPercent = -40;
     $element.parents('ul').addClass('hover');
     $element.parents('a').addClass('active');
-    var $prevElement = $element;
-    var $nextElement = $element;
+    let $prevElement = $element;
+    let $nextElement = $element;
 
     gsap.to($element, { yPercent: startPercent });
 
-    for (var i = 0; i <= 7; i += 1) {
+    for (let i = 0; i <= 7; i += 1) {
       startPercent += 5;
       $prevElement = $prevElement.prev();
       $nextElement = $nextElement.next();
@@ -109,12 +72,50 @@ window.menu = (function ($) {
     gsap.to('.char', { yPercent: 0, ease: Power2.easeOut });
   }
 
-  return {
-    init: init,
-    closeNavigation: closeNavigation,
-  };
-})(jQuery);
+  function init() {
+    setCharsToSpan();
 
-jQuery(function ($) {
+    $('.menu-button.menu-icon').on('click', () => {
+      openNavigation();
+    });
+
+    $('.menu-button.close-icon').on('click', () => {
+      closeNavigation();
+    });
+
+    // create wave animation on hover
+    const $charElement = $('.char');
+    $charElement.on('mouseenter', function () {
+      waveTextAnimation($(this));
+    });
+
+    $charElement.on('mouseleave', () => {
+      groundWaveAnimation();
+    });
+    // set wave width and height (to work in chrome)
+    function resizeMenuWave() {
+      const $wave = $('.svg-wave');
+      const $waveHeight = (3067 / 2623) * $(window).width();
+      $wave.attr({
+        width: $(window).width(),
+        height: $waveHeight,
+      });
+    }
+
+    resizeMenuWave();
+
+    $(window).resize(() => {
+      resizeMenuWave();
+    });
+  }
+
+  return {
+    init,
+    closeNavigation,
+  };
+}(jQuery));
+
+// eslint-disable-next-line no-unused-vars
+jQuery(($) => {
   menu.init();
 });
