@@ -1,59 +1,96 @@
 # Sea More - Interactive 2D Map 
+## DESCRIPTION
 An interactive 2D map to raise awareness about the problems in our ocean. The user can navigate through the ocean in the form of a turtle via smartphone and is made aware of various problems. He can also collect coins and download cool screensavers upon successful completion of the mini-game.
 
-### You can have a look at our running project on: https://seamore.herokuapp.com/
+Made with PixiJS, EJS, GSAP, JQuery, Node.js, Express.js, Socket.IO
 
-### For the best experience use the latest chrome version.
 ---
-## Requirements
+## RUNNING APP ON HEROKU
+You can have a look at our running project on: https://seamore.herokuapp.com/. For the best experience use the latest version of chrome.
 
-For development, you will need Node.js installed in your environement.
+---
 
-### Node Installation
+## REQUIREMENTS
 
-  Just go on [official Node.js website](https://nodejs.org/) and download the installer.
-Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
+For development, you will need Node.js and npm installed in your environement. 
+Just go to the [Node.js website](https://nodejs.org/) and download the installer.
+Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git on the [git website](https://git-scm.com/)).
 
-If the installation was successful, you should be able to run the following command.
+If the installation was successful, you should be able to run the following commands. The project was developed using node version 14.16.0 and npm version 7.6.0. 
 
     $ node --version
     v14.16.0
 
     $ npm --version
     7.6.0
-## Installation of the project dependencies
+----
+## SET UP THE PROJECT
+To successfully start the project you have to 
+1. install all dependencies with:
+
+```
+$ npm install
+```
+
+2. build all files with webpack 
+```
+$ npm run build
+```
+3. run the project
+```
+$ npm run serve
+```
+
+----
+# IMPORTANT COMMANDS
+### Install the project dependencies
 
     $ npm install
 
+### Run the project with node
 
-## Running the project with hot reload for development
+    $ npm run start
+
+### Run the project with nodemon for hot reloads
 
     $ npm run serve
 
-## Simple build for production
+---
+## LINTER
 
-    $ npm run build
-
-# Linter
-
-## Lint
+### Lint all files
 
     $ npm run lint
 
-## Lint and Fix
+### Lint all files and fix 
 
     $ npm run lint:fix
-# Webpack
-## Watch Pixi.js and SCSS-Files for Development with Hot-Reload
 
-    $ npm run watch
-## Build Pixi.js and SCSS-Files
+### Lint specific file
+
+    $ npx eslint ./specificFile.js
+
+### Lint and fix specific file
+
+    $ npx eslint ./specificFile.js --fix
+
+
+---
+## WEBPACK
+### Build JavaScript and SCSS-Files
 
     $ npm run build
+### Watch JavaScript and SCSS-Files for development with hot-reload
 
-# Heroku
+    $ npm run watch
 
-## Push Branch to heroku
+---
+## HEROKU
 
-    $ git push heroku yourlocalbranch:master
+### Push master branch to heroku master
 
+    $ git push heroku master
+
+### Push other branch to heroku master
+
+    $ git push heroku localbranch:master
