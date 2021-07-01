@@ -13,5 +13,10 @@
 
     .wave-loading-animation{
         position: unset;
+
+        .wave {
+            mask-image: -webkit-radial-gradient(circle, white, black);
+            -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+        }
     }
 }
