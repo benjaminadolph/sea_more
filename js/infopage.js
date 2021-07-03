@@ -23,7 +23,6 @@ window.infopage = (function ($) {
     const $middleElement = $('.middle');
     let timeout = null;
     if ($middleElement.height() < $(window).height() + 30 && $middleElement.height() > 100) {
-      console.log($(window).height(), $middleElement.height());
       const height = ($(window).height() - $middleElement.height()) + ($(window).height() * 0.5);
       $middleElement.find('.after-element').height(height);
       $middleElement.find('.after-element').addClass('resized');
