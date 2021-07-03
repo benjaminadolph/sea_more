@@ -36,43 +36,45 @@
       <h2 class="headline">Was kann ich unternehmen?</h2>
     </div>
     <div class="bottom-info">
-      <div class="bottom-info-buttons">
-        <div class="bottom-info-button first">
-          Achte beim Waschen auf die <a href="https://www.vzhh.de/themen/umwelt-nachhaltigkeit/wasch-reinigungsmittel/wie-viel-waesche-wie-viel-waschmittel-soll-die-waschmaschine" target="_blank">richtige Menge</a> an Waschmittel.
-          Beim Kauf solltest du auf <a href="https://www.umweltbundesamt.de/themen/chemikalien/wasch-reinigungsmittel/umweltbewusst-waschen-reinigen/phosphatfreie-textilwaschmittel" target="_blank">phosphathaltige Waschmittel</a> verzichten
-          und ökologische Alternativen wählen.
-          Oder du machst dir dein <a href="https://www.smarticular.net/oekologisches-waschpulver-aus-eigener-herstellung/" target="_blank" >Waschmittel einfach selbst</a>.
+      <div class="bottom-info-svg-container">
+        <div class="bottom-info-buttons">
+          <div class="bottom-info-button first">
+            Achte beim Waschen auf die <a href="https://www.vzhh.de/themen/umwelt-nachhaltigkeit/wasch-reinigungsmittel/wie-viel-waesche-wie-viel-waschmittel-soll-die-waschmaschine" target="_blank">richtige Menge</a> an Waschmittel.
+            Beim Kauf solltest du auf <a href="https://www.umweltbundesamt.de/themen/chemikalien/wasch-reinigungsmittel/umweltbewusst-waschen-reinigen/phosphatfreie-textilwaschmittel" target="_blank">phosphathaltige Waschmittel</a> verzichten
+            und ökologische Alternativen wählen.
+            Oder du machst dir dein <a href="https://www.smarticular.net/oekologisches-waschpulver-aus-eigener-herstellung/" target="_blank" >Waschmittel einfach selbst</a>.
+          </div>
+          <div class="bottom-info-button third">
+            Auch für deinen Garten gibt es
+            ökologische Alternativen. Verwende
+            statt künstlichen Dünger Bio-Dünger.
+            Außerdem kannst du umweltfreundlichen
+            Dünger für Pflanzen <a href="https://www.mein-schoener-garten.de/gartenpraxis/duenger-selber-machen-38724" target="_blank">einfach selbst machen.</a>
+          </div>
+          <div class="bottom-info-button fourth">
+            Wenn du Lebensmittel einkaufst,
+            wähle Bio-Produkte, bei denen 
+            der Einsatz von <a href="https://ecodemy.de/magazin/nitrathaltige-lebensmittel/" target="_blank" >nitrathaltigem
+            Kunstdünger</a> verboten ist.
+          </div>
         </div>
-        <div class="bottom-info-button third">
-          Auch für deinen Garten gibt es
-          ökologische Alternativen. Verwende
-          statt künstlichen Dünger Bio-Dünger.
-          Außerdem kannst du umweltfreundlichen
-          Dünger für Pflanzen <a href="https://www.mein-schoener-garten.de/gartenpraxis/duenger-selber-machen-38724" target="_blank">einfach selbst machen.</a>
-        </div>
-        <div class="bottom-info-button fourth">
-          Wenn du Lebensmittel einkaufst,
-          wähle Bio-Produkte, bei denen 
-          der Einsatz von <a href="https://ecodemy.de/magazin/nitrathaltige-lebensmittel/" target="_blank" >nitrathaltigem
-          Kunstdünger</a> verboten ist.
-        </div>
-      </div>
-      <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="bottom-line">
-              <%- include ('../partials/bottom-line-path'); %>
-                <g id="Button-first" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+        <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="bottom-line">
+                <%- include ('../partials/bottom-line-path'); %>
+                  <g id="Button-first" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+                  </g>
+                  <g id="Button-third" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
+                  </g>
+                  <g id="Button-fourth" class="bottom-info-button" >
+                    <%- include('../partials/bottom-line-button', {cx:412, cy:43}); %>
                 </g>
-                <g id="Button-third" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
-                </g>
-                <g id="Button-fourth" class="bottom-info-button" >
-                  <%- include('../partials/bottom-line-button', {cx:412, cy:43}); %>
               </g>
-            </g>
-        </g>
-      </svg>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 

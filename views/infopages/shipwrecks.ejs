@@ -34,27 +34,29 @@
       <h2 class="headline">Was kann ich unternehmen?</h2>
     </div>
     <div class="bottom-info">
-      <div class="bottom-info-buttons">
-        <div class="bottom-info-button first">
-            Starte eine Petition, z.B. für eine gesetzliche Grundlage eine verpflichtende Bergung von Treibstoffresten festzulegen, um auf die Regierung Druck auszuüben.
+      <div class="bottom-info-svg-container">
+        <div class="bottom-info-buttons">
+          <div class="bottom-info-button first">
+              Starte eine Petition, z.B. für eine gesetzliche Grundlage eine verpflichtende Bergung von Treibstoffresten festzulegen, um auf die Regierung Druck auszuüben.
+          </div>
+          <div class="bottom-info-button second">
+              Wähle Parteien, die sich für den Schutz der Umwelt einsetzen
+          </div>
         </div>
-        <div class="bottom-info-button second">
-            Wähle Parteien, die sich für den Schutz der Umwelt einsetzen
-        </div>
+        <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="bottom-line">
+                <%- include ('../partials/bottom-line-path'); %>
+                  <g id="Button-first" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+                  </g>
+                  <g id="Button-second" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
+                  </g>
+              </g>
+          </g>
+        </svg>
       </div>
-      <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="bottom-line">
-              <%- include ('../partials/bottom-line-path'); %>
-                <g id="Button-first" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
-                </g>
-                <g id="Button-second" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
-                </g>
-            </g>
-        </g>
-      </svg>
     </div>
   </div>
 

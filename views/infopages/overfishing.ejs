@@ -35,39 +35,41 @@
       <h2 class="headline">Was kann ich unternehmen?</h2>
     </div>
     <div class="bottom-info">
-      <div class="bottom-info-buttons">
-        <div class="bottom-info-button first">
-          Konsumiere keine Meerestiere oder versuche deinen Konsum zu verringern.
+      <div class="bottom-info-svg-container">
+        <div class="bottom-info-buttons">
+          <div class="bottom-info-button first">
+            Konsumiere keine Meerestiere oder versuche deinen Konsum zu verringern.
+          </div>
+          <div class="bottom-info-button second">
+            Wenn du Meeresfrüchte kaufst, achte darauf, dass sie <a href="https://www.lebensmittelklarheit.de/informationen/msc-siegel-fuer-nachhaltige-fischerei" target="_blank">zertifiziert sind</a>.
+          </div>
+          <div class="bottom-info-button third">
+            Mittlerweile gibt es schon viele Alternativen: Konsumiere lieber Omega-3 aus <a href="https://www.smarticular.net/omega-3-fettsaeuren-vegan-versorgt-alpha-linolensaeure-leinoel-algen/" target="_blank">pflanzlichen Quellen</a>, z.B. aus Algen.
+          </div>
+          <div class="bottom-info-button fourth">
+            Vermeide es, Fischarten zu essen, die <a href="https://www.bussgeldkatalog.org/tierschutz-fische/" target="_blank">vom Aussterben bedroht sind</a>.
+          </div>
         </div>
-        <div class="bottom-info-button second">
-          Wenn du Meeresfrüchte kaufst, achte darauf, dass sie <a href="https://www.lebensmittelklarheit.de/informationen/msc-siegel-fuer-nachhaltige-fischerei" target="_blank">zertifiziert sind</a>.
-        </div>
-        <div class="bottom-info-button third">
-          Mittlerweile gibt es schon viele Alternativen: Konsumiere lieber Omega-3 aus <a href="https://www.smarticular.net/omega-3-fettsaeuren-vegan-versorgt-alpha-linolensaeure-leinoel-algen/" target="_blank">pflanzlichen Quellen</a>, z.B. aus Algen.
-        </div>
-        <div class="bottom-info-button fourth">
-          Vermeide es, Fischarten zu essen, die <a href="https://www.bussgeldkatalog.org/tierschutz-fische/" target="_blank">vom Aussterben bedroht sind</a>.
-        </div>
-      </div>
-      <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="bottom-line">
-              <%- include ('../partials/bottom-line-path'); %>
-                <g id="Button-first" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+        <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="bottom-line">
+                <%- include ('../partials/bottom-line-path'); %>
+                  <g id="Button-first" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+                  </g>
+                  <g id="Button-second" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
+                  </g>
+                  <g id="Button-third" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
+                  </g>
+                  <g id="Button-fourth" class="bottom-info-button" >
+                    <%- include('../partials/bottom-line-button', {cx:412, cy:43}); %>
                 </g>
-                <g id="Button-second" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
-                </g>
-                <g id="Button-third" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
-                </g>
-                <g id="Button-fourth" class="bottom-info-button" >
-                  <%- include('../partials/bottom-line-button', {cx:412, cy:43}); %>
               </g>
-            </g>
-        </g>
-      </svg>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 

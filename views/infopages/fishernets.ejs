@@ -35,39 +35,41 @@
       <h2 class="headline">Was kann ich unternehmen?</h2>
     </div>
     <div class="bottom-info">
-      <div class="bottom-info-buttons">
-        <div class="bottom-info-button first">
-          Trenne deinen Müll richtig. Anleitungen dafür gibt es auf den Internetseiten vieler Gemeinden oder beim <a href="https://www.muelltrennung-wirkt.de/" target="_blank">Umweltbundesamt.</a> 
+      <div class="bottom-info-svg-container">
+        <div class="bottom-info-buttons">
+          <div class="bottom-info-button first">
+            Trenne deinen Müll richtig. Anleitungen dafür gibt es auf den Internetseiten vieler Gemeinden oder beim <a href="https://www.muelltrennung-wirkt.de/" target="_blank">Umweltbundesamt.</a> 
+          </div>
+          <div class="bottom-info-button second">
+            Achte darauf, dass du möglichst verpackungsfrei einkaufst. Dafür gibt es mittlerweile schon einige <a href="https://www.smarticular.net/muellfrei-einkaufen-alle-unverpacktlaeden/" target="_blank">Unverpackt-Läden</a>.
+          </div>
+          <div class="bottom-info-button third">
+            Beteilige dich an <a href="https://www.trashbusters.de/aktionswochen/" target="_blank">Aufräumaktionen</a> in deiner Nähe, denn auch Plastikmüll am Ufer von Bächen und Flüssen kann irgendwann im Meer landen.
+          </div>
+          <div class="bottom-info-button fourth">
+            Verzichte so gut es geht auf Einweg-Produkte wie Tüten, Einweg-Geschirr, Einweg-Kaffeebecher
+          </div>
         </div>
-        <div class="bottom-info-button second">
-          Achte darauf, dass du möglichst verpackungsfrei einkaufst. Dafür gibt es mittlerweile schon einige <a href="https://www.smarticular.net/muellfrei-einkaufen-alle-unverpacktlaeden/" target="_blank">Unverpackt-Läden</a>.
-        </div>
-        <div class="bottom-info-button third">
-          Beteilige dich an <a href="https://www.trashbusters.de/aktionswochen/" target="_blank">Aufräumaktionen</a> in deiner Nähe, denn auch Plastikmüll am Ufer von Bächen und Flüssen kann irgendwann im Meer landen.
-        </div>
-        <div class="bottom-info-button fourth">
-          Verzichte so gut es geht auf Einweg-Produkte wie Tüten, Einweg-Geschirr, Einweg-Kaffeebecher
-        </div>
-      </div>
-      <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="bottom-line">
-              <%- include ('../partials/bottom-line-path'); %>
-                <g id="Button-first" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+        <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="bottom-line">
+                <%- include ('../partials/bottom-line-path'); %>
+                  <g id="Button-first" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+                  </g>
+                  <g id="Button-second" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
+                  </g>
+                  <g id="Button-third" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
+                  </g>
+                  <g id="Button-fourth" class="bottom-info-button" >
+                    <%- include('../partials/bottom-line-button', {cx:412, cy:43}); %>
                 </g>
-                <g id="Button-second" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
-                </g>
-                <g id="Button-third" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
-                </g>
-                <g id="Button-fourth" class="bottom-info-button" >
-                  <%- include('../partials/bottom-line-button', {cx:412, cy:43}); %>
               </g>
-            </g>
-        </g>
-      </svg>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 

@@ -62,6 +62,10 @@ window.infopage = (function ($) {
       $('#Button-fourth').attr({
         transform: 'translate(1094.000000, 825.000000)',
       });
+
+      if ((1024 / 1920) * $(window).width() + 30 > $(window).height()) {
+        $svg.closest('.bottom-info').css('bottom', '0');
+      }
     } else if ($(window).width() <= 860 && $(window).width() > 779) {
       $svg.removeAttr('viewBox');
       $svg.each(function () { $(this)[0].setAttribute('viewBox', '0 0 855 1219'); });
