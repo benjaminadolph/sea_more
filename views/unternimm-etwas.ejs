@@ -1,11 +1,11 @@
 <script>
-  jQuery('.infopage .close-icon').on('click', function() {
-    jQuery('.infopage').remove();
-  }); 
+  jQuery('.menu-button.menu-icon').on('click', () => {
+    menu.openNavigation();
+  });
 </script>
 
 <div id="do-something" class="infopage">
-    <div class="close-icon"></div>
+    <div class="menu-button menu-icon"></div>
 
     <div class="grid-container content top">
       <h2 class="headline">Unternimm etwas!</h2>

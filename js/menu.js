@@ -17,21 +17,25 @@ window.menu = (function ($) {
   function openNavigation() {
     gsap.to('#nav', { y: 0, ease: Power4.easeInOut, duration: 2 });
 
-    gsap.to('#wave-path', {
-      duration: 3,
-      attr: { d: `${$('#wave-path').data('to')}` },
-    });
+    if ($(window).width() >= 650) {
+      gsap.to('#wave-path', {
+        duration: 3,
+        attr: { d: `${$('#wave-path').data('to')}` },
+      });
+    }
 
     gsap.to('.shell-content', { x: 0, opacity: 1, delay: 1.2 });
     gsap.to('.footer-links', { opacity: 1, delay: 1.2 });
   }
 
   function closeNavigation() {
-    gsap.to('#wave-path', {
-      duration: 2,
-      attr: { d: `${$('#wave-path').data('from')}` },
-      delay: 0.3,
-    });
+    if ($(window).width() >= 650) {
+      gsap.to('#wave-path', {
+        duration: 2,
+        attr: { d: `${$('#wave-path').data('from')}` },
+        delay: 0.3,
+      });
+    }
     gsap.to('#nav', {
       y: '-100vh',
       ease: Power4.easeInOut,
@@ -111,6 +115,7 @@ window.menu = (function ($) {
   return {
     init,
     closeNavigation,
+    openNavigation,
   };
 }(jQuery));
 

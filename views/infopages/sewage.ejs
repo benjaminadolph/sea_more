@@ -3,20 +3,11 @@
 </script>
 
 <div id="sewage" class="infopage">
-  <div class="close-icon"></div>
+  <div class="menu-button menu-icon"></div>
 
   <div class="grid-container">
-    <div class="video-container section active">
-      <h1>Abwasser, Überdüngung und Radioaktivität</h1>
-      <div class="video" style="background-image: url( 'assets/infopages/sewage/sewage.png' );">
-        <div class="video_wrapper" >
-            <div class="video_trigger" data-source="sWAs898SuYA">
-              <p class="text-center">Mit dem Aufruf des Videos erklärst du dich einverstanden, dass deine Daten an YouTube übermittelt werden und dass du die <a href="/datenschutz/" target="_blank">Datenschutzerklärung</a> gelesen hast.</p>
-              <a class="button privacy-okay-btn" href="#"><span class="text">Akzeptieren</span></a>
-            </div>
-            <div class="video_layer"><iframe src="" border="0"></iframe></div>
-        </div>
-      </div>
+    <div class="video-section section active">
+      <%- include('../partials/video', { headline: 'Abwasser, Überdüngung und Radioaktivität', page: 'sewage', src: 'sWAs898SuYA' }); %>
     </div>
 
     <div class="facts section text-left">

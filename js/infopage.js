@@ -20,8 +20,19 @@ window.infopage = (function ($) {
   }
 
   function setMiddleAfter() {
-    if ($('.middle').height() < $(window).height() + 30 && $('.after-element').length) {
-      $('.middle .after-element').height(($(window).height() - $('.middle').height()) + ($(window).height() * 0.5));
+    const $middleElement = $('.middle');
+    let timeout = null;
+    if ($middleElement.height() < $(window).height() + 30 && $middleElement.height() > 0) {
+      const height = ($(window).height() - $middleElement.height()) + ($(window).height() * 0.5);
+      $middleElement.find('.after-element').height(height);
+      $middleElement.find('.after-element').addClass('resized');
+      clearTimeout(timeout);
+    }
+
+    if (!$middleElement.find('.after-element').hasClass('resized')) {
+      timeout = setTimeout(setMiddleAfter, 1000);
+    } else {
+      clearTimeout(timeout);
     }
   }
 
@@ -51,7 +62,7 @@ window.infopage = (function ($) {
       $('#Button-fourth').attr({
         transform: 'translate(1094.000000, 825.000000)',
       });
-    } else {
+    } else if ($(window).width() <= 860 && $(window).width() > 779) {
       $svg.removeAttr('viewBox');
       $svg.each(function () { $(this)[0].setAttribute('viewBox', '0 0 855 1219'); });
       $svg.attr({
@@ -101,53 +112,33 @@ window.infopage = (function ($) {
     });
   }
 
-  function moveBottomWave() {
-    let timeline = gsap.timeline(
-      {
-        repeat: -1,
-        yoyo: true,
-        repeatDelay: 0,
-      },
-    );
-    timeline.to('#bottom-wave-path', {
-      attr: { d: `${$('#bottom-wave-path').data('first')}` },
-      duration: 2,
-      delay: 0.3,
-    });
-
-    timeline.to('#bottom-wave-path', {
-      attr: { d: `${$('#bottom-wave-path').data('second')}` },
-      duration: 1,
-      delay: 0.5,
-    });
-
-    timeline.to('#bottom-wave-path', {
-      attr: { d: `${$('#bottom-wave-path').data('third')}` },
-      duration: 3,
-      delay: 0.8,
-    });
-  }
-
   function init() {
     // init clicks
     $('.infopage .close-icon').on('click', () => {
       $('.infopage').remove();
     });
 
+    $('.menu-button.menu-icon').on('click', () => {
+      menu.openNavigation();
+    });
+
     if ($(window).width() > 850) {
       parallax();
     }
 
-    moveBottomWave();
     youtubePrivacy();
-
     setBottomInfoSvg();
-    // set timeout, so image is loaded
-    setTimeout(setMiddleAfter, 1000);
+
+    // set background, when needed
+    if ($('.after-element')) {
+      setMiddleAfter();
+    }
 
     $(window).resize(() => {
       setBottomInfoSvg();
-      setMiddleAfter();
+      if ($('.after-element')) {
+        setMiddleAfter();
+      }
     });
   }
 
