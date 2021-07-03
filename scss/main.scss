@@ -4,14 +4,16 @@
 @import 'base-layout';
 
 @import 'pages/index';
-@import 'pages/unternimm-etwas';
+@import 'pages/do-something';
+@import 'pages/infopage';
 
 @import 'sections/help';
 @import 'sections/loading-screen';
 @import 'sections/start-intro';
 @import 'sections/all-coins-collected';
-@import 'sections/infopage';
 @import 'sections/base-bottom';
+@import 'sections/video';
 
-@import 'modules/pagination';
-@import 'modules/menu';
+@import 'elements/menu';
+@import 'elements/wave';
+@import 'elements/pagination';

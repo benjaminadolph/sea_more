@@ -14,7 +14,6 @@ function randomString(stringLength) {
 
 const socket = io();
 const roomid = randomString(21);
-/* const roomid = 'test'; */
 
 window.changeText = function (text) {
   socket.emit('changeText', text);
@@ -25,7 +24,6 @@ $(() => {
   // eslint-disable-next-line no-console
   console.log(roomid);
 
-  // Sarah's IP: http://192.168.0.171:3000 sonst: http://localhost:3000
   const stringdata = `https://seamore.herokuapp.com/controller/${roomid}`;
 
   QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, (err, canvas) => {

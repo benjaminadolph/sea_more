@@ -20,8 +20,19 @@ window.infopage = (function ($) {
   }
 
   function setMiddleAfter() {
-    if ($('.middle').height() < $(window).height() + 30 && $('.after-element').length) {
-      $('.middle .after-element').height(($(window).height() - $('.middle').height()) + ($(window).height() * 0.5));
+    const $middleElement = $('.middle');
+    let timeout = null;
+    if ($middleElement.height() < $(window).height() + 30 && $middleElement.height() > 0) {
+      const height = ($(window).height() - $middleElement.height()) + ($(window).height() * 0.5);
+      $middleElement.find('.after-element').height(height);
+      $middleElement.find('.after-element').addClass('resized');
+      clearTimeout(timeout);
+    }
+
+    if (!$middleElement.find('.after-element').hasClass('resized')) {
+      timeout = setTimeout(setMiddleAfter, 1000);
+    } else {
+      clearTimeout(timeout);
     }
   }
 
@@ -51,7 +62,11 @@ window.infopage = (function ($) {
       $('#Button-fourth').attr({
         transform: 'translate(1094.000000, 825.000000)',
       });
-    } else {
+
+      if ((1024 / 1920) * $(window).width() + 30 > $(window).height()) {
+        $svg.closest('.bottom-info').css('bottom', '0');
+      }
+    } else if ($(window).width() <= 860 && $(window).width() > 779) {
       $svg.removeAttr('viewBox');
       $svg.each(function () { $(this)[0].setAttribute('viewBox', '0 0 855 1219'); });
       $svg.attr({
@@ -101,35 +116,33 @@ window.infopage = (function ($) {
     });
   }
 
-  function moveBottomWave() {
-    wavify(document.querySelector('#bottom-wave-path'), {
-      height: 60,
-      bones: 5,
-      amplitude: 40,
-      speed: 0.25,
-    });
-  }
-
   function init() {
     // init clicks
     $('.infopage .close-icon').on('click', () => {
       $('.infopage').remove();
     });
 
+    $('.menu-button.menu-icon').on('click', () => {
+      menu.openNavigation();
+    });
+
     if ($(window).width() > 850) {
       parallax();
     }
 
-    moveBottomWave();
     youtubePrivacy();
-
     setBottomInfoSvg();
-    // set timeout, so image is loaded
-    setTimeout(setMiddleAfter, 1000);
+
+    // set background, when needed
+    if ($('.after-element')) {
+      setMiddleAfter();
+    }
 
     $(window).resize(() => {
       setBottomInfoSvg();
-      setMiddleAfter();
+      if ($('.after-element')) {
+        setMiddleAfter();
+      }
     });
   }
 

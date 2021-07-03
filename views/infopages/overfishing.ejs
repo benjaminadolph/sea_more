@@ -3,20 +3,11 @@
 </script>
 
 <div id="overfishing" class="infopage">
-  <div class="close-icon"></div>
+  <div class="menu-button menu-icon"></div>
 
   <div class="grid-container">
-    <div class="video-container section active">
-      <h1>Überfischung</h1>
-      <div class="video" style="background-image: url( 'assets/overfishing.png' );">
-        <div class="video_wrapper" >
-            <div class="video_trigger" data-source="rFLBv9XrmG4">
-              <p class="text-center">Mit dem Aufruf des Videos erklärst du dich einverstanden, dass deine Daten an YouTube übermittelt werden und dass du die <a href="/datenschutz/" target="_blank">Datenschutzerklärung</a> gelesen hast.</p>
-              <a class="button privacy-okay-btn" href="#"><span class="text">Akzeptieren</span></a>
-            </div>
-            <div class="video_layer"><iframe src="" border="0"></iframe></div>
-        </div>
-      </div>
+    <div class="video-section section active">
+      <%- include('../partials/video', { headline: 'Überfischung', page: 'overfishing', src: 'rFLBv9XrmG4' }); %>
     </div>
 
     <div class="facts section text-left">
@@ -44,56 +35,48 @@
       <h2 class="headline">Was kann ich unternehmen?</h2>
     </div>
     <div class="bottom-info">
-      <div class="bottom-info-buttons">
-        <div class="bottom-info-button first">
-          Konsumiere keine Meerestiere oder versuche deinen Konsum zu verringern.
+      <div class="bottom-info-svg-container">
+        <div class="bottom-info-buttons">
+          <div class="bottom-info-button first">
+            Konsumiere keine Meerestiere oder versuche deinen Konsum zu verringern.
+          </div>
+          <div class="bottom-info-button second">
+            Wenn du Meeresfrüchte kaufst, achte darauf, dass sie <a href="https://www.lebensmittelklarheit.de/informationen/msc-siegel-fuer-nachhaltige-fischerei" target="_blank">zertifiziert sind</a>.
+          </div>
+          <div class="bottom-info-button third">
+            Mittlerweile gibt es schon viele Alternativen: Konsumiere lieber Omega-3 aus <a href="https://www.smarticular.net/omega-3-fettsaeuren-vegan-versorgt-alpha-linolensaeure-leinoel-algen/" target="_blank">pflanzlichen Quellen</a>, z.B. aus Algen.
+          </div>
+          <div class="bottom-info-button fourth">
+            Vermeide es, Fischarten zu essen, die <a href="https://www.bussgeldkatalog.org/tierschutz-fische/" target="_blank">vom Aussterben bedroht sind</a>.
+          </div>
         </div>
-        <div class="bottom-info-button second">
-          Wenn du Meeresfrüchte kaufst, achte darauf, dass sie <a href="https://www.lebensmittelklarheit.de/informationen/msc-siegel-fuer-nachhaltige-fischerei" target="_blank">zertifiziert sind</a>.
-        </div>
-        <div class="bottom-info-button third">
-          Mittlerweile gibt es schon viele Alternativen: Konsumiere lieber Omega-3 aus <a href="https://www.smarticular.net/omega-3-fettsaeuren-vegan-versorgt-alpha-linolensaeure-leinoel-algen/" target="_blank">pflanzlichen Quellen</a>, z.B. aus Algen.
-        </div>
-        <div class="bottom-info-button fourth">
-          Vermeide es, Fischarten zu essen, die <a href="https://www.bussgeldkatalog.org/tierschutz-fische/" target="_blank">vom Aussterben bedroht sind</a>.
-        </div>
-      </div>
-      <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-            <g id="bottom-line">
-              <%- include ('../partials/bottom-line-path'); %>
-                <g id="Button-first" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+        <svg width="1920px" height="1024px" id="bottom-info-line" viewBox="0 0 1920 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="bottom-line">
+                <%- include ('../partials/bottom-line-path'); %>
+                  <g id="Button-first" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx: 30, cy: 30}); %>
+                  </g>
+                  <g id="Button-second" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
+                  </g>
+                  <g id="Button-third" class="bottom-info-button">
+                    <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
+                  </g>
+                  <g id="Button-fourth" class="bottom-info-button" >
+                    <%- include('../partials/bottom-line-button', {cx:412, cy:43}); %>
                 </g>
-                <g id="Button-second" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx: 338, cy: 30}); %>
-                </g>
-                <g id="Button-third" class="bottom-info-button">
-                  <%- include('../partials/bottom-line-button', {cx:30, cy:106}); %>
-                </g>
-                <g id="Button-fourth" class="bottom-info-button" >
-                  <%- include('../partials/bottom-line-button', {cx:412, cy:43}); %>
               </g>
-            </g>
-        </g>
-      </svg>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 
   <div class="background-elements">
-    <div class="wave wave-first">
-      <svg
-        width="100%"
-        height="100%"
-        version="1.1"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs></defs>
-        <path fill="currentColor" id="bottom-wave-path" d="" />
-      </svg>
-    </div>
+    <%- include ('../partials/wave'); %>
     <div class="background-element top">
-      <img src="/assets/infopages/overfishing/top.png" />
+      <img src="/assets/infopages/overfishing/top.svg" />
     </div>
     <div class="background-element middle">
       <img src="/assets/infopages/overfishing/middle.svg" />

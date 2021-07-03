@@ -47,6 +47,12 @@ a {
     z-index: 2000;
 }
 
+@media (max-width: 779px) {
+    #logo {
+        position: absolute;
+    }
+}
+
 .close-icon {
     position: absolute;
     right: 29px;

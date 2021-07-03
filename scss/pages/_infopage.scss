@@ -8,7 +8,6 @@
     min-height: 100vh;
     background-color: $PRIMARY_COLOR;
     z-index: 100;
-    // padding-top: 160px 0; 
 
     .section {
         min-height: 100vh;
@@ -16,43 +15,6 @@
 
     p {
         font-weight: bold;
-    }
-
-    .video-container {
-        position: relative;
-        padding-top: 95px;
-
-        .video {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            width: 100%;
-    
-            iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-                border: 0 none;
-            }
-        }
-
-        .video_wrapper {
-            background-color: rgba(0, 0, 0, 0.5);
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            width: 100%;
-            text-align: center;
-
-            .video_trigger {
-                padding: 200px;
-                z-index: 200;
-                position: relative;
-            }
-        }
     }
 
     .facts { 
@@ -77,108 +39,6 @@
         .text {
             padding-top: 10vh;
             z-index: 2;
-        }
-    }
-
-    .bottom-info {
-        z-index: 1;
-        position: absolute;
-        left: 0;
-        width: 100%;
-
-        svg {
-            width: 100%;
-        }
-
-        .bottom-info-buttons {
-            width:100%; 
-            height: 100%;
-
-            .bottom-info-button {
-                width: 230px;
-                font-size: 13px;
-                position: absolute;
-
-                &.first {
-                    top: 32%;
-                    left: 25%;
-                }
-
-                &.second {
-                    right: 43%;
-                    text-align: right;
-                    top: 49%;
-                }
-
-                &.third {
-                    left: 72%;
-                    top: 55%;
-                }
-
-                &.fourth {
-                    right: 25%;
-                    text-align: right;
-                    top: 80%;
-                }
-
-                @media(max-width: 860px) {
-                    &.first {
-                        top: 41%;
-                        left: 39%;
-                    }
-    
-                    &.second {
-                        right: 63%;
-                        top: 52%;
-                    }
-    
-                    &.third {
-                        left: 60%;
-                        top: 70%;
-                    }
-    
-                    &.fourth {
-                        right: 56%;
-                        top: 78%;
-                    }
-                }
-            } 
-        }
-
-        .svg-bottom-text {
-            color: white;
-            font-weight: bold;
-            font-size: 16px;
-            line-height: 140%;
-            width: 100px;
-
-            a {
-                text-decoration: underline;
-            }
-        }
-
-        @media (max-width: 860px) {
-            bottom: 0;
-
-            .mobile-bottom-line-path {
-                display: block;
-            }
-
-            .bottom-line-path {
-                display: none;
-            }
-        }
-
-        @media (min-width: 861px) {
-            bottom: 50px;
-
-            .mobile-bottom-line-path {
-                display: none;
-            }
-
-            .bottom-line-path {
-                display: block;
-            }
         }
     }
 }
@@ -412,49 +272,161 @@
     }
 }
 
-
-.background-elements {
-    .wave {
-        position: absolute;
-        bottom: 0px;
-        width: 7680px;
-        height: 100vh;
-        -webkit-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
-        z-index: 1;
-
-        #bottom-wave-path {
-            color: $PRIMARY_COLOR;
-        }
-    }
-}
-
-
-#sewage, #fishernets, #microplastic, #overfishing {
-    .background-elements {
-        .wave {
-            #bottom-wave-path {
-                color: #1056A4;
-            }
-        }
-    }
-}
-
-
-#deep-sea-mining, #shipwrecks {
-    .background-elements {
-        .wave {
-            #bottom-wave-path {
-                color: #1F2642;
-            }
-        }
-    }
-}
-
 @media (min-width:1805px) {
     .infopage {
         .section {
             height: 120vh;
+        }
+    }
+}
+
+.infopage {
+    .bottom-info {
+        z-index: 1;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        // bottom: 0;
+
+        svg {
+            width: 100%;
+        }
+
+        .bottom-info-buttons {
+            width:100%; 
+            height: 100%;
+
+            .bottom-info-button {
+                width: 230px;
+                font-size: 13px;
+                position: absolute;
+
+                &.first {
+                    top: 32%;
+                    left: 25%;
+                }
+
+                &.second {
+                    right: 43%;
+                    text-align: right;
+                    top: 49%;
+                }
+
+                &.third {
+                    left: 72%;
+                    top: 55%;
+                }
+
+                &.fourth {
+                    right: 25%;
+                    text-align: right;
+                    top: 80%;
+                }
+
+                @media(max-width: 860px) {
+                    &.first {
+                        top: 41%;
+                        left: 39%;
+                    }
+    
+                    &.second {
+                        right: 63%;
+                        top: 52%;
+                    }
+    
+                    &.third {
+                        left: 60%;
+                        top: 70%;
+                    }
+    
+                    &.fourth {
+                        right: 56%;
+                        top: 78%;
+                    }
+                }
+            } 
+        }
+
+        .svg-bottom-text {
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 140%;
+            width: 100px;
+
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        @media (min-width: 1350px) {
+            bottom: 0;
+        }
+
+        @media (min-width: 861px) {
+            .mobile-bottom-line-path {
+                display: none;
+            }
+
+            .bottom-line-path {
+                display: block;
+            }
+        }
+
+        @media (max-width: 860px) {
+            bottom: 0;
+
+            .mobile-bottom-line-path {
+                display: block;
+            }
+
+            .bottom-line-path {
+                display: none;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 779px) {
+    .infopage {
+        .bottom-info {
+            bottom: auto;
+            @include grid-container();
+
+            svg {
+                display: none;
+            }
+
+            .bottom-info-buttons {
+                .bottom-info-button {
+                    position: relative;
+                    width: 80%;
+                    top: auto !important;
+                    left: auto !important;
+                    right: auto !important;
+                    font-size: 17px;
+                    margin-bottom: 20px;
+
+                    &.second {
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .infopage {
+        .bottom-info {
+            .bottom-info-buttons {
+                .bottom-info-button {
+                    width: 100%;
+                }
+            }
         }
     }
 }
