@@ -72,13 +72,13 @@ infopages.forEach((page) => {
 });
 
 app.get('/impressum', (req, res) => {
-  res.render('impressum');
+  res.render('imprint');
 });
 
 app.get('/unternimm-etwas', (req, res) => {
-  res.render('unternimm-etwas');
+  res.render('do-something');
 });
 
 app.get('/datenschutz', (req, res) => {
-  res.render('datenschutz');
+  res.render('privacy');
 });

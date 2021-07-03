@@ -81,7 +81,12 @@ window.menu = (function ($) {
       openNavigation();
     });
 
-    $('.menu-button.close-icon, .ocean').on('click', () => {
+    $('.menu-button.close-icon').on('click', () => {
+      closeNavigation();
+    });
+
+    $('.ocean').on('click', () => {
+      $('#infopages').empty();
       closeNavigation();
     });
 
