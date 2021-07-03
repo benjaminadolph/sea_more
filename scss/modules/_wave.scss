@@ -1,0 +1,47 @@
+.waves-container {
+    width: 100%;
+    bottom: 0;
+    height: 90vh;
+    position: absolute;
+    
+    .waves{
+        width: 100%;
+        height: 200px;
+        top: -200px;
+        position: absolute;
+    }
+    
+    svg{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+    }    
+}
+
+
+#sewage, #fishernets, #microplastic, #overfishing {
+    .background-elements {
+        .waves-container {
+            background-color: #1056A4;
+
+            .waves {
+                color: #1056A4;
+            }
+        }
+    }
+}
+
+
+#deep-sea-mining, #shipwrecks {
+    .background-elements {
+        .waves-container { 
+            background-color: #1F2642;
+
+            .waves {
+                color: #1F2642;
+            }
+        }
+    }
+}
+

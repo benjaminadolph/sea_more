@@ -8,7 +8,6 @@
     min-height: 100vh;
     background-color: $PRIMARY_COLOR;
     z-index: 100;
-    // padding-top: 160px 0; 
 
     .section {
         min-height: 100vh;
@@ -408,45 +407,6 @@
 
         &.bottom {
             width: 50vw;
-        }
-    }
-}
-
-
-.background-elements {
-    .wave {
-        position: absolute;
-        bottom: 0px;
-        width: 7680px;
-        height: 100vh;
-        -webkit-transform: translate3d(0,0,0);
-        transform: translate3d(0,0,0);
-        z-index: 1;
-
-        #bottom-wave-path {
-            color: $PRIMARY_COLOR;
-        }
-    }
-}
-
-
-#sewage, #fishernets, #microplastic, #overfishing {
-    .background-elements {
-        .wave {
-            #bottom-wave-path {
-                color: #1056A4;
-            }
-        }
-    }
-}
-
-
-#deep-sea-mining, #shipwrecks {
-    .background-elements {
-        .wave {
-            #bottom-wave-path {
-                color: #1F2642;
-            }
         }
     }
 }

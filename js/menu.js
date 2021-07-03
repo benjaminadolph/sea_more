@@ -4,11 +4,10 @@ window.menu = (function ($) {
   function setCharsToSpan() {
     const $menuElements = $('#nav').find('.menu-item');
 
-    // set chars to span to create wave animation
+    // set chars to span to create wave animation on letters
     $menuElements.each(function () {
       const textNode = $(this).html();
       $(this).empty();
-      /* for (let i = 0; i < textNode.length; i++) { */
       for (let i in textNode) {
         $(this).append(`<span class="char">${textNode.charAt(i)}</span>`);
       }
@@ -28,7 +27,6 @@ window.menu = (function ($) {
   }
 
   function closeNavigation() {
-    // gsap.to('.shell-content', { x: 200 });
     gsap.to('#wave-path', {
       duration: 2,
       attr: { d: `${$('#wave-path').data('from')}` },
@@ -79,7 +77,7 @@ window.menu = (function ($) {
       openNavigation();
     });
 
-    $('.menu-button.close-icon').on('click', () => {
+    $('.menu-button.close-icon, .ocean').on('click', () => {
       closeNavigation();
     });
 
@@ -92,6 +90,7 @@ window.menu = (function ($) {
     $charElement.on('mouseleave', () => {
       groundWaveAnimation();
     });
+
     // set wave width and height (to work in chrome)
     function resizeMenuWave() {
       const $wave = $('.svg-wave');
@@ -104,7 +103,7 @@ window.menu = (function ($) {
 
     resizeMenuWave();
 
-    $(window).resize(() => {
+    $(window).on('resize', () => {
       resizeMenuWave();
     });
   }

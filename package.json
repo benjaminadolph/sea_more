@@ -36,8 +36,8 @@
     "pixi-particles": "^4.3.0",
     "pixi-viewport": "^4.31.0",
     "pixi.js": "^6.0.2",
+    "qrcode": "^1.4.4",
     "socket.io": "^4.0.1",
-    "uuid4": "^2.0.2",
-    "qrcode": "^1.4.4"
+    "uuid4": "^2.0.2"
   }
 }

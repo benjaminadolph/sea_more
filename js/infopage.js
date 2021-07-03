@@ -102,11 +102,29 @@ window.infopage = (function ($) {
   }
 
   function moveBottomWave() {
-    wavify(document.querySelector('#bottom-wave-path'), {
-      height: 60,
-      bones: 5,
-      amplitude: 40,
-      speed: 0.25,
+    let timeline = gsap.timeline(
+      {
+        repeat: -1,
+        yoyo: true,
+        repeatDelay: 0,
+      },
+    );
+    timeline.to('#bottom-wave-path', {
+      attr: { d: `${$('#bottom-wave-path').data('first')}` },
+      duration: 2,
+      delay: 0.3,
+    });
+
+    timeline.to('#bottom-wave-path', {
+      attr: { d: `${$('#bottom-wave-path').data('second')}` },
+      duration: 1,
+      delay: 0.5,
+    });
+
+    timeline.to('#bottom-wave-path', {
+      attr: { d: `${$('#bottom-wave-path').data('third')}` },
+      duration: 3,
+      delay: 0.8,
     });
   }
 

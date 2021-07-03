@@ -1,4 +1,4 @@
-import { gsap, Power1 } from 'gsap';
+import { gsap } from 'gsap';
 
 /*
  *   Wavify
@@ -30,7 +30,6 @@ window.wavify = function (waveElement, options) {
   const wave = waveElement;
   let { width } = document.querySelector(settings.container).getBoundingClientRect();
   let { height } = document.querySelector(settings.container).getBoundingClientRect();
-  let points = [];
   let lastUpdate;
   let totalTime = 0;
   let animationInstance = false;
@@ -82,7 +81,6 @@ window.wavify = function (waveElement, options) {
     let inverted = -1;
 
     for (let i = 1; i < points.length - 1; i++) {
-      const cpLength = Math.sqrt(prevCp.x * prevCp.x + prevCp.y * prevCp.y);
       const cp1 = {
         x: points[i].x - prevCp.x + points[i].x,
         y: points[i].y - prevCp.y + points[i].y,
