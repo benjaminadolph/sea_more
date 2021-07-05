@@ -20,6 +20,16 @@
     }    
 }
 
+@media (min-width:1805px) {
+    .waves-container {
+        width: 100%;
+        bottom: 0;
+        height: 130vh;
+        position: absolute;
+        z-index: 1;  
+    }
+}
+
 
 #sewage, #fishernets, #microplastic, #overfishing {
     .background-elements {
