@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 window.infopage = (function ($) {
-  function youtubePrivacy() {
+  function setYoutubePrivacy() {
     $(document).ready(() => {
       if ($('.video_wrapper').length > 0) {
         $('.video_wrapper').each(function () {
@@ -12,13 +12,18 @@ window.infopage = (function ($) {
           wrapper.find('.privacy-okay-btn').on('click', function () {
             const trigger = $(this).parent();
             trigger.fadeOut();
-            trigger.siblings('.video_layer').show().children('iframe').attr('src', `https://www.youtube-nocookie.com/embed/${trigger.attr('data-source')}?rel=0&controls=0&showinfo=0&autoplay=1`);
+            trigger
+              .siblings('.video_layer')
+              .show()
+              .children('iframe')
+              .attr('src', `https://www.youtube-nocookie.com/embed/${trigger.attr('data-source')}?rel=0&controls=0&showinfo=0&autoplay=1`);
           });
         });
       }
     });
   }
 
+  // for specfic pages we need to set background to middle element
   function setMiddleAfter() {
     const $middleElement = $('.middle');
     let timeout = null;
@@ -130,23 +135,16 @@ window.infopage = (function ($) {
       parallax();
     }
 
-    youtubePrivacy();
+    setYoutubePrivacy();
     setBottomInfoSvg();
-
-    // set background, when needed
-    if ($('.after-element')) {
-      setMiddleAfter();
-    }
 
     $(window).resize(() => {
       setBottomInfoSvg();
-      if ($('.after-element')) {
-        setMiddleAfter();
-      }
     });
   }
 
   return {
     init,
+    setMiddleAfter,
   };
 }(jQuery));
