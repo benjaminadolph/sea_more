@@ -1,9 +1,4 @@
-'use strict';
-
-let seamore;
-seamore = seamore || {};
-
-seamore.startIntro = (function ($) {
+window.startIntro = (function ($) {
   function init() {
     $('.screen-one--button').on('click', (e) => {
       e.preventDefault();
@@ -33,7 +28,6 @@ seamore.startIntro = (function ($) {
   };
 }(jQuery));
 
-// eslint-disable-next-line no-unused-vars
-jQuery(($) => {
-  seamore.startIntro.init();
+jQuery(() => {
+  startIntro.init();
 });

@@ -1,8 +1,6 @@
-'use strict';
+const $ = require("jquery");
 
-seamore = seamore || {};
-
-seamore.allCoinsCollected = (function ($) {
+window.allCoinsCollected = (function ($) {
   function init() {
     $('.treasure-hunt').on('click', () => {
       if ($('#counter').html() === '5/5') {
@@ -28,5 +26,5 @@ seamore.allCoinsCollected = (function ($) {
 
 // eslint-disable-next-line no-unused-vars
 jQuery(($) => {
-  seamore.allCoinsCollected.init();
+  allCoinsCollected.init();
 });

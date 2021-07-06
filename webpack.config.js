@@ -11,8 +11,11 @@ module.exports = {
     devtool: 'source-map',
     // Path to your entry point. From this file Webpack will begin its work
     entry: {
-        bundle: ['./js/custom-pixi.js','./scss/main.scss', './scss/controller.scss', './js/start.js', './js/infopage.js', './js/data.js'],
-        menu: './js/menu.js'
+        bundle: ['./js/jquery.min.js', './js/custom-pixi.js','./scss/main.scss', './scss/controller.scss', './js/start.js', './js/infopage.js', './js/data.js'],
+        menu: './js/menu.js',
+        startIntro: './js/start-intro.js',
+        allCoinsCollected: './js/all-coins-collected.js',
+        controller: './js/controller.js',
     },
 
     // Path and filename of your result bundle.

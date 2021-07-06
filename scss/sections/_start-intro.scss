@@ -50,6 +50,14 @@
 
         &.screen-one {
             display: block;
+
+            .headline {
+                margin-bottom: 60px;
+            }
+
+            .button-center {
+                margin-top: 70px;
+            }
         }
 
         &.screen-two {
@@ -227,9 +235,26 @@
             }
         }
 
+        .screen.screen-one {
+            .headline {
+                margin-bottom: 40px;
+            }
+        }
+
         .screen-background {
             width: 95%;
             left: 2.5%;
+        }
+    }
+}
+
+@media(max-width: 781px) {
+    #start-intro, 
+    #all-coins-collected  {    
+        .screen.screen-one {
+            .button-center {
+                margin-top: 40px;
+            }
         }
     }
 }

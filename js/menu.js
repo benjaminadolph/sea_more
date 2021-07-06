@@ -124,7 +124,6 @@ window.menu = (function ($) {
   };
 }(jQuery));
 
-// eslint-disable-next-line no-unused-vars
-jQuery(($) => {
+jQuery(() => {
   menu.init();
 });

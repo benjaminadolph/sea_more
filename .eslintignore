@@ -5,5 +5,5 @@
 /public/dist/*
 /public/downloads/*
 /public/fonts/*
-/public/jquery/*
+/js/jquery.min.js
 webpack.config.js

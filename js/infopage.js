@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 window.infopage = (function ($) {
+  // set privacy for youtube videos, to be only loaded when user accepts
   function setYoutubePrivacy() {
     $(document).ready(() => {
       if ($('.video_wrapper').length > 0) {
@@ -41,6 +42,7 @@ window.infopage = (function ($) {
     }
   }
 
+  // Bottom info is an svg, that needs to be set when viewport width changes
   function setBottomInfoSvg() {
     const $svg = $('#bottom-info-line');
 
