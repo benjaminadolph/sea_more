@@ -1,5 +1,6 @@
 const QRCode = require('qrcode');
 
+// creates randwom string for socket room
 function randomString(stringLength) {
   let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz'.split('');
   if (typeof stringLength !== 'number') {
