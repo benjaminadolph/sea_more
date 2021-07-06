@@ -1,5 +1,3 @@
-const $ = require("jquery");
-
 window.allCoinsCollected = (function ($) {
   function init() {
     $('.treasure-hunt').on('click', () => {
