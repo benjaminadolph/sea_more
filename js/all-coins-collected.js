@@ -11,8 +11,7 @@ window.allCoinsCollected = (function ($) {
       $('#all-coins-collected').fadeOut();
     });
 
-    $('.download--button').on('click', (e) => {
-      e.preventDefault();
+    $('.download--button').on('click', () => {
       $('#all-coins-collected').fadeOut();
     });
   }
