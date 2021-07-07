@@ -48,7 +48,7 @@ $ npm run build
 $ npm run serve
 ```
 
-If to use the smartphone controller locally, 
+To use the smartphone controller locally, 
 go to js/start.js and change the following lines:
 
 1. comment line 21
