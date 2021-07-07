@@ -39,9 +39,11 @@ To successfully start the project you have to
 $ npm install
 ```
 
-2. build all files with webpack 
+2. build all files with webpack or use wepack hot reload for development
 ```
-$ npm run build
+$ npm run build 
+or
+$ npm run watch
 ```
 3. run the project
 ```
