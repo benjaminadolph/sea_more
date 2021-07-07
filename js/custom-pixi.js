@@ -1,3 +1,4 @@
+// Imports
 import * as PIXI from 'pixi.js';
 import { Viewport } from 'pixi-viewport';
 import { Emitter } from 'pixi-particles';

@@ -1,3 +1,5 @@
+// Creates overlay when user has collected all coins on the canvas
+// ______________________________________________________________________________________________
 window.allCoinsCollected = (function ($) {
   function init() {
     $('.treasure-hunt').on('click', () => {

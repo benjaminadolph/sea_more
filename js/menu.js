@@ -1,10 +1,10 @@
+// Imports
 import { gsap, Power4, Power2 } from 'gsap';
 
 window.menu = (function ($) {
   function setCharsToSpan() {
     const $menuElements = $('#nav').find('.menu-item');
 
-    // set chars to span to create wave animation on letters
     $menuElements.each(function () {
       const textNode = $(this).html();
       $(this).empty();
@@ -14,6 +14,8 @@ window.menu = (function ($) {
     });
   }
 
+  // Open Menu Animation
+  // ________________________________________________________________________________________
   function openNavigation() {
     gsap.to('#nav', { y: 0, ease: Power4.easeInOut, duration: 2 });
 
@@ -27,7 +29,8 @@ window.menu = (function ($) {
     gsap.to('.shell-content', { x: 0, opacity: 1, delay: 1.2 });
     gsap.to('.footer-links', { opacity: 1, delay: 1.2 });
   }
-
+  // Close Menu Animation
+  // ________________________________________________________________________________________
   function closeNavigation() {
     if ($(window).width() >= 650) {
       gsap.to('#wave-path', {
@@ -46,6 +49,8 @@ window.menu = (function ($) {
     gsap.to('.footer-links', { opacity: 0 });
   }
 
+  // Open Menu Animation
+  // ________________________________________________________________________________________
   function waveTextAnimation($element) {
     let startPercent = -40;
     $element.parents('ul').addClass('hover');
@@ -67,6 +72,9 @@ window.menu = (function ($) {
       }
     }
   }
+
+  // Animation of chars in the menu on hover
+  // ________________________________________________________________________________________
 
   function groundWaveAnimation() {
     $('#nav ul').removeClass('hover');
@@ -90,7 +98,6 @@ window.menu = (function ($) {
       closeNavigation();
     });
 
-    // create wave animation on hover
     const $charElement = $('.char');
     $charElement.on('mouseenter', function () {
       waveTextAnimation($(this));

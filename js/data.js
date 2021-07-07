@@ -1,3 +1,5 @@
+// This file includes arrays with the data loaded by pixijs
+// ______________________________________________________________________________________________
 const content = [
   {
     name: 'sewageisland', url: 'assets/SVGs/sewage-island.svg', x: 5806, y: 1451, scale: 4,

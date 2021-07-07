@@ -1,10 +1,12 @@
+// Imports
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// set privacy for youtube videos, to be only loaded when user accepts
+// ______________________________________________________________________________________________
 window.infopage = (function ($) {
-  // set privacy for youtube videos, to be only loaded when user accepts
   function setYoutubePrivacy() {
     $(document).ready(() => {
       if ($('.video_wrapper').length > 0) {
@@ -25,6 +27,7 @@ window.infopage = (function ($) {
   }
 
   // for specfic pages we need to set background to middle element
+  // ______________________________________________________________________________________________
   function setMiddleAfter() {
     const $middleElement = $('.middle');
     let timeout = null;
@@ -43,6 +46,7 @@ window.infopage = (function ($) {
   }
 
   // Bottom info is an svg, that needs to be set when viewport width changes
+  // ______________________________________________________________________________________________
   function setBottomInfoSvg() {
     const $svg = $('#bottom-info-line');
 
@@ -122,9 +126,9 @@ window.infopage = (function ($) {
       },
     });
   }
-
+  // Initialize everything
+  // ______________________________________________________________________________________________
   function init() {
-    // init clicks
     $('.infopage .close-icon').on('click', () => {
       $('.infopage').remove();
     });

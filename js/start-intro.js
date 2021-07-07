@@ -1,3 +1,5 @@
+// Creates overlay with intro when user visits the site
+// ______________________________________________________________________________________________
 window.startIntro = (function ($) {
   function init() {
     $('.screen-one--button').on('click', (e) => {

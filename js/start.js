@@ -1,6 +1,8 @@
+// imports
 const QRCode = require('qrcode');
 
-// creates randwom string for socket room
+// Creates random String for Socket.io-Rooms
+// ______________________________________________________________________________________________
 function randomString(stringLength) {
   let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghiklmnopqrstuvwxyz'.split('');
   if (typeof stringLength !== 'number') {
@@ -13,6 +15,8 @@ function randomString(stringLength) {
   return str;
 }
 
+// Creates global variables
+// ______________________________________________________________________________________________
 const socket = io();
 const roomid = randomString(21);
 
@@ -22,10 +26,10 @@ window.changeText = function (text) {
 
 $(() => {
   socket.emit('join-room', roomid);
-  // eslint-disable-next-line no-console
-  console.log(roomid);
-
   const stringdata = `https://seamore.herokuapp.com/controller/${roomid}`;
+
+  // Creates QR-Code
+  // ______________________________________________________________________________________________
 
   QRCode.toCanvas(stringdata, { errorCorrectionLevel: 'H' }, (err, canvas) => {
     if (err) throw err;
@@ -40,6 +44,9 @@ $(() => {
     let container = document.getElementById('qrcode-bottom');
     container.appendChild(canvas);
   });
+
+  // Socket.io Communication with Server
+  // ______________________________________________________________________________________________
 
   socket.on('controllerAdded', () => {
     $('#start-intro').fadeOut();
@@ -58,7 +65,8 @@ $(() => {
     tapButton = data.clicked;
   });
 
-  // rendering of infopages:
+  // Rendering of Infopages
+  // ______________________________________________________________________________________________
   const $result = $('#infopages');
   const infopages = [
     'deep-sea-mining',
@@ -91,7 +99,8 @@ $(() => {
     $result.load('/datenschutz');
   });
 
-  // qr code bottom click
+  // QR-Code in Menubar
+  // ______________________________________________________________________________________________
   $('#qrcode-bottom').on('click', function () {
     if ($(this).hasClass('big')) {
       $(this)
@@ -114,7 +123,8 @@ $(() => {
     }
   });
 
-  // facts slider
+  // Facts-Slider in Menu Bar
+  // ______________________________________________________________________________________________
   let $slider = $('.slider');
   let $sliderElements = $slider.find('li');
   let $arrow = $('.arrow');
