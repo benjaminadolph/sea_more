@@ -1,8 +1,8 @@
 # Sea More - Interactive 2D Map 
 ## DESCRIPTION
-An interactive 2D map to draw attention to the problems in our ocean. The user can navigate the website either by mouse or by smartphone and discover the different problems. If he operates the website by smartphone, then he can swim through the ocean as a turtle. Clicking on one of the action buttons opens subpages with further information on one of the topics.
+An interactive 2D map to draw attention to the problems in our ocean. The user can navigate the website either by mouse or by smartphone and discover the different problems. If he or she operates the website by smartphone, then he or she can swim through the ocean as a turtle. Clicking on one of the action buttons opens subpages with further information on one of the topics.
 
-There is also a mini-game where the user has to find five hidden coins in the ocean. Upon successful completion of the game, he can download cool screensavers.
+There is also a mini-game where the user has to find five hidden coins in the ocean. Upon successful completion of the game, he or she can download cool screensavers.
 
 Made with PixiJS, EJS, GSAP, JQuery, Node.js, Express.js, Socket.IO
 
