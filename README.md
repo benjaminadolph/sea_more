@@ -48,6 +48,14 @@ $ npm run build
 $ npm run serve
 ```
 
+If to use the smartphone controller locally, 
+go to js/start.js and change the following lines:
+
+1. comment line 21
+2. uncomment line 23
+3. comment line 31
+4. uncomment line 33 and use your own IP Adress
+
 ----
 # IMPORTANT COMMANDS
 ### Install the project dependencies

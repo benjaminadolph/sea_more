@@ -19,7 +19,7 @@ function randomString(stringLength) {
 // ______________________________________________________________________________________________
 const socket = io();
 const roomid = randomString(21);
-// use for local testing
+// use this room id for local testing
 // const roomid = 'test';
 
 window.changeText = function (text) {
