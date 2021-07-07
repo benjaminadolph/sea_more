@@ -1,3 +1,5 @@
+// Set global variables
+// ______________________________________________________________________________________________
 const socket = io();
 const getLastItem = (thePath) => thePath.substring(thePath.lastIndexOf('/') + 1);
 // eslint-disable-next-line no-restricted-globals
@@ -5,8 +7,12 @@ const roomid = getLastItem(location.pathname);
 let tapButton;
 const clickBtn = window.document.getElementById('clickBtn');
 
+// Controller-socket joins room
+// ______________________________________________________________________________________________
 socket.emit('join-room', roomid);
 
+// CreateJoystick-Function handles Movement of the Joystick
+// ______________________________________________________________________________________________
 function createJoystick(parent) {
   const maxDiff = 100;
   const stick = document.createElement('div');
@@ -62,6 +68,9 @@ function createJoystick(parent) {
     currentPos = { x: 0, y: 0 };
     clearInterval(emitTimer);
   }
+
+  // Add all neccessary event listeners for controller functionality
+  // ______________________________________________________________________________________________
   stick.classList.add('controller-inner');
 
   stick.addEventListener('mousedown', handleMouseDown);
@@ -80,6 +89,8 @@ function createJoystick(parent) {
 
 createJoystick(window.document.getElementById('controller'));
 
+// Functionality to change button text on controller
+// ______________________________________________________________________________________________
 function toggleBtn() {
   tapButton = true;
   socket.emit('clickObject', tapButton);
