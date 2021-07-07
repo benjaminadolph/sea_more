@@ -19,6 +19,8 @@ function randomString(stringLength) {
 // ______________________________________________________________________________________________
 const socket = io();
 const roomid = randomString(21);
+// use for local testing
+// const roomid = 'test';
 
 window.changeText = function (text) {
   socket.emit('changeText', text);
@@ -27,6 +29,8 @@ window.changeText = function (text) {
 $(() => {
   socket.emit('join-room', roomid);
   const stringdata = `https://seamore.herokuapp.com/controller/${roomid}`;
+  // use for local testing with your IP Adress
+  // const stringdata = 'http://192.168.178.61:3000/controller/test';
 
   // Creates QR-Code
   // ______________________________________________________________________________________________
